@@ -1,5 +1,0 @@
-Blog
-=====
-
-Test RST support
------------------
