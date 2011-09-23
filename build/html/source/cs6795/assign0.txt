@@ -31,13 +31,13 @@ Part C
 .. graphviz::
 
   graph g {
-    node [label="X"] X1;
-    node [label="X"] X2;
-    node [label="X"] X3;
-    node [label="Y"] Y1;
-    node [label="Y"] Y2;
-    node [label="Z"] Z;
-    node [label="Hello World!"] HW;
+    node [shape=none, label="X"] X1;
+    node [shape=none, label="X"] X2;
+    node [shape=none, label="X"] X3;
+    node [shape=none, label="Y"] Y1;
+    node [shape=none, label="Y"] Y2;
+    node [shape=none, label="Z"] Z;
+    node [shape=none, label="Hello World!"] HW;
     node [label="Good Day!"] GD;
     X1 -- Y1;
     Y1 -- Z;
