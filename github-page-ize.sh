@@ -10,6 +10,7 @@ mv _images images
 sed -i 's/_images/images/g' *.html 
 sed -i 's/_static/static/g' *.html 
 sed -i 's/_sources/sources/g' *.html
+mv main.html index.html
 
 cd $HAXFU
 sed -i 's/_images/images/g' *.html 
