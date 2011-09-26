@@ -5,7 +5,7 @@ HAXFU="$HTML_DIR/haxfu"
 CS6795="$HTML_DIR/cs6795"
 
 cd $HTML_DIR
-mv _sources source
+mv _sources sources
 mv _static static
 mv _images images
 sed -i 's/_images/images/g' *.html  #TODO: make procedure for these sed commands
