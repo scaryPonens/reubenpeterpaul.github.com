@@ -1,0 +1,239 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Lab 1 - Create your own XML DTD, XSD, and RNC or RNG &mdash; (Mis)Adventures in Hax-Fu v1.0 documentation</title>
+    <link rel="stylesheet" href="../static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="(Mis)Adventures in Hax-Fu v1.0 documentation" href="../index.html" />
+    <link rel="up" title="CS6795 Labs and Assignments" href="index.html" />
+    <link rel="prev" title="Assignment 0" href="assign0.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="assign0.html" title="Assignment 0"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../main.html">(Mis)Adventures in Hax-Fu v1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">CS6795 Labs and Assignments</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="lab-1-create-your-own-xml-dtd-xsd-and-rnc-or-rng">
+<h1>Lab 1 - Create your own XML DTD, XSD, and RNC or RNG<a class="headerlink" href="#lab-1-create-your-own-xml-dtd-xsd-and-rnc-or-rng" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-todo admonition " id="index-0">
+<p class="first admonition-title">Todo</p>
+<p>Consider these examples of XML documents for clause sets consisting of zero or
+more facts f (Prolog: <tt class="docutils literal"><span class="pre">f.</span></tt>) and zero or more &#8216;backward&#8217; rules c &lt;- p
+(Prolog: <tt class="docutils literal"><span class="pre">c</span> <span class="pre">:-</span> <span class="pre">p.</span></tt>), in any order (&#8220;myurl&#8221; will be replaced as explained below):</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; standalone=&quot;no&quot;?&gt;</span>
+<span class="cp">&lt;!DOCTYPE clauses SYSTEM &quot;myurl&quot;&gt;</span>
+ <span class="nt">&lt;clauses&gt;</span>
+    <span class="nt">&lt;fact&gt;</span> f <span class="nt">&lt;/fact&gt;</span>
+    <span class="nt">&lt;rule&gt;</span> <span class="nt">&lt;conc&gt;</span> c <span class="nt">&lt;/conc&gt;</span> <span class="nt">&lt;prem&gt;</span> p <span class="nt">&lt;/prem&gt;</span> <span class="nt">&lt;/rule&gt;</span>
+ <span class="nt">&lt;/clauses&gt;</span>
+
+<span class="cp">&lt;?xml version=&quot;1.0&quot; standalone=&quot;no&quot;?&gt;</span>
+<span class="cp">&lt;!DOCTYPE clauses SYSTEM &quot;myurl&quot;&gt;</span>
+<span class="nt">&lt;clauses&gt;</span>
+    <span class="nt">&lt;rule&gt;</span> <span class="nt">&lt;conc&gt;</span> c1 <span class="nt">&lt;/conc&gt;</span> <span class="nt">&lt;prem&gt;</span> p1 <span class="nt">&lt;/prem&gt;</span> <span class="nt">&lt;/rule&gt;</span>
+    <span class="nt">&lt;fact&gt;</span> f1 <span class="nt">&lt;/fact&gt;</span>
+    <span class="nt">&lt;rule&gt;</span> <span class="nt">&lt;conc&gt;</span> c2 <span class="nt">&lt;/conc&gt;</span> <span class="nt">&lt;prem&gt;</span> p2 <span class="nt">&lt;/prem&gt;</span> <span class="nt">&lt;/rule&gt;</span>
+    <span class="nt">&lt;fact&gt;</span> f2 <span class="nt">&lt;/fact&gt;</span>
+    <span class="nt">&lt;fact&gt;</span> f3 <span class="nt">&lt;/fact&gt;</span>
+<span class="nt">&lt;/clauses&gt;</span>
+</pre></div>
+</div>
+<p>Inductively complete this XML DTD (overwrite the &#8221;...&#8221; lines) for such clause sets:</p>
+<div class="last highlight-xml"><div class="highlight"><pre><span class="cp">&lt;!ELEMENT clauses   (................)&gt;</span>
+<span class="cp">&lt;!ELEMENT rule   (................)&gt;</span>
+<span class="cp">&lt;!ELEMENT fact    (#PCDATA)&gt;</span>
+<span class="cp">&lt;!ELEMENT ........    (................)&gt;</span>
+<span class="cp">&lt;!ELEMENT ........    (................)&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dtd">
+<h2>DTD<a class="headerlink" href="#dtd" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;!ELEMENT clauses (fact|rule)*&gt;</span>
+<span class="cp">&lt;!ELEMENT rule                (conc,prem)&gt;</span>
+<span class="cp">&lt;!ELEMENT fact                (#PCDATA)&gt;</span>
+<span class="cp">&lt;!ELEMENT conc                (#PCDATA)&gt;</span>
+<span class="cp">&lt;!ELEMENT prem                (#PCDATA)&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="xsd">
+<h2>XSD<a class="headerlink" href="#xsd" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;xs:schema</span> <span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;clauses&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;xs:complexType&gt;</span>
+      <span class="nt">&lt;xs:sequence&gt;</span>
+        <span class="nt">&lt;xs:choice</span> <span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;xs:element</span> <span class="na">ref=</span><span class="s">&quot;rule&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;xs:element</span> <span class="na">ref=</span><span class="s">&quot;fact&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/xs:choice&gt;</span>
+      <span class="nt">&lt;/xs:sequence&gt;</span>
+    <span class="nt">&lt;/xs:complexType&gt;</span>
+  <span class="nt">&lt;/xs:element&gt;</span>
+  <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;rule&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;xs:complexType&gt;</span>
+      <span class="nt">&lt;xs:sequence&gt;</span>
+        <span class="nt">&lt;xs:element</span> <span class="na">ref=</span><span class="s">&quot;conc&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;xs:element</span> <span class="na">ref=</span><span class="s">&quot;prem&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/xs:sequence&gt;</span>
+    <span class="nt">&lt;/xs:complexType&gt;</span>
+  <span class="nt">&lt;/xs:element&gt;</span>
+  <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;fact&quot;</span> <span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;conc&quot;</span> <span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;prem&quot;</span> <span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xs:schema&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="relaxng">
+<h2>RelaxNG<a class="headerlink" href="#relaxng" title="Permalink to this headline">¶</a></h2>
+<p>Compact syntax:</p>
+<div class="highlight-python"><pre>default namespace = ""
+
+start = clauses
+clauses = element clauses {
+  (element rule {
+    (element conc {xsd:string},
+    element prem {xsd:string})}
+  | (element fact {xsd:string}))*}</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">I used <a class="reference external" href="http://www.thaiopensource.com/relaxng/trang.html">trang</a> to transform
+RelaxNG compact syntax into xml-based syntax.</p>
+</div>
+<p>XML syntax:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;grammar</span> <span class="na">ns=</span><span class="s">&quot;&quot;</span> <span class="na">xmlns=</span><span class="s">&quot;http://relaxng.org/ns/structure/1.0&quot;</span> <span class="na">datatypeLibrary=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-datatypes&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;start&gt;</span>
+    <span class="nt">&lt;ref</span> <span class="na">name=</span><span class="s">&quot;clauses&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/start&gt;</span>
+  <span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;clauses&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;clauses&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;zeroOrMore&gt;</span>
+        <span class="nt">&lt;choice&gt;</span>
+          <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;rule&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;conc&quot;</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/element&gt;</span>
+            <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;prem&quot;</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/element&gt;</span>
+          <span class="nt">&lt;/element&gt;</span>
+          <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;fact&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;/element&gt;</span>
+        <span class="nt">&lt;/choice&gt;</span>
+      <span class="nt">&lt;/zeroOrMore&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+  <span class="nt">&lt;/define&gt;</span>
+<span class="nt">&lt;/grammar&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>To validate the above sample instances I used <a class="reference external" href="http://xmlsoft.org/xmllint.html">xmllint - command line XML tool</a>
+to parse and typecheck/validate:</p>
+<div class="last highlight-bash"><div class="highlight"><pre>xmllint --noout --schema http://reubenpeterpaul.github.com/lab1/XSD/clauses.xsd clauses-instance.xml
+xmllint --noout --dtdvalid http://reubenpeterpaul.github.com/lab1/DTD/clauses.dtd clauses-instance.xml
+trang clauses.rnc clauses.rng
+xmllint --noout --relaxng clauses.rng clauses-instance.xml
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../main.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Lab 1 - Create your own XML DTD, XSD, and RNC or RNG</a><ul>
+<li><a class="reference internal" href="#dtd">DTD</a></li>
+<li><a class="reference internal" href="#xsd">XSD</a></li>
+<li><a class="reference internal" href="#relaxng">RelaxNG</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="assign0.html"
+                        title="previous chapter">Assignment 0</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/cs6795/lab1.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="assign0.html" title="Assignment 0"
+             >previous</a> |</li>
+        <li><a href="../main.html">(Mis)Adventures in Hax-Fu v1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >CS6795 Labs and Assignments</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Reuben Peter-Paul.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
