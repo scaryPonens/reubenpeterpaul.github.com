@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.9.23)  26 SEP 2011 13:44
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.9.23)  26 SEP 2011 14:25
 entering extended mode
  %&-line parsing enabled.
 **CS6795LabsandAssignments.tex
@@ -923,7 +923,7 @@ LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <9> not available
 [7] [8] [9] [10
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 440--442
+Underfull \hbox (badness 10000) in paragraph at lines 444--446
 [][][]\T1/ptm/m/n/10 JSON the Fat Free Al-ter-na-tive to XML[][], In-tro-duc-in
 g JSON, 21 Septem-ber 2011,
  []
@@ -947,7 +947,7 @@ helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvbo8a.
 pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texm
 f-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type
 1/urw/times/utmri8a.pfb>
-Output written on CS6795LabsandAssignments.pdf (15 pages, 171357 bytes).
+Output written on CS6795LabsandAssignments.pdf (15 pages, 172222 bytes).
 PDF statistics:
  202 PDF objects out of 1000 (max. 8388607)
  37 named destinations out of 1000 (max. 500000)
