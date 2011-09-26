@@ -154,67 +154,16 @@ XML syntax:
     <catalog
     xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
 
-    <group
-    prefer="public"
-    xml:base="file:///home/peter-paulr/bulk/xml/schemas/">
-
-    <public
-    publicId="-//OASIS//DTD Entity Resolution XML
-    Catalog V1.0//EN"
-    uri="oasis_catalogs/1_0/dtd/catalog.dtd"/>
-    <system
-    systemId=
-    "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd"
-    uri="oasis_catalogs/1_0/dtd/catalog.dtd"/>
-
-    <public
-    publicId="-//W3C//DTD
-    XHTML 1.0
-    Strict//EN"
-    uri="xhtml/1_0/strict/dtd/xhtml1-strict.dtd"/>
-    <system
-    systemId="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
-    uri="xhtml/1_0/strict/dtd/xhtml1-strict.dtd"/>
-
-    <public
-    publicId="-//OASIS//DTD
-    DocBook
-    XML
-    V4.2//EN"
-    uri="docbook/4_2/dtd/docbookx.dtd"/>
-    <system
-    systemId="http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd"
-    uri="docbook/4_2/dtd/docbookx.dtd"/>
-
-    <public
-    publicId="-//W3C//DTD
-    SVG
-    1.0//EN"
-    uri="svg/1_0/dtd/svg10.dtd"/>
-    <system
-    systemId="http://www.w3.org/TR/SVG10/DTD/svg10.dtd"
-    uri="svg/1_0/dtd/svg10.dtd"/>
-    <system
-    systemId="http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"
-    uri="svg/1_0/dtd/svg10.dtd"/>
-
-    <public
-    publicId="-//W3C//DTD
-    SVG
-    1.1//EN"
-    uri="svg/1_1/dtd/svg11-flat.dtd"/>
-    <system
-    systemId="http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"
-    uri="svg/1_1/dtd/svg11-flat.dtd"/>
-    <system
-    systemId="http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-flat.dtd"
-    uri="svg/1_1/dtd/svg11-flat.dtd"/>
-
-    </group>
-
+    ...
+    
     <system
     systemId="http://reubenpeterpaul.github.com/lab1/DTD/clauses.dtd"
     uri="/home/peter-paulr/.laboratory/cs6795/lab1/clauses.dtd"
+    />
+
+    <system
+    systemId="http://reubenpeterpaul.github.com/lab1/XSD/clauses.xsd"
+    uri="/home/peter-paulr/.laboratory/cs6795/lab1/clauses.xsd"
     />
 
     </catalog>
