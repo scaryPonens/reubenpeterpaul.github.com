@@ -5,5 +5,5 @@ CS6795 Labs and Assignments
   :maxdepth: 2
   
   assign0
-..  lab1
+  lab1
 ..  assign1  
