@@ -12,7 +12,7 @@
 
 
 \title{CS6795 Labs and Assignments Documentation}
-\date{September 23, 2011}
+\date{September 26, 2011}
 \release{1.0}
 \author{Reuben Peter-Paul}
 \newcommand{\sphinxlogo}{}
@@ -261,6 +261,179 @@ ERROR: toplevel: Undefined procedure: z/1 \PYG{o}{(}DWIM could not correct goal\
 \hline
 \end{tabular}
 
+
+
+\chapter{Lab 1 - Create your own XML DTD, XSD, and RNC or RNG}
+\label{lab1:lab-1-create-your-own-xml-dtd-xsd-and-rnc-or-rng}\label{lab1::doc}
+\begin{notice}{note}{Todo}
+
+Consider these examples of XML documents for clause sets consisting of zero or
+more facts f (Prolog: \code{f.}) and zero or more `backward' rules c \textless{}- p
+(Prolog: \code{c :- p.}), in any order (``myurl'' will be replaced as explained below):
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\textless{}?xml version="1.0" standalone="no"?\textgreater{}}
+\PYG{c+cp}{\textless{}!DOCTYPE clauses SYSTEM "myurl"\textgreater{}}
+ \PYG{n+nt}{\textless{}clauses}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}fact}\PYG{n+nt}{\textgreater{}} f \PYG{n+nt}{\textless{}/fact\textgreater{}}
+    \PYG{n+nt}{\textless{}rule}\PYG{n+nt}{\textgreater{}} \PYG{n+nt}{\textless{}conc}\PYG{n+nt}{\textgreater{}} c \PYG{n+nt}{\textless{}/conc\textgreater{}} \PYG{n+nt}{\textless{}prem}\PYG{n+nt}{\textgreater{}} p \PYG{n+nt}{\textless{}/prem\textgreater{}} \PYG{n+nt}{\textless{}/rule\textgreater{}}
+ \PYG{n+nt}{\textless{}/clauses\textgreater{}}
+
+\PYG{c+cp}{\textless{}?xml version="1.0" standalone="no"?\textgreater{}}
+\PYG{c+cp}{\textless{}!DOCTYPE clauses SYSTEM "myurl"\textgreater{}}
+\PYG{n+nt}{\textless{}clauses}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}rule}\PYG{n+nt}{\textgreater{}} \PYG{n+nt}{\textless{}conc}\PYG{n+nt}{\textgreater{}} c1 \PYG{n+nt}{\textless{}/conc\textgreater{}} \PYG{n+nt}{\textless{}prem}\PYG{n+nt}{\textgreater{}} p1 \PYG{n+nt}{\textless{}/prem\textgreater{}} \PYG{n+nt}{\textless{}/rule\textgreater{}}
+    \PYG{n+nt}{\textless{}fact}\PYG{n+nt}{\textgreater{}} f1 \PYG{n+nt}{\textless{}/fact\textgreater{}}
+    \PYG{n+nt}{\textless{}rule}\PYG{n+nt}{\textgreater{}} \PYG{n+nt}{\textless{}conc}\PYG{n+nt}{\textgreater{}} c2 \PYG{n+nt}{\textless{}/conc\textgreater{}} \PYG{n+nt}{\textless{}prem}\PYG{n+nt}{\textgreater{}} p2 \PYG{n+nt}{\textless{}/prem\textgreater{}} \PYG{n+nt}{\textless{}/rule\textgreater{}}
+    \PYG{n+nt}{\textless{}fact}\PYG{n+nt}{\textgreater{}} f2 \PYG{n+nt}{\textless{}/fact\textgreater{}}
+    \PYG{n+nt}{\textless{}fact}\PYG{n+nt}{\textgreater{}} f3 \PYG{n+nt}{\textless{}/fact\textgreater{}}
+\PYG{n+nt}{\textless{}/clauses\textgreater{}}
+\end{Verbatim}
+
+Inductively complete this XML DTD (overwrite the ''...'' lines) for such clause sets:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\textless{}!ELEMENT clauses   (................)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT rule   (................)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT fact    (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT ........    (................)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT ........    (................)\textgreater{}}
+\end{Verbatim}
+\end{notice}
+
+
+\section{DTD}
+\label{lab1:dtd}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\textless{}!ELEMENT clauses (fact\textbar{}rule)*\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT rule                (conc,prem)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT fact                (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT conc                (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT prem                (\PYGZsh{}PCDATA)\textgreater{}}
+\end{Verbatim}
+
+
+\section{XSD}
+\label{lab1:xsd}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\textless{}?xml version="1.0"?\textgreater{}}
+\PYG{n+nt}{\textless{}xs:schema} \PYG{n+na}{xmlns:xs=}\PYG{l+s}{"http://www.w3.org/2001/XMLSchema"}\PYG{n+nt}{\textgreater{}}
+  \PYG{n+nt}{\textless{}xs:element} \PYG{n+na}{name=}\PYG{l+s}{"clauses"}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}xs:complexType}\PYG{n+nt}{\textgreater{}}
+      \PYG{n+nt}{\textless{}xs:sequence}\PYG{n+nt}{\textgreater{}}
+        \PYG{n+nt}{\textless{}xs:choice} \PYG{n+na}{maxOccurs=}\PYG{l+s}{"unbounded"}\PYG{n+nt}{\textgreater{}}
+          \PYG{n+nt}{\textless{}xs:element} \PYG{n+na}{ref=}\PYG{l+s}{"rule"}\PYG{n+nt}{/\textgreater{}}
+          \PYG{n+nt}{\textless{}xs:element} \PYG{n+na}{ref=}\PYG{l+s}{"fact"}\PYG{n+nt}{/\textgreater{}}
+        \PYG{n+nt}{\textless{}/xs:choice\textgreater{}}
+      \PYG{n+nt}{\textless{}/xs:sequence\textgreater{}}
+    \PYG{n+nt}{\textless{}/xs:complexType\textgreater{}}
+  \PYG{n+nt}{\textless{}/xs:element\textgreater{}}
+  \PYG{n+nt}{\textless{}xs:element} \PYG{n+na}{name=}\PYG{l+s}{"rule"}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}xs:complexType}\PYG{n+nt}{\textgreater{}}
+      \PYG{n+nt}{\textless{}xs:sequence}\PYG{n+nt}{\textgreater{}}
+        \PYG{n+nt}{\textless{}xs:element} \PYG{n+na}{ref=}\PYG{l+s}{"conc"}\PYG{n+nt}{/\textgreater{}}
+        \PYG{n+nt}{\textless{}xs:element} \PYG{n+na}{ref=}\PYG{l+s}{"prem"}\PYG{n+nt}{/\textgreater{}}
+      \PYG{n+nt}{\textless{}/xs:sequence\textgreater{}}
+    \PYG{n+nt}{\textless{}/xs:complexType\textgreater{}}
+  \PYG{n+nt}{\textless{}/xs:element\textgreater{}}
+  \PYG{n+nt}{\textless{}xs:element} \PYG{n+na}{name=}\PYG{l+s}{"fact"} \PYG{n+na}{type=}\PYG{l+s}{"xs:string"}\PYG{n+nt}{/\textgreater{}}
+  \PYG{n+nt}{\textless{}xs:element} \PYG{n+na}{name=}\PYG{l+s}{"conc"} \PYG{n+na}{type=}\PYG{l+s}{"xs:string"}\PYG{n+nt}{/\textgreater{}}
+  \PYG{n+nt}{\textless{}xs:element} \PYG{n+na}{name=}\PYG{l+s}{"prem"} \PYG{n+na}{type=}\PYG{l+s}{"xs:string"}\PYG{n+nt}{/\textgreater{}}
+\PYG{n+nt}{\textless{}/xs:schema\textgreater{}}
+\end{Verbatim}
+
+
+\section{RelaxNG}
+\label{lab1:relaxng}
+Compact syntax:
+
+\begin{Verbatim}[commandchars=@\[\]]
+default namespace = ""
+
+start = clauses
+clauses = element clauses {
+  (element rule {
+    (element conc {xsd:string},
+    element prem {xsd:string})}
+  @textbar[] (element fact {xsd:string}))*}
+\end{Verbatim}
+
+\begin{notice}{note}{Note:}
+I used \href{http://www.thaiopensource.com/relaxng/trang.html}{trang} to transform
+RelaxNG compact syntax into xml-based syntax.
+\end{notice}
+
+XML syntax:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\textless{}?xml version="1.0" encoding="UTF-8"?\textgreater{}}
+\PYG{n+nt}{\textless{}grammar} \PYG{n+na}{ns=}\PYG{l+s}{""} \PYG{n+na}{xmlns=}\PYG{l+s}{"http://relaxng.org/ns/structure/1.0"} \PYG{n+na}{datatypeLibrary=}\PYG{l+s}{"http://www.w3.org/2001/XMLSchema-datatypes"}\PYG{n+nt}{\textgreater{}}
+  \PYG{n+nt}{\textless{}start}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}ref} \PYG{n+na}{name=}\PYG{l+s}{"clauses"}\PYG{n+nt}{/\textgreater{}}
+  \PYG{n+nt}{\textless{}/start\textgreater{}}
+  \PYG{n+nt}{\textless{}define} \PYG{n+na}{name=}\PYG{l+s}{"clauses"}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}element} \PYG{n+na}{name=}\PYG{l+s}{"clauses"}\PYG{n+nt}{\textgreater{}}
+      \PYG{n+nt}{\textless{}zeroOrMore}\PYG{n+nt}{\textgreater{}}
+        \PYG{n+nt}{\textless{}choice}\PYG{n+nt}{\textgreater{}}
+          \PYG{n+nt}{\textless{}element} \PYG{n+na}{name=}\PYG{l+s}{"rule"}\PYG{n+nt}{\textgreater{}}
+            \PYG{n+nt}{\textless{}element} \PYG{n+na}{name=}\PYG{l+s}{"conc"}\PYG{n+nt}{\textgreater{}}
+              \PYG{n+nt}{\textless{}data} \PYG{n+na}{type=}\PYG{l+s}{"string"}\PYG{n+nt}{/\textgreater{}}
+            \PYG{n+nt}{\textless{}/element\textgreater{}}
+            \PYG{n+nt}{\textless{}element} \PYG{n+na}{name=}\PYG{l+s}{"prem"}\PYG{n+nt}{\textgreater{}}
+              \PYG{n+nt}{\textless{}data} \PYG{n+na}{type=}\PYG{l+s}{"string"}\PYG{n+nt}{/\textgreater{}}
+            \PYG{n+nt}{\textless{}/element\textgreater{}}
+          \PYG{n+nt}{\textless{}/element\textgreater{}}
+          \PYG{n+nt}{\textless{}element} \PYG{n+na}{name=}\PYG{l+s}{"fact"}\PYG{n+nt}{\textgreater{}}
+            \PYG{n+nt}{\textless{}data} \PYG{n+na}{type=}\PYG{l+s}{"string"}\PYG{n+nt}{/\textgreater{}}
+          \PYG{n+nt}{\textless{}/element\textgreater{}}
+        \PYG{n+nt}{\textless{}/choice\textgreater{}}
+      \PYG{n+nt}{\textless{}/zeroOrMore\textgreater{}}
+    \PYG{n+nt}{\textless{}/element\textgreater{}}
+  \PYG{n+nt}{\textless{}/define\textgreater{}}
+\PYG{n+nt}{\textless{}/grammar\textgreater{}}
+\end{Verbatim}
+
+
+\section{Misc}
+\label{lab1:misc}
+\begin{notice}{note}{Note:}
+To validate the above sample instances I used \href{http://xmlsoft.org/xmllint.html}{xmllint - command line XML tool}
+to parse and typecheck/validate:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+xmllint --noout --schema http://reubenpeterpaul.github.com/lab1/XSD/clauses.xsd clauses-instance.xml
+xmllint --noout --dtdvalid http://reubenpeterpaul.github.com/lab1/DTD/clauses.dtd clauses-instance.xml
+trang clauses.rnc clauses.rng
+xmllint --noout --relaxng clauses.rng clauses-instance.xml
+\end{Verbatim}
+\end{notice}
+
+\begin{notice}{note}{Note:}
+I also used my own custom \href{http://www.sagehill.net/docbookxsl/WriteCatalog.html}{XML catalog file}:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\textless{}?xml version="1.0"?\textgreater{}}
+\PYG{c+cp}{\textless{}!DOCTYPE catalog}
+\PYG{c+cp}{PUBLIC "-//OASIS/DTD Entity Resolution XML Catalog V1.0//EN"}
+\PYG{c+cp}{"http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd"\textgreater{}}
+\PYG{n+nt}{\textless{}catalog}
+\PYG{n+na}{xmlns=}\PYG{l+s}{"urn:oasis:names:tc:entity:xmlns:xml:catalog"}\PYG{n+nt}{\textgreater{}}
+
+...
+
+\PYG{n+nt}{\textless{}system}
+\PYG{n+na}{systemId=}\PYG{l+s}{"http://reubenpeterpaul.github.com/lab1/DTD/clauses.dtd"}
+\PYG{n+na}{uri=}\PYG{l+s}{"/home/peter-paulr/.laboratory/cs6795/lab1/clauses.dtd"}
+\PYG{n+nt}{/\textgreater{}}
+
+\PYG{n+nt}{\textless{}system}
+\PYG{n+na}{systemId=}\PYG{l+s}{"http://reubenpeterpaul.github.com/lab1/XSD/clauses.xsd"}
+\PYG{n+na}{uri=}\PYG{l+s}{"/home/peter-paulr/.laboratory/cs6795/lab1/clauses.xsd"}
+\PYG{n+nt}{/\textgreater{}}
+
+\PYG{n+nt}{\textless{}/catalog\textgreater{}}
+\end{Verbatim}
+\end{notice}
 
 \begin{thebibliography}{Tolf11}
 \bibitem[JSON]{JSON}{\phantomsection\label{assign0:json} 
