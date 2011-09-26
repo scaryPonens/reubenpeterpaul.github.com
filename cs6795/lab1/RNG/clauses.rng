@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start>
+    <ref name="clauses"/>
+  </start>
+  <define name="clauses">
+    <element name="clauses">
+      <zeroOrMore>
+        <choice>
+          <element name="rule">
+            <element name="conc">
+              <data type="string"/>
+            </element>
+            <element name="prem">
+              <data type="string"/>
+            </element>
+          </element>
+          <element name="fact">
+            <data type="string"/>
+          </element>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+</grammar>

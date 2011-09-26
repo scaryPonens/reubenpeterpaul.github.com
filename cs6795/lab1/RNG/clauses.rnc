@@ -1,0 +1,9 @@
+default namespace = ""
+
+start = clauses
+clauses = element clauses {
+	(element rule {
+		(element conc {xsd:string},
+		element prem {xsd:string})}
+	| (element fact {xsd:string}))*}
+ 

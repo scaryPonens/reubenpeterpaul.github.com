@@ -1,0 +1,5 @@
+<!ELEMENT clauses (fact|rule)*>
+<!ELEMENT rule		(conc,prem)>
+<!ELEMENT fact		(#PCDATA)>
+<!ELEMENT conc		(#PCDATA)>
+<!ELEMENT prem		(#PCDATA)>
