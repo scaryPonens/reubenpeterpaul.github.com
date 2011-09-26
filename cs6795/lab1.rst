@@ -128,6 +128,9 @@ XML syntax:
     </define>
   </grammar>
   
+Misc
+---------------
+
 .. note::
 
   To validate the above sample instances I used `xmllint - command line XML tool <http://xmlsoft.org/xmllint.html>`_
