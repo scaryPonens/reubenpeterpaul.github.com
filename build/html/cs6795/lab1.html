@@ -170,10 +170,10 @@ RelaxNG compact syntax into xml-based syntax.</p>
 <p class="first admonition-title">Note</p>
 <p>To validate the above sample instances I used <a class="reference external" href="http://xmlsoft.org/xmllint.html">xmllint - command line XML tool</a>
 to parse and typecheck/validate:</p>
-<div class="last highlight-bash"><div class="highlight"><pre>xmllint --noout --schema http://reubenpeterpaul.github.com/lab1/XSD/clauses.xsd clauses-instance.xml
-xmllint --noout --dtdvalid http://reubenpeterpaul.github.com/lab1/DTD/clauses.dtd clauses-instance.xml
-trang clauses.rnc clauses.rng
-xmllint --noout --relaxng clauses.rng clauses-instance.xml
+<div class="last highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>xmllint --noout --schema http://reubenpeterpaul.github.com/lab1/XSD/clauses.xsd clauses-instance.xml
+<span class="nv">$ </span>xmllint --noout --dtdvalid http://reubenpeterpaul.github.com/lab1/DTD/clauses.dtd clauses-instance.xml
+<span class="nv">$ </span>trang clauses.rnc clauses.rng
+<span class="nv">$ </span>xmllint --noout --relaxng http://reubenpeterpaul.github.com/lab1/DTD/clauses.rng clauses-instance.xml
 </pre></div>
 </div>
 </div>
@@ -189,16 +189,20 @@ xmllint --noout --relaxng clauses.rng clauses-instance.xml
 
 ...
 
-<span class="nt">&lt;system</span>
-<span class="na">systemId=</span><span class="s">&quot;http://reubenpeterpaul.github.com/lab1/DTD/clauses.dtd&quot;</span>
-<span class="na">uri=</span><span class="s">&quot;/home/peter-paulr/.laboratory/cs6795/lab1/clauses.dtd&quot;</span>
-<span class="nt">/&gt;</span>
+  <span class="nt">&lt;system</span>
+  <span class="na">systemId=</span><span class="s">&quot;http://reubenpeterpaul.github.com/cs6795/lab1/DTD/clauses.dtd&quot;</span>
+  <span class="na">uri=</span><span class="s">&quot;/home/peter-paulr/.laboratory/cs6795/lab1/clauses.dtd&quot;</span>
+  <span class="nt">/&gt;</span>
 
-<span class="nt">&lt;system</span>
-<span class="na">systemId=</span><span class="s">&quot;http://reubenpeterpaul.github.com/lab1/XSD/clauses.xsd&quot;</span>
-<span class="na">uri=</span><span class="s">&quot;/home/peter-paulr/.laboratory/cs6795/lab1/clauses.xsd&quot;</span>
-<span class="nt">/&gt;</span>
+  <span class="nt">&lt;system</span>
+  <span class="na">systemId=</span><span class="s">&quot;http://reubenpeterpaul.github.com/cs6795/lab1/XSD/clauses.xsd&quot;</span>
+  <span class="na">uri=</span><span class="s">&quot;/home/peter-paulr/.laboratory/cs6795/lab1/clauses.xsd&quot;</span>
+  <span class="nt">/&gt;</span>
 
+  <span class="nt">&lt;system</span>
+  <span class="na">systemId=</span><span class="s">&quot;http://reubenpeterpaul.github.com/cs6795/lab1/RNG/clauses.rng&quot;</span>
+  <span class="na">uri=</span><span class="s">&quot;/home/peter-paulr/.laboratory/cs6795/lab1/clauses.rng&quot;</span>
+  <span class="nt">/&gt;</span>
 <span class="nt">&lt;/catalog&gt;</span>
 </pre></div>
 </div>

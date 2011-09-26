@@ -138,10 +138,10 @@ Misc
 
   .. code-block:: bash
 
-    xmllint --noout --schema http://reubenpeterpaul.github.com/lab1/XSD/clauses.xsd clauses-instance.xml
-    xmllint --noout --dtdvalid http://reubenpeterpaul.github.com/lab1/DTD/clauses.dtd clauses-instance.xml
-    trang clauses.rnc clauses.rng
-    xmllint --noout --relaxng clauses.rng clauses-instance.xml
+    $ xmllint --noout --schema http://reubenpeterpaul.github.com/lab1/XSD/clauses.xsd clauses-instance.xml
+    $ xmllint --noout --dtdvalid http://reubenpeterpaul.github.com/lab1/DTD/clauses.dtd clauses-instance.xml
+    $ trang clauses.rnc clauses.rng
+    $ xmllint --noout --relaxng http://reubenpeterpaul.github.com/lab1/DTD/clauses.rng clauses-instance.xml
 
 .. note::
 
@@ -159,15 +159,19 @@ Misc
 
     ...
     
-    <system
-    systemId="http://reubenpeterpaul.github.com/lab1/DTD/clauses.dtd"
-    uri="/home/peter-paulr/.laboratory/cs6795/lab1/clauses.dtd"
-    />
+      <system
+      systemId="http://reubenpeterpaul.github.com/cs6795/lab1/DTD/clauses.dtd"
+      uri="/home/peter-paulr/.laboratory/cs6795/lab1/clauses.dtd"
+      />
 
-    <system
-    systemId="http://reubenpeterpaul.github.com/lab1/XSD/clauses.xsd"
-    uri="/home/peter-paulr/.laboratory/cs6795/lab1/clauses.xsd"
-    />
+      <system
+      systemId="http://reubenpeterpaul.github.com/cs6795/lab1/XSD/clauses.xsd"
+      uri="/home/peter-paulr/.laboratory/cs6795/lab1/clauses.xsd"
+      />
 
+      <system
+      systemId="http://reubenpeterpaul.github.com/cs6795/lab1/RNG/clauses.rng"
+      uri="/home/peter-paulr/.laboratory/cs6795/lab1/clauses.rng"
+      />
     </catalog>
 
