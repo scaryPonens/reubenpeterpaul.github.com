@@ -1,6 +1,10 @@
 Assignment 1
 ==================
 
+.. note::
+
+  Please mark after parts :ref:`a1` and :ref:`a2`.
+
 Part A-0
 ----------
 .. todo:: 
@@ -78,6 +82,8 @@ the leaf nodes with the path of node-labels from the root ``taxi-ride``, e.g.:
 
   street(numbern(12), appellation('Main St')).
   municipality(appellation('Fredericton'), province('NB')).
+
+.. _a2:
 
 Part A-2
 ---------
@@ -173,6 +179,74 @@ Part A-3 - Relabeling of tree in Prolog
   street(X,Y) :- streetnumber(X), streetname(Y).
 
   municipality(X,Y) :- municipalityname(X), provincename(Y).
+
+Part B-1 - Well formed XML element from :ref:`a1`
+--------------------------------------------------
+
+.. code-block:: xml
+  
+  <?xml version="1.0" ?> 
+  <taxi-ride>
+    <driver>
+      <number>37</number>
+      <name>
+        <first>Peter</first>
+        <mid>C.</mid>
+        <last>Jones</last>
+      </name>
+    </driver>
+    <passengers />
+    <tranport-information>
+      <date>9/27</date>
+      <street>
+        <number>12</number>
+        <appellation>Main St</appellation>
+      </street>
+      <municipality>
+        <appellation>Fredericton</appellation>
+        <province>NB</province>
+      </municipality>
+      <fare>
+        12.50
+      </fare>
+    </tranport-information>
+  </taxi-ride>
+
+*Yes*, a well formed XML instance can be given for :ref:`a1`
+
+Part B-2 - Well formed XML element from :ref:`a2`
+--------------------------------------------------
+
+.. code-block:: xml
+
+  <?xml version="1.0" ?> 
+  <taxi-ride>
+    <driver>
+      <number>37</number>
+      <name>
+        <first>Peter</first>
+        <mid>C.</mid>
+        <last>Jones</last>
+      </name>
+    </driver>
+    <passengers />
+    <tranport-information>
+      <date>9/27</date>
+      <street>
+        <number>12</number>
+        <name>Main St</name>
+      </street>
+      <municipality>
+        <name>Fredericton</name>
+        <province>NB</province>
+      </municipality>
+      <fare>
+        12.50
+      </fare>
+    </tranport-information>
+  </taxi-ride>
+
+*Yes*, a well formed XML instance can be given for :ref:`a2`
 
 .. _b3:
 

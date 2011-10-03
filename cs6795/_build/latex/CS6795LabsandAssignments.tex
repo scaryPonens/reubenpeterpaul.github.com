@@ -442,6 +442,10 @@ I also used my own custom \href{http://www.sagehill.net/docbookxsl/WriteCatalog.
 
 \chapter{Assignment 1}
 \label{assign1:assignment-1}\label{assign1::doc}
+\begin{notice}{note}{Note:}
+Please mark after parts {\hyperref[assign1:a1]{\emph{Part A-1}}} and {\hyperref[assign1:a2]{\emph{Part A-2}}}.
+\end{notice}
+
 
 \section{Part A-0}
 \label{assign1:part-a-0}
@@ -523,7 +527,7 @@ the leaf nodes with the path of node-labels from the root \code{taxi-ride}, e.g.
 
 
 \section{Part A-2}
-\label{assign1:part-a-2}
+\label{assign1:part-a-2}\label{assign1:a2}
 \begin{notice}{note}{Todo}
 
 What if the nodes labeled `appellation' would have been labeled `name',
@@ -616,6 +620,74 @@ separating the parts of an individuals name.
 
 \PYG{n+nf}{municipality}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{municipalityname}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{provincename}\PYG{p}{(}\PYG{n+nv}{Y}\PYG{p}{)}\PYG{p}{.}
 \end{Verbatim}
+
+
+\section{Part B-1 - Well formed XML element from \emph{Part A-1}}
+\label{assign1:part-b-1-well-formed-xml-element-from-a1}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\textless{}?xml version="1.0" ?\textgreater{}}
+\PYG{n+nt}{\textless{}taxi-ride}\PYG{n+nt}{\textgreater{}}
+  \PYG{n+nt}{\textless{}driver}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}number}\PYG{n+nt}{\textgreater{}}37\PYG{n+nt}{\textless{}/number\textgreater{}}
+    \PYG{n+nt}{\textless{}name}\PYG{n+nt}{\textgreater{}}
+      \PYG{n+nt}{\textless{}first}\PYG{n+nt}{\textgreater{}}Peter\PYG{n+nt}{\textless{}/first\textgreater{}}
+      \PYG{n+nt}{\textless{}mid}\PYG{n+nt}{\textgreater{}}C.\PYG{n+nt}{\textless{}/mid\textgreater{}}
+      \PYG{n+nt}{\textless{}last}\PYG{n+nt}{\textgreater{}}Jones\PYG{n+nt}{\textless{}/last\textgreater{}}
+    \PYG{n+nt}{\textless{}/name\textgreater{}}
+  \PYG{n+nt}{\textless{}/driver\textgreater{}}
+  \PYG{n+nt}{\textless{}passengers} \PYG{n+nt}{/\textgreater{}}
+  \PYG{n+nt}{\textless{}tranport-information}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}date}\PYG{n+nt}{\textgreater{}}9/27\PYG{n+nt}{\textless{}/date\textgreater{}}
+    \PYG{n+nt}{\textless{}street}\PYG{n+nt}{\textgreater{}}
+      \PYG{n+nt}{\textless{}number}\PYG{n+nt}{\textgreater{}}12\PYG{n+nt}{\textless{}/number\textgreater{}}
+      \PYG{n+nt}{\textless{}appellation}\PYG{n+nt}{\textgreater{}}Main St\PYG{n+nt}{\textless{}/appellation\textgreater{}}
+    \PYG{n+nt}{\textless{}/street\textgreater{}}
+    \PYG{n+nt}{\textless{}municipality}\PYG{n+nt}{\textgreater{}}
+      \PYG{n+nt}{\textless{}appellation}\PYG{n+nt}{\textgreater{}}Fredericton\PYG{n+nt}{\textless{}/appellation\textgreater{}}
+      \PYG{n+nt}{\textless{}province}\PYG{n+nt}{\textgreater{}}NB\PYG{n+nt}{\textless{}/province\textgreater{}}
+    \PYG{n+nt}{\textless{}/municipality\textgreater{}}
+    \PYG{n+nt}{\textless{}fare}\PYG{n+nt}{\textgreater{}}
+      12.50
+    \PYG{n+nt}{\textless{}/fare\textgreater{}}
+  \PYG{n+nt}{\textless{}/tranport-information\textgreater{}}
+\PYG{n+nt}{\textless{}/taxi-ride\textgreater{}}
+\end{Verbatim}
+
+\emph{Yes}, a well formed XML instance can be given for {\hyperref[assign1:a1]{\emph{Part A-1}}}
+
+
+\section{Part B-2 - Well formed XML element from \emph{Part A-2}}
+\label{assign1:part-b-2-well-formed-xml-element-from-a2}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\textless{}?xml version="1.0" ?\textgreater{}}
+\PYG{n+nt}{\textless{}taxi-ride}\PYG{n+nt}{\textgreater{}}
+  \PYG{n+nt}{\textless{}driver}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}number}\PYG{n+nt}{\textgreater{}}37\PYG{n+nt}{\textless{}/number\textgreater{}}
+    \PYG{n+nt}{\textless{}name}\PYG{n+nt}{\textgreater{}}
+      \PYG{n+nt}{\textless{}first}\PYG{n+nt}{\textgreater{}}Peter\PYG{n+nt}{\textless{}/first\textgreater{}}
+      \PYG{n+nt}{\textless{}mid}\PYG{n+nt}{\textgreater{}}C.\PYG{n+nt}{\textless{}/mid\textgreater{}}
+      \PYG{n+nt}{\textless{}last}\PYG{n+nt}{\textgreater{}}Jones\PYG{n+nt}{\textless{}/last\textgreater{}}
+    \PYG{n+nt}{\textless{}/name\textgreater{}}
+  \PYG{n+nt}{\textless{}/driver\textgreater{}}
+  \PYG{n+nt}{\textless{}passengers} \PYG{n+nt}{/\textgreater{}}
+  \PYG{n+nt}{\textless{}tranport-information}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}date}\PYG{n+nt}{\textgreater{}}9/27\PYG{n+nt}{\textless{}/date\textgreater{}}
+    \PYG{n+nt}{\textless{}street}\PYG{n+nt}{\textgreater{}}
+      \PYG{n+nt}{\textless{}number}\PYG{n+nt}{\textgreater{}}12\PYG{n+nt}{\textless{}/number\textgreater{}}
+      \PYG{n+nt}{\textless{}name}\PYG{n+nt}{\textgreater{}}Main St\PYG{n+nt}{\textless{}/name\textgreater{}}
+    \PYG{n+nt}{\textless{}/street\textgreater{}}
+    \PYG{n+nt}{\textless{}municipality}\PYG{n+nt}{\textgreater{}}
+      \PYG{n+nt}{\textless{}name}\PYG{n+nt}{\textgreater{}}Fredericton\PYG{n+nt}{\textless{}/name\textgreater{}}
+      \PYG{n+nt}{\textless{}province}\PYG{n+nt}{\textgreater{}}NB\PYG{n+nt}{\textless{}/province\textgreater{}}
+    \PYG{n+nt}{\textless{}/municipality\textgreater{}}
+    \PYG{n+nt}{\textless{}fare}\PYG{n+nt}{\textgreater{}}
+      12.50
+    \PYG{n+nt}{\textless{}/fare\textgreater{}}
+  \PYG{n+nt}{\textless{}/tranport-information\textgreater{}}
+\PYG{n+nt}{\textless{}/taxi-ride\textgreater{}}
+\end{Verbatim}
+
+\emph{Yes}, a well formed XML instance can be given for {\hyperref[assign1:a2]{\emph{Part A-2}}}
 
 
 \section{Part B-3 - XML instance of relabeling}

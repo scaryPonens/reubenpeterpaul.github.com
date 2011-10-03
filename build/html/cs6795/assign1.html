@@ -47,6 +47,10 @@
             
   <div class="section" id="assignment-1">
 <h1>Assignment 1<a class="headerlink" href="#assignment-1" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Please mark after parts <a class="reference internal" href="#a1"><em>Part A-1</em></a> and <a class="reference internal" href="#a2"><em>Part A-2</em></a>.</p>
+</div>
 <div class="section" id="part-a-0">
 <h2>Part A-0<a class="headerlink" href="#part-a-0" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition " id="index-0">
@@ -116,7 +120,7 @@ the leaf nodes with the path of node-labels from the root <tt class="docutils li
 </div>
 </div>
 <div class="section" id="part-a-2">
-<h2>Part A-2<a class="headerlink" href="#part-a-2" title="Permalink to this headline">¶</a></h2>
+<span id="a2"></span><h2>Part A-2<a class="headerlink" href="#part-a-2" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition " id="index-2">
 <p class="first admonition-title">Todo</p>
 <p class="last">What if the nodes labeled &#8216;appellation&#8217; would have been labeled &#8216;name&#8217;,
@@ -204,6 +208,70 @@ separating the parts of an individuals name.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="part-b-1-well-formed-xml-element-from-a1">
+<h2>Part B-1 - Well formed XML element from <a class="reference internal" href="#a1"><em>Part A-1</em></a><a class="headerlink" href="#part-b-1-well-formed-xml-element-from-a1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; ?&gt;</span>
+<span class="nt">&lt;taxi-ride&gt;</span>
+  <span class="nt">&lt;driver&gt;</span>
+    <span class="nt">&lt;number&gt;</span>37<span class="nt">&lt;/number&gt;</span>
+    <span class="nt">&lt;name&gt;</span>
+      <span class="nt">&lt;first&gt;</span>Peter<span class="nt">&lt;/first&gt;</span>
+      <span class="nt">&lt;mid&gt;</span>C.<span class="nt">&lt;/mid&gt;</span>
+      <span class="nt">&lt;last&gt;</span>Jones<span class="nt">&lt;/last&gt;</span>
+    <span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/driver&gt;</span>
+  <span class="nt">&lt;passengers</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;tranport-information&gt;</span>
+    <span class="nt">&lt;date&gt;</span>9/27<span class="nt">&lt;/date&gt;</span>
+    <span class="nt">&lt;street&gt;</span>
+      <span class="nt">&lt;number&gt;</span>12<span class="nt">&lt;/number&gt;</span>
+      <span class="nt">&lt;appellation&gt;</span>Main St<span class="nt">&lt;/appellation&gt;</span>
+    <span class="nt">&lt;/street&gt;</span>
+    <span class="nt">&lt;municipality&gt;</span>
+      <span class="nt">&lt;appellation&gt;</span>Fredericton<span class="nt">&lt;/appellation&gt;</span>
+      <span class="nt">&lt;province&gt;</span>NB<span class="nt">&lt;/province&gt;</span>
+    <span class="nt">&lt;/municipality&gt;</span>
+    <span class="nt">&lt;fare&gt;</span>
+      12.50
+    <span class="nt">&lt;/fare&gt;</span>
+  <span class="nt">&lt;/tranport-information&gt;</span>
+<span class="nt">&lt;/taxi-ride&gt;</span>
+</pre></div>
+</div>
+<p><em>Yes</em>, a well formed XML instance can be given for <a class="reference internal" href="#a1"><em>Part A-1</em></a></p>
+</div>
+<div class="section" id="part-b-2-well-formed-xml-element-from-a2">
+<h2>Part B-2 - Well formed XML element from <a class="reference internal" href="#a2"><em>Part A-2</em></a><a class="headerlink" href="#part-b-2-well-formed-xml-element-from-a2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; ?&gt;</span>
+<span class="nt">&lt;taxi-ride&gt;</span>
+  <span class="nt">&lt;driver&gt;</span>
+    <span class="nt">&lt;number&gt;</span>37<span class="nt">&lt;/number&gt;</span>
+    <span class="nt">&lt;name&gt;</span>
+      <span class="nt">&lt;first&gt;</span>Peter<span class="nt">&lt;/first&gt;</span>
+      <span class="nt">&lt;mid&gt;</span>C.<span class="nt">&lt;/mid&gt;</span>
+      <span class="nt">&lt;last&gt;</span>Jones<span class="nt">&lt;/last&gt;</span>
+    <span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/driver&gt;</span>
+  <span class="nt">&lt;passengers</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;tranport-information&gt;</span>
+    <span class="nt">&lt;date&gt;</span>9/27<span class="nt">&lt;/date&gt;</span>
+    <span class="nt">&lt;street&gt;</span>
+      <span class="nt">&lt;number&gt;</span>12<span class="nt">&lt;/number&gt;</span>
+      <span class="nt">&lt;name&gt;</span>Main St<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;/street&gt;</span>
+    <span class="nt">&lt;municipality&gt;</span>
+      <span class="nt">&lt;name&gt;</span>Fredericton<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;province&gt;</span>NB<span class="nt">&lt;/province&gt;</span>
+    <span class="nt">&lt;/municipality&gt;</span>
+    <span class="nt">&lt;fare&gt;</span>
+      12.50
+    <span class="nt">&lt;/fare&gt;</span>
+  <span class="nt">&lt;/tranport-information&gt;</span>
+<span class="nt">&lt;/taxi-ride&gt;</span>
+</pre></div>
+</div>
+<p><em>Yes</em>, a well formed XML instance can be given for <a class="reference internal" href="#a2"><em>Part A-2</em></a></p>
+</div>
 <div class="section" id="part-b-3-xml-instance-of-relabeling">
 <span id="b3"></span><h2>Part B-3 - XML instance of relabeling<a class="headerlink" href="#part-b-3-xml-instance-of-relabeling" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;taxiride&gt;</span>
@@ -272,6 +340,8 @@ separating the parts of an individuals name.</p>
 <li><a class="reference internal" href="#part-a-1">Part A-1</a></li>
 <li><a class="reference internal" href="#part-a-2">Part A-2</a></li>
 <li><a class="reference internal" href="#part-a-3-relabeling-of-tree-in-prolog">Part A-3 - Relabeling of tree in Prolog</a></li>
+<li><a class="reference internal" href="#part-b-1-well-formed-xml-element-from-a1">Part B-1 - Well formed XML element from <tt class="docutils literal"><span class="pre">a1</span></tt></a></li>
+<li><a class="reference internal" href="#part-b-2-well-formed-xml-element-from-a2">Part B-2 - Well formed XML element from <tt class="docutils literal"><span class="pre">a2</span></tt></a></li>
 <li><a class="reference internal" href="#part-b-3-xml-instance-of-relabeling">Part B-3 - XML instance of relabeling</a></li>
 <li><a class="reference internal" href="#part-c-prolog-equivalent-term-of-b3">Part C - Prolog equivalent term of <tt class="docutils literal"><span class="pre">b3</span></tt></a></li>
 </ul>

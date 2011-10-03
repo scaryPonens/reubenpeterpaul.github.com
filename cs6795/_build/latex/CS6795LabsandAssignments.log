@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.9.23)  3 OCT 2011 13:43
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.9.23)  3 OCT 2011 14:25
 entering extended mode
  %&-line parsing enabled.
 **CS6795LabsandAssignments.tex
@@ -884,7 +884,7 @@ LaTeX Font Info:    Try loading font information for TS1+ptm on input line 129.
 (/usr/share/texmf-texlive/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-<assign0a.png, id=114, 484.81125pt x 547.2947pt>
+<assign0a.png, id=124, 484.81125pt x 547.2947pt>
 File: assign0a.png Graphic file (type png)
  <use assign0a.png>
 File: assign0a.png Graphic file (type png)
@@ -899,7 +899,7 @@ pdfTeX warning: pdflatex (file ./graphviz-ca9411c629b22c9cf6cf6dc318a5b73a7efe3
 65a.pdf): PDF inclusion: found PDF version <1.5>, but at most version <1.4> all
 owed
 
-<graphviz-ca9411c629b22c9cf6cf6dc318a5b73a7efe365a.pdf, id=115, 273.02pt x 477.
+<graphviz-ca9411c629b22c9cf6cf6dc318a5b73a7efe365a.pdf, id=125, 273.02pt x 477.
 785pt>
 File: graphviz-ca9411c629b22c9cf6cf6dc318a5b73a7efe365a.pdf Graphic file (type 
 pdf)
@@ -924,29 +924,29 @@ LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <9> not available
 
 ]
 Chapter 3.
-[11] [12] [13]
+[11] [12]
 LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/it' tried instead on input line 652.
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 625.
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 652.
- [14]
-Underfull \hbox (badness 10000) in paragraph at lines 677--679
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 625.
+ [13] [14] [15] [16]
+Underfull \hbox (badness 10000) in paragraph at lines 749--751
 [][][]\T1/ptm/m/n/10 JSON the Fat Free Al-ter-na-tive to XML[][], In-tro-duc-in
 g JSON, 21 Septem-ber 2011,
  []
 
-(./CS6795LabsandAssignments.ind) [15
+(./CS6795LabsandAssignments.ind) [17
 
 
 ] (./CS6795LabsandAssignments.aux) ) 
 Here is how much of TeX's memory you used:
- 7986 strings out of 493848
- 108003 string characters out of 1152823
- 194838 words of memory out of 3000000
- 11018 multiletter control sequences out of 15000+50000
+ 7995 strings out of 493848
+ 108177 string characters out of 1152823
+ 195035 words of memory out of 3000000
+ 11023 multiletter control sequences out of 15000+50000
  54804 words of font info for 64 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 45i,12n,45p,1389b,381s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 45i,12n,45p,1389b,383s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/b
 ase/8r.enc}</usr/share/texmf-texlive/fonts/type1/urw/courier/ucrb8a.pfb></usr/s
 hare/texmf-texlive/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-texlive
@@ -955,9 +955,9 @@ helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvbo8a.
 pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texm
 f-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type
 1/urw/times/utmri8a.pfb>
-Output written on CS6795LabsandAssignments.pdf (19 pages, 192015 bytes).
+Output written on CS6795LabsandAssignments.pdf (21 pages, 197331 bytes).
 PDF statistics:
- 256 PDF objects out of 1000 (max. 8388607)
- 48 named destinations out of 1000 (max. 500000)
- 155 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 279 PDF objects out of 1000 (max. 8388607)
+ 52 named destinations out of 1000 (max. 500000)
+ 171 words of extra memory for PDF output out of 10000 (max. 10000000)
 
