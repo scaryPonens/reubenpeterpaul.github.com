@@ -180,6 +180,8 @@ Part A-3 - Relabeling of tree in Prolog
 
   municipality(X,Y) :- municipalityname(X), provincename(Y).
 
+.. _b1:
+
 Part B-1 - Well formed XML element from :ref:`a1`
 --------------------------------------------------
 
@@ -213,6 +215,8 @@ Part B-1 - Well formed XML element from :ref:`a1`
   </taxi-ride>
 
 *Yes*, a well formed XML instance can be given for :ref:`a1`
+
+.. _b2:
 
 Part B-2 - Well formed XML element from :ref:`a2`
 --------------------------------------------------
@@ -267,7 +271,7 @@ Part B-3 - XML instance of relabeling
     <passengers />
     <transportinformation>
       <date>9/27</date>
-      <detination>
+      <destination>
         <street>
           <streetnumber>12</streetnumber>
           <streetname>Main St</streetname>
@@ -305,3 +309,76 @@ Part C - Prolog equivalent term of :ref:`b3`
           provincename('NB'))),
       fare(12.50))).
 
+Part D-1 - DTD schema for :ref:`a1`
+-----------------------------------
+
+.. code-block:: xml
+
+  <!ELEMENT taxi-ride             (driver,passengers,transport-information)>
+  <!ELEMENT driver                (number,name)>
+  <!ELEMENT name                  (first,mid,last)>
+  <!ELEMENT number                (#PCDATA)>
+  <!ELEMENT first                 (#PCDATA)>
+  <!ELEMENT mid                   (#PCDATA)>
+  <!ELEMENT last                  (#PCDATA)>
+  <!ELEMENT passengers            (#PCDATA)>
+  <!ELEMENT transport-information (date,destination,fare)>
+  <!ELEMENT date                  (#PCDATA)>
+  <!ELEMENT destination           (street,municipality)>
+  <!ELEMENT street                (number,appellation)>
+  <!ELEMENT municipality          (appellation,province)> 
+  <!ELEMENT appellation           (#PCDATA)>
+  <!ELEMENT province              (#PCDATA)>
+
+It is possible to write a DTD that precisely describe :ref:`a1` and :ref:`b1` since when DTD's are designed/applied
+semantics are not considered only the structure of the ``DOM``-tree is being restricted.
+
+Part D-2 - DTD schema for :ref:`a2`
+-------------------------------------
+
+.. code-block:: xml
+  
+  <!ELEMENT taxi-ride             (driver,passengers,transport-information)>
+  <!ELEMENT driver                (number,name)>
+  <!ELEMENT name                  ((first,mid,last)|#PCDATA)>
+  <!ELEMENT number                (#PCDATA)>
+  <!ELEMENT first                 (#PCDATA)>
+  <!ELEMENT mid                   (#PCDATA)>
+  <!ELEMENT last                  (#PCDATA)>
+  <!ELEMENT passengers            (#PCDATA)>
+  <!ELEMENT transport-information (date,destination,fare)>
+  <!ELEMENT date                  (#PCDATA)>
+  <!ELEMENT destination						(street,municipality)>
+  <!ELEMENT street                (number,name)>
+  <!ELEMENT municipality          (name,province)> 
+  <!ELEMENT province              (#PCDATA)>
+  <!ELEMENT fare									(#PCDATA)>
+
+It is not possible to write a DTD that describes :ref:`a1` or :ref:`b1` since ``((first,mid,last)|#PCDATA)`` introduces ambiguity into 
+the structure and is not permitted as a valid DTD syntax.
+
+Part D-3 - DTD schema for :ref:`a3`
+-------------------------------------
+
+.. code-block:: xml
+
+  <!ELEMENT taxiride								(driver,passengers,transportinformation)>
+  <!ELEMENT driver									(carnumber,fullname)>
+  <!ELEMENT carnumber								(#PCDATA)>
+  <!ELEMENT fullname								(firstname,middlename,lastname)>
+  <!ELEMENT firstname								(#PCDATA)>
+  <!ELEMENT middlename							(#PCDATA)>
+  <!ELEMENT lastname								(#PCDATA)>
+  <!ELEMENT passengers							(#PCDATA)>
+  <!ELEMENT transportinformation		(date,destination,fare)>
+  <!ELEMENT date										(#PCDATA)>
+  <!ELEMENT destination							(street,municipality)>
+  <!ELEMENT street									(streetnumber,streetname)>
+  <!ELEMENT streetnumber						(#PCDATA)>
+  <!ELEMENT streetname							(#PCDATA)>
+  <!ELEMENT municipality						(municipalityname,provincename)>
+  <!ELEMENT municipalityname				(#PCDATA)>
+  <!ELEMENT provincename						(#PCDATA)>
+  <!ELEMENT fare										(#PCDATA)>
+  
+The :ref:`b3`-element is *Structurally* valid w.r.t. to the above DTD.

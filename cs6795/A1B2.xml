@@ -9,7 +9,7 @@
 		</name>
 	</driver>
 	<passengers />
-	<tranport-information>
+	<transport-information>
 		<date>9/27</date>
 		<street>
 			<number>12</number>
@@ -22,5 +22,5 @@
 		<fare>
 			12.50
 		</fare>
-	</tranport-information>
+	</transport-information>
 </taxi-ride>

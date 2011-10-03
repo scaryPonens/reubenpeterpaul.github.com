@@ -1,0 +1,15 @@
+<!ELEMENT taxi-ride             (driver,passengers,transport-information)>
+<!ELEMENT driver                (number,name)>
+<!ELEMENT name                  ((first,mid,last)|#PCDATA)>
+<!ELEMENT number                (#PCDATA)>
+<!ELEMENT first                 (#PCDATA)>
+<!ELEMENT mid                   (#PCDATA)>
+<!ELEMENT last                  (#PCDATA)>
+<!ELEMENT passengers            (#PCDATA)>
+<!ELEMENT transport-information (date,destination,fare)>
+<!ELEMENT date                  (#PCDATA)>
+<!ELEMENT destination						(street,municipality)>
+<!ELEMENT street                (number,name)>
+<!ELEMENT municipality          (name,province)> 
+<!ELEMENT province              (#PCDATA)>
+<!ELEMENT fare									(#PCDATA)>

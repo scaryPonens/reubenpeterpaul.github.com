@@ -9,18 +9,20 @@
 		</name>
 	</driver>
 	<passengers />
-	<tranport-information>
+	<transport-information>
 		<date>9/27</date>
-		<street>
-			<number>12</number>
-			<appellation>Main St</appellation>
-		</street>
-		<municipality>
-			<appellation>Fredericton</appellation>
-			<province>NB</province>
-		</municipality>
+		<destination>
+			<street>
+				<number>12</number>
+				<appellation>Main St</appellation>
+			</street>
+			<municipality>
+				<appellation>Fredericton</appellation>
+				<province>NB</province>
+			</municipality>
+		</destination>
 		<fare>
 			12.50
 		</fare>
-	</tranport-information>
+	</transport-information>
 </taxi-ride>

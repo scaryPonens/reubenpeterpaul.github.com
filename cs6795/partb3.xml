@@ -10,13 +10,15 @@
 	<passengers />
 	<transportinformation>
 		<date>9/27</date>
-		<detination>
+		<destination>
 			<street>
 				<streetnumber>12</streetnumber>
 				<streetname>Main St</streetname>
+			</street>
+			<municipality>
 				<municipalityname>Fredericton</municipalityname>
 				<provincename>NB</provincename>
-			</street>
+			</municipality>
 		</destination>
 		<fare>12.50</fare>
 	</transportinformation>
