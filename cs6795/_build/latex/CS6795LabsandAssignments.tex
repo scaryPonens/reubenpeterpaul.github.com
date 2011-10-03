@@ -12,7 +12,7 @@
 
 
 \title{CS6795 Labs and Assignments Documentation}
-\date{September 26, 2011}
+\date{October 03, 2011}
 \release{1.0}
 \author{Reuben Peter-Paul}
 \newcommand{\sphinxlogo}{}
@@ -438,6 +438,239 @@ I also used my own custom \href{http://www.sagehill.net/docbookxsl/WriteCatalog.
 \PYG{n+nt}{\textless{}/catalog\textgreater{}}
 \end{Verbatim}
 \end{notice}
+
+
+\chapter{Assignment 1}
+\label{assign1:assignment-1}\label{assign1::doc}
+
+\section{Part A-0}
+\label{assign1:part-a-0}
+\begin{notice}{note}{Todo}
+
+Do the missing leaf data for passengers cause any
+(XML-level) issue?
+\end{notice}
+
+No the the missing leaf data (\code{\#PCDATA}) does not affect the xml
+well-formedness.
+
+
+\section{Part A-1}
+\label{assign1:a1}\label{assign1:part-a-1}
+\begin{notice}{note}{Todo}
+
+Does the repeatedly occurring \code{appellation}:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{appellation}\PYG{p}{(}\PYG{l+s+sAtom}{'Main St'}\PYG{p}{)}\PYG{p}{.}     \PYG{n+nf}{appellation}\PYG{p}{(}\PYG{l+s+sAtom}{'Fredericton'}\PYG{p}{)}\PYG{p}{.}
+\end{Verbatim}
+
+label cause a problem with respect to the unambiguous representation of
+all parts of the taxi-ride information?
+Hint: Is it even necessary to check whether every leaf of the tree -
+ordered  from 37 to 12.50 - are uniquely denoted by the ``path name'' of node
+labels leading to it from the taxi-ride root? What about any other repeatedly
+occurring label?
+\end{notice}
+
+To determine potential ambiguity introduced by the repeated use of the
+\code{appellation} tag-label consider the following prolog system:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{appellation}\PYG{p}{(}\PYG{l+s+sAtom}{'Main St'}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{appellation}\PYG{p}{(}\PYG{l+s+sAtom}{'Fredericton'}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{first}\PYG{p}{(}\PYG{l+s+sAtom}{'Peter'}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{mid}\PYG{p}{(}\PYG{l+s+sAtom}{'C.'}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{lastn}\PYG{p}{(}\PYG{l+s+sAtom}{'Jones'}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{numbern}\PYG{p}{(}\PYG{l+m}{37}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{numbern}\PYG{p}{(}\PYG{l+m}{12}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{province}\PYG{p}{(}\PYG{l+s+sAtom}{'NB'}\PYG{p}{)}\PYG{p}{.}
+
+\PYG{n+nf}{name}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{,}\PYG{n+nv}{Z}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{first}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{mid}\PYG{p}{(}\PYG{n+nv}{Y}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{lastn}\PYG{p}{(}\PYG{n+nv}{Z}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{driver}\PYG{p}{(}\PYG{n+nv}{W}\PYG{p}{,}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{,}\PYG{n+nv}{Z}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{numbern}\PYG{p}{(}\PYG{n+nv}{W}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{name}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{,}\PYG{n+nv}{Z}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{municipality}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{appellation}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{province}\PYG{p}{(}\PYG{n+nv}{Y}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{street}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{number}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{appellation}\PYG{p}{(}\PYG{n+nv}{Y}\PYG{p}{)}\PYG{p}{.}
+\end{Verbatim}
+
+Backtracking in prolog against the query \code{street(X,Y)} yields the
+following results:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+?- \PYG{o}{[}\PYG{l+s+s1}{'testA2'}\PYG{o}{]}.
+\PYGZpc{} testA2 compiled 0.00 sec, 5,624 bytes
+true.
+
+?- street\PYG{o}{(}X,Y\PYG{o}{)}.
+\PYG{n+nv}{X} \PYG{o}{=} 37,
+\PYG{n+nv}{Y} \PYG{o}{=} \PYG{l+s+s1}{'Main St'} ;
+\PYG{n+nv}{X} \PYG{o}{=} 37,
+\PYG{n+nv}{Y} \PYG{o}{=} \PYG{l+s+s1}{'Fredericton'} ;
+\PYG{n+nv}{X} \PYG{o}{=} 12,
+\PYG{n+nv}{Y} \PYG{o}{=} \PYG{l+s+s1}{'Main St'} ;
+\PYG{n+nv}{X} \PYG{o}{=} 12,
+\PYG{n+nv}{Y} \PYG{o}{=} \PYG{l+s+s1}{'Fredericton'}.
+\end{Verbatim}
+
+This illustrates by example that the repeated use of \code{appellation} and also
+\code{number} results in adding ambiguity to the representation of \code{taxi-ride}.
+This problem can be dealt with via introduction of complex types, or denoting
+the leaf nodes with the path of node-labels from the root \code{taxi-ride}, e.g.:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{street}\PYG{p}{(}\PYG{n+nf}{numbern}\PYG{p}{(}\PYG{l+m}{12}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{appellation}\PYG{p}{(}\PYG{l+s+sAtom}{'Main St'}\PYG{p}{)}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{municipality}\PYG{p}{(}\PYG{n+nf}{appellation}\PYG{p}{(}\PYG{l+s+sAtom}{'Fredericton'}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{province}\PYG{p}{(}\PYG{l+s+sAtom}{'NB'}\PYG{p}{)}\PYG{p}{)}\PYG{p}{.}
+\end{Verbatim}
+
+
+\section{Part A-2}
+\label{assign1:part-a-2}
+\begin{notice}{note}{Todo}
+
+What if the nodes labeled `appellation' would have been labeled `name',
+too?
+\end{notice}
+
+Again let us consider a prolog system:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{name}\PYG{p}{(}\PYG{l+s+sAtom}{'Main St'}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{name}\PYG{p}{(}\PYG{l+s+sAtom}{'Fredericton'}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{first}\PYG{p}{(}\PYG{l+s+sAtom}{'Peter'}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{mid}\PYG{p}{(}\PYG{l+s+sAtom}{'C.'}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{lastn}\PYG{p}{(}\PYG{l+s+sAtom}{'Jones'}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{numbern}\PYG{p}{(}\PYG{l+m}{37}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{numbern}\PYG{p}{(}\PYG{l+m}{12}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{province}\PYG{p}{(}\PYG{l+s+sAtom}{'NB'}\PYG{p}{)}\PYG{p}{.}
+
+\PYG{n+nf}{name}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{,}\PYG{n+nv}{Z}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{first}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{mid}\PYG{p}{(}\PYG{n+nv}{Y}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{lastn}\PYG{p}{(}\PYG{n+nv}{Z}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{driver}\PYG{p}{(}\PYG{n+nv}{W}\PYG{p}{,}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{,}\PYG{n+nv}{Z}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{numbern}\PYG{p}{(}\PYG{n+nv}{W}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{name}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{,}\PYG{n+nv}{Z}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{municipality}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{name}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{province}\PYG{p}{(}\PYG{n+nv}{Y}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{street}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{number}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{name}\PYG{p}{(}\PYG{n+nv}{Y}\PYG{p}{)}\PYG{p}{.}
+\end{Verbatim}
+
+Backtracaking in prolog REPL against the query \code{street} and \code{driver}
+yields the following results:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+s+sAtom}{?-} \PYG{n+nf}{consult}\PYG{p}{(}\PYG{l+s+sAtom}{'testA2b'}\PYG{p}{)}\PYG{p}{.}
+\PYG{c+c1}{\PYGZpc{} testA2b compiled 0.00 sec, 5,096 bytes}
+\PYG{l+s+sAtom}{true}\PYG{p}{.}
+
+
+\PYG{l+s+sAtom}{?-} \PYG{n+nf}{street}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nv}{X} \PYG{o}{=} \PYG{l+m}{37}\PYG{p}{,}
+\PYG{n+nv}{Y} \PYG{o}{=} \PYG{l+s+sAtom}{'Main St'} \PYG{p}{;}
+\PYG{n+nv}{X} \PYG{o}{=} \PYG{l+m}{37}\PYG{p}{,}
+\PYG{n+nv}{Y} \PYG{o}{=} \PYG{l+s+sAtom}{'Fredericton'} \PYG{p}{;}
+\PYG{n+nv}{X} \PYG{o}{=} \PYG{l+m}{12}\PYG{p}{,}
+\PYG{n+nv}{Y} \PYG{o}{=} \PYG{l+s+sAtom}{'Main St'} \PYG{p}{;}
+\PYG{n+nv}{X} \PYG{o}{=} \PYG{l+m}{12}\PYG{p}{,}
+\PYG{n+nv}{Y} \PYG{o}{=} \PYG{l+s+sAtom}{'Fredericton'}\PYG{p}{.}
+
+\PYG{l+s+sAtom}{?-} \PYG{n+nf}{driver}\PYG{p}{(}\PYG{n+nv}{W}\PYG{p}{,}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{,}\PYG{n+nv}{Z}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nv}{W} \PYG{o}{=} \PYG{l+m}{37}\PYG{p}{,}
+\PYG{n+nv}{X} \PYG{o}{=} \PYG{l+s+sAtom}{'Peter'}\PYG{p}{,}
+\PYG{n+nv}{Y} \PYG{o}{=} \PYG{l+s+sAtom}{'C.'}\PYG{p}{,}
+\PYG{n+nv}{Z} \PYG{o}{=} \PYG{l+s+sAtom}{'Jones'}\PYG{p}{.}
+\PYG{n+nv}{W} \PYG{o}{=} \PYG{l+m}{12}\PYG{p}{,}
+\PYG{n+nv}{X} \PYG{o}{=} \PYG{l+s+sAtom}{'Peter'}\PYG{p}{,}
+\PYG{n+nv}{Y} \PYG{o}{=} \PYG{l+s+sAtom}{'C.'}\PYG{p}{,}
+\PYG{n+nv}{Z} \PYG{o}{=} \PYG{l+s+sAtom}{'Jones'}\PYG{p}{.}
+\end{Verbatim}
+
+The result is the same as above ({\hyperref[assign1:a1]{\emph{Part A-1}}}).  \code{Node-labelled} paths are still
+required to denotate the \code{name} tags used by \code{street} and \code{municipality}
+nodes.  While the rule for \code{name} satisfies the complex conditions for
+separating the parts of an individuals name.
+
+
+\section{Part A-3 - Relabeling of tree in Prolog}
+\label{assign1:part-a-3-relabeling-of-tree-in-prolog}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{carnumber}\PYG{p}{(}\PYG{l+m}{37}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{firstname}\PYG{p}{(}\PYG{l+s+sAtom}{'Peter'}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{middlename}\PYG{p}{(}\PYG{l+s+sAtom}{'C.'}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{lastname}\PYG{p}{(}\PYG{l+s+sAtom}{'Jones'}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{date}\PYG{p}{(}\PYG{l+s+sAtom}{'9/27'}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{streetnumber}\PYG{p}{(}\PYG{l+m}{12}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{streetname}\PYG{p}{(}\PYG{l+s+sAtom}{'Main St'}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{municipalityname}\PYG{p}{(}\PYG{l+s+sAtom}{'Fredericton'}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{provincename}\PYG{p}{(}\PYG{l+s+sAtom}{'NB'}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{fare}\PYG{p}{(}\PYG{l+m}{12}\PYG{p}{.}\PYG{l+m}{50}\PYG{p}{)}\PYG{p}{.}
+
+\PYG{n+nf}{taxiride}\PYG{p}{(}\PYG{n+nv}{W}\PYG{p}{,}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{,}\PYG{n+nv}{Z}\PYG{p}{,}\PYG{n+nv}{D}\PYG{p}{,}\PYG{n+nv}{E}\PYG{p}{,}\PYG{n+nv}{F}\PYG{p}{,}\PYG{n+nv}{G}\PYG{p}{,}\PYG{n+nv}{H}\PYG{p}{,}\PYG{n+nv}{I}\PYG{p}{)} \PYG{p}{:-}
+  \PYG{n+nf}{driver}\PYG{p}{(}\PYG{n+nv}{W}\PYG{p}{,}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{,}\PYG{n+nv}{Z}\PYG{p}{)}\PYG{p}{,}
+  \PYG{l+s+sAtom}{passengers}\PYG{p}{,}
+  \PYG{n+nf}{transportinformation}\PYG{p}{(}\PYG{n+nv}{D}\PYG{p}{,}\PYG{n+nv}{E}\PYG{p}{,}\PYG{n+nv}{F}\PYG{p}{,}\PYG{n+nv}{G}\PYG{p}{,}\PYG{n+nv}{H}\PYG{p}{,}\PYG{n+nv}{I}\PYG{p}{)}\PYG{p}{.}
+
+\PYG{n+nf}{driver}\PYG{p}{(}\PYG{n+nv}{W}\PYG{p}{,}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{,}\PYG{n+nv}{Z}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{carnumber}\PYG{p}{(}\PYG{n+nv}{W}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{fullname}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{,}\PYG{n+nv}{Z}\PYG{p}{)}\PYG{p}{.}
+
+\PYG{n+nf}{fullname}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{,}\PYG{n+nv}{Z}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{firstname}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{middlename}\PYG{p}{(}\PYG{n+nv}{Y}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{lastname}\PYG{p}{(}\PYG{n+nv}{Z}\PYG{p}{)}\PYG{p}{.}
+
+\PYG{n+nf}{transportinformation}\PYG{p}{(}\PYG{n+nv}{D}\PYG{p}{,}\PYG{n+nv}{E}\PYG{p}{,}\PYG{n+nv}{F}\PYG{p}{,}\PYG{n+nv}{G}\PYG{p}{,}\PYG{n+nv}{H}\PYG{p}{,}\PYG{n+nv}{I}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{date}\PYG{p}{(}\PYG{n+nv}{D}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{destination}\PYG{p}{(}\PYG{n+nv}{E}\PYG{p}{,}\PYG{n+nv}{F}\PYG{p}{,}\PYG{n+nv}{G}\PYG{p}{,}\PYG{n+nv}{H}\PYG{p}{)}\PYG{p}{,}
+\PYG{n+nf}{fare}\PYG{p}{(}\PYG{n+nv}{I}\PYG{p}{)}\PYG{p}{.}
+
+\PYG{n+nf}{destination}\PYG{p}{(}\PYG{n+nv}{E}\PYG{p}{,}\PYG{n+nv}{F}\PYG{p}{,}\PYG{n+nv}{G}\PYG{p}{,}\PYG{n+nv}{H}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{street}\PYG{p}{(}\PYG{n+nv}{E}\PYG{p}{,}\PYG{n+nv}{F}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{municipality}\PYG{p}{(}\PYG{n+nv}{G}\PYG{p}{,}\PYG{n+nv}{H}\PYG{p}{)}\PYG{p}{.}
+
+\PYG{n+nf}{street}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{streetnumber}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{streetname}\PYG{p}{(}\PYG{n+nv}{Y}\PYG{p}{)}\PYG{p}{.}
+
+\PYG{n+nf}{municipality}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{municipalityname}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{provincename}\PYG{p}{(}\PYG{n+nv}{Y}\PYG{p}{)}\PYG{p}{.}
+\end{Verbatim}
+
+
+\section{Part B-3 - XML instance of relabeling}
+\label{assign1:part-b-3-xml-instance-of-relabeling}\label{assign1:b3}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nt}{\textless{}taxiride}\PYG{n+nt}{\textgreater{}}
+  \PYG{n+nt}{\textless{}driver}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}carnumber}\PYG{n+nt}{\textgreater{}}37\PYG{n+nt}{\textless{}/carnumber\textgreater{}}
+    \PYG{n+nt}{\textless{}fullname}\PYG{n+nt}{\textgreater{}}
+      \PYG{n+nt}{\textless{}firstname}\PYG{n+nt}{\textgreater{}}Peter\PYG{n+nt}{\textless{}/firstname\textgreater{}}
+      \PYG{n+nt}{\textless{}middlename}\PYG{n+nt}{\textgreater{}}C.\PYG{n+nt}{\textless{}/middlename\textgreater{}}
+      \PYG{n+nt}{\textless{}lastname}\PYG{n+nt}{\textgreater{}}Jones\PYG{n+nt}{\textless{}/lastname\textgreater{}}
+    \PYG{n+nt}{\textless{}/fullname\textgreater{}}
+  \PYG{n+nt}{\textless{}/driver\textgreater{}}
+  \PYG{n+nt}{\textless{}passengers} \PYG{n+nt}{/\textgreater{}}
+  \PYG{n+nt}{\textless{}transportinformation}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}date}\PYG{n+nt}{\textgreater{}}9/27\PYG{n+nt}{\textless{}/date\textgreater{}}
+    \PYG{n+nt}{\textless{}detination}\PYG{n+nt}{\textgreater{}}
+      \PYG{n+nt}{\textless{}street}\PYG{n+nt}{\textgreater{}}
+        \PYG{n+nt}{\textless{}streetnumber}\PYG{n+nt}{\textgreater{}}12\PYG{n+nt}{\textless{}/streetnumber\textgreater{}}
+        \PYG{n+nt}{\textless{}streetname}\PYG{n+nt}{\textgreater{}}Main St\PYG{n+nt}{\textless{}/streetname\textgreater{}}
+      \PYG{n+nt}{\textless{}/street\textgreater{}}
+      \PYG{n+nt}{\textless{}municipality}\PYG{n+nt}{\textgreater{}}
+        \PYG{n+nt}{\textless{}municipalityname}\PYG{n+nt}{\textgreater{}}Fredericton\PYG{n+nt}{\textless{}/municipalityname\textgreater{}}
+        \PYG{n+nt}{\textless{}provincename}\PYG{n+nt}{\textgreater{}}NB\PYG{n+nt}{\textless{}/provincename\textgreater{}}
+      \PYG{n+nt}{\textless{}/municipality\textgreater{}}
+    \PYG{n+nt}{\textless{}/destination\textgreater{}}
+    \PYG{n+nt}{\textless{}fare}\PYG{n+nt}{\textgreater{}}12.50\PYG{n+nt}{\textless{}/fare\textgreater{}}
+  \PYG{n+nt}{\textless{}/transportinformation\textgreater{}}
+\PYG{n+nt}{\textless{}/taxiride\textgreater{}}
+\end{Verbatim}
+
+
+\section{Part C - Prolog equivalent term of \emph{Part B-3 - XML instance of relabeling}}
+\label{assign1:part-c-prolog-equivalent-term-of-b3}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{taxiride}\PYG{p}{(}
+  \PYG{n+nf}{driver}\PYG{p}{(}
+    \PYG{n+nf}{carnumber}\PYG{p}{(}\PYG{l+m}{37}\PYG{p}{)}\PYG{p}{,}
+    \PYG{n+nf}{fullname}\PYG{p}{(}
+      \PYG{n+nf}{firstname}\PYG{p}{(}\PYG{l+s+sAtom}{'Peter'}\PYG{p}{)}\PYG{p}{,}
+      \PYG{n+nf}{middlename}\PYG{p}{(}\PYG{l+s+sAtom}{'C.'}\PYG{p}{)}\PYG{p}{,}
+      \PYG{n+nf}{lastname}\PYG{p}{(}\PYG{l+s+sAtom}{'Jones'}\PYG{p}{)}\PYG{p}{)}\PYG{p}{)}\PYG{p}{,}
+  \PYG{l+s+sAtom}{passengers}\PYG{p}{,}
+  \PYG{n+nf}{transportinformation}\PYG{p}{(}
+    \PYG{n+nf}{date}\PYG{p}{(}\PYG{l+s+sAtom}{'9/27'}\PYG{p}{)}\PYG{p}{,}
+    \PYG{n+nf}{destination}\PYG{p}{(}
+      \PYG{n+nf}{street}\PYG{p}{(}
+        \PYG{n+nf}{streetnumber}\PYG{p}{(}\PYG{l+m}{12}\PYG{p}{)}\PYG{p}{,}
+        \PYG{n+nf}{streetname}\PYG{p}{(}\PYG{l+s+sAtom}{'Main St'}\PYG{p}{)}\PYG{p}{)}\PYG{p}{,}
+      \PYG{n+nf}{municipality}\PYG{p}{(}
+        \PYG{n+nf}{municipalityname}\PYG{p}{(}\PYG{l+s+sAtom}{'Fredericton'}\PYG{p}{)}\PYG{p}{,}
+        \PYG{n+nf}{provincename}\PYG{p}{(}\PYG{l+s+sAtom}{'NB'}\PYG{p}{)}\PYG{p}{)}\PYG{p}{)}\PYG{p}{,}
+    \PYG{n+nf}{fare}\PYG{p}{(}\PYG{l+m}{12}\PYG{p}{.}\PYG{l+m}{50}\PYG{p}{)}\PYG{p}{)}\PYG{p}{)}\PYG{p}{.}
+\end{Verbatim}
 
 \begin{thebibliography}{Tolf11}
 \bibitem[JSON]{JSON}{\phantomsection\label{assign0:json} 

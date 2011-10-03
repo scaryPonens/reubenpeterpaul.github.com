@@ -9,4 +9,11 @@
 \contentsline {section}{\numberline {2.2}XSD}{8}{section.2.2}
 \contentsline {section}{\numberline {2.3}RelaxNG}{8}{section.2.3}
 \contentsline {section}{\numberline {2.4}Misc}{9}{section.2.4}
-\contentsline {chapter}{Bibliography}{11}{chapter*.4}
+\contentsline {chapter}{\numberline {3}Assignment 1}{11}{chapter.3}
+\contentsline {section}{\numberline {3.1}Part A-0}{11}{section.3.1}
+\contentsline {section}{\numberline {3.2}Part A-1}{11}{section.3.2}
+\contentsline {section}{\numberline {3.3}Part A-2}{12}{section.3.3}
+\contentsline {section}{\numberline {3.4}Part A-3 - Relabeling of tree in Prolog}{13}{section.3.4}
+\contentsline {section}{\numberline {3.5}Part B-3 - XML instance of relabeling}{13}{section.3.5}
+\contentsline {section}{\numberline {3.6}Part C - Prolog equivalent term of \emph {Part B-3 - XML instance of relabeling}}{14}{section.3.6}
+\contentsline {chapter}{Bibliography}{15}{chapter*.4}

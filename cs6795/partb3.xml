@@ -1,0 +1,23 @@
+<taxiride>
+	<driver>
+		<carnumber>37</carnumber>
+		<fullname>
+			<firstname>Peter</firstname>
+			<middlename>C.</middlename>
+			<lastname>Jones</lastname>
+		</fullname>
+	</driver>
+	<passengers />
+	<transportinformation>
+		<date>9/27</date>
+		<detination>
+			<street>
+				<streetnumber>12</streetnumber>
+				<streetname>Main St</streetname>
+				<municipalityname>Fredericton</municipalityname>
+				<provincename>NB</provincename>
+			</street>
+		</destination>
+		<fare>12.50</fare>
+	</transportinformation>
+</taxiride>
