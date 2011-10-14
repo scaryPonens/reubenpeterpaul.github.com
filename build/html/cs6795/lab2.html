@@ -1,0 +1,140 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Lab 2 - Generate RDF Graph &mdash; (Mis)Adventures in Hax-Fu v1.0 documentation</title>
+    <link rel="stylesheet" href="../static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="(Mis)Adventures in Hax-Fu v1.0 documentation" href="../index.html" />
+    <link rel="up" title="CS6795 Labs and Assignments" href="index.html" />
+    <link rel="next" title="Assignment 1" href="assign1.html" />
+    <link rel="prev" title="Lab 1 - Create your own XML DTD, XSD, and RNC or RNG" href="lab1.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="assign1.html" title="Assignment 1"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="lab1.html" title="Lab 1 - Create your own XML DTD, XSD, and RNC or RNG"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../main.html">(Mis)Adventures in Hax-Fu v1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">CS6795 Labs and Assignments</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="lab-2-generate-rdf-graph">
+<h1>Lab 2 - Generate RDF Graph<a class="headerlink" href="#lab-2-generate-rdf-graph" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-todo admonition " id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Go to the <a class="reference external" href="http://www.w3.org/RDF/Validator/">W3C RDF Validation Service</a>
+Copy and edit an RDF serialization of your choice over the example in the text field or just use the example itself, at “Display Result Options:” select “Triples and Graph”, and Hit the &#8216;Parse RDF:&#8217; button.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>I used the following RDF/XML document:</p>
+<div class="last highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;rdf:RDF</span> <span class="na">xmlns:rdf=</span><span class="s">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span>
+  <span class="na">xmlns:a=</span><span class="s">&quot;http://www.w3.org/2001/svgRdf/axsvg-schema.rdf#&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;rdf:Description</span> <span class="na">rdf:about=</span><span class="s">&quot;#MyList&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a:consistsOf</span> <span class="na">rdf:parseType=</span><span class="s">&quot;Collection&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;rdf:Description</span> <span class="na">rdf:about=</span><span class="s">&quot;#a&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;rdf:Description</span> <span class="na">rdf:about=</span><span class="s">&quot;#b&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;rdf:Description</span> <span class="na">rdf:about=</span><span class="s">&quot;#c&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;rdf:Description</span> <span class="na">rdf:about=</span><span class="s">&quot;#d&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/a:consistsOf&gt;</span>
+  <span class="nt">&lt;/rdf:Description&gt;</span>
+<span class="nt">&lt;/rdf:RDF&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>The following graph was generated:</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/graph.png"><img alt="generated RDF graph." src="../images/graph.png" style="width: 1458.0px; height: 100.8px;" /></a>
+<p class="caption">The result of parsing the above RDF/XML document and generating a graph
+depicting the a <tt class="docutils literal"><span class="pre">Lisp</span></tt> style <tt class="docutils literal"><span class="pre">list</span></tt>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="lab1.html"
+                        title="previous chapter">Lab 1 - Create your own XML DTD, XSD, and RNC or RNG</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="assign1.html"
+                        title="next chapter">Assignment 1</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/cs6795/lab2.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="assign1.html" title="Assignment 1"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="lab1.html" title="Lab 1 - Create your own XML DTD, XSD, and RNC or RNG"
+             >previous</a> |</li>
+        <li><a href="../main.html">(Mis)Adventures in Hax-Fu v1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >CS6795 Labs and Assignments</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Reuben Peter-Paul.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

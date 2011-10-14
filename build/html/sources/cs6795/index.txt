@@ -6,4 +6,6 @@ CS6795 Labs and Assignments
   
   assign0
   lab1
+  lab2
   assign1  
+
