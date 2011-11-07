@@ -80,30 +80,106 @@ extended to a complete PSOA test suite in the future.</p>
 </div>
 <div class="section" id="methodology">
 <h2>Methodology<a class="headerlink" href="#methodology" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="ebnf-and-grammar-specification">
-<h3>EBNF and Grammar Specification<a class="headerlink" href="#ebnf-and-grammar-specification" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="grammar-specification">
+<h3>Grammar Specification<a class="headerlink" href="#grammar-specification" title="Permalink to this headline">¶</a></h3>
+<p>In order to develop a converter from PSOA-RuleML rule language into TPTP via
+<em>translation</em> (or transformation).  A <em>program</em> specified in PSOA-RuleML must be
+recognized and parsed into a representation that lends itself to such a
+<em>transformation</em>.  This generally requires the use of a grammar specification
+via specialized notation: Backus-Naur Form <a class="footnote-reference" href="#f2" id="id7">[2]</a>, Extended Backus-Naur Form <a class="footnote-reference" href="#f3" id="id8">[3]</a> or
+more less known Parsing Expression Grammar <a class="footnote-reference" href="#f4" id="id9">[4]</a>.</p>
 </div>
-<div class="section" id="parser-and-lexer-generation">
-<h3>Parser and Lexer Generation<a class="headerlink" href="#parser-and-lexer-generation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="compiler-compilers">
+<h3>Compiler-compilers<a class="headerlink" href="#compiler-compilers" title="Permalink to this headline">¶</a></h3>
+<p>According to <a class="reference internal" href="#wpcc">[WpCC]</a>, a <strong>compiler-compiler</strong> or <strong>compiler generator</strong> is a
+tool that creates a parser (and lexer), an interpreter/compiler from som form of
+formal description of a language and machine.  The most prevalent form of
+compiler-compiler is a <strong>parser-generator</strong> whose input is a grammar (like those
+mentioned above) of a programming language and whose output is a collection of
+source code for a parser (and lexer) often used as an initial (partial) set of components
+for a compiler.</p>
+<p><a class="reference internal" href="#wpcc">[WpCC]</a> also mentions an open problem, that is the &#8220;holy grail&#8221; of
+compiler-compilers such that a formal grammar along with a target platforms
+instruction set may be given as inputs and the result would be a <em>full</em> set of
+compiler components capable of producing executable bytecode for machines
+implementing the above instruction set.</p>
 </div>
 <div class="section" id="abstract-syntax-trees">
 <h3>Abstract Syntax Trees<a class="headerlink" href="#abstract-syntax-trees" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="antlr-tree-language">
-<h3>ANTLR Tree Language<a class="headerlink" href="#antlr-tree-language" title="Permalink to this headline">¶</a></h3>
+<p>The result of applying a typical parser generator to a <em>input program</em> (or
+<em>strings</em>) is a
+<strong>concrete syntax tree</strong>, or <strong>parse tree</strong>: an ordered, rooted tree that
+represents the syntactic structure of the <em>input</em> according to some formally
+specified grammar.  In a parse tree, the leaves are labeled by <em>terminals</em> of the
+grammar while the internal nodes are labeled as <em>non-terminals</em> of the grammar.</p>
+<p>According to <a class="reference internal" href="#antlrguide">[AntlrGuide]</a> and <a class="reference internal" href="#wpcc">[WpCC]</a> typical parser generators associate
+pieces of executable code (written in a particular target language, e.g. Java, Python,
+Ruby, etc.).  These pieces of code referred to as <strong>actions</strong> or <strong>semantic
+action routines</strong> are executed when a particular rule of the grammar is applied
+by the parser.  These routines may be used to specify the semantics of the
+syntactic structure that is analyzed by the parser.</p>
+<p>The result of applying the generated parser with
+<strong>semantic action routines</strong> is an <strong>abstract syntax tree</strong>, or alternatively
+executable code.  In this project we will concern ourselves with <strong>abstract
+syntax trees</strong> only, such that the <em>transformation/translation</em> we intend to
+perform will be done against an <strong>AST</strong> to produce yet another <strong>AST</strong> that may
+be used to yield <em>executable</em> <strong>TPTP-FOF</strong> strings.</p>
 </div>
 </div>
 <div class="section" id="tools">
 <h2>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="ruleml-api">
 <h3>RuleML API<a class="headerlink" href="#ruleml-api" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-todo admonition " id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">Discuss with Alex and Sadnan the purpose of this API.</p>
+</div>
 </div>
 <div class="section" id="antlr-and-antlrworks">
 <h3>ANTLR and AntlrWorks<a class="headerlink" href="#antlr-and-antlrworks" title="Permalink to this headline">¶</a></h3>
+<p>We will be working with ANTLR, a sophisticated parser-generator tool that is
+popular and used to implement language interpreters and compilers.</p>
+<p>ANTLRWorks is a graphical user interface development environment used to
+facilitate the development of grammars (in <strong>EBNF</strong>) by providing the researcher
+with tooling for testing/debugging the generated parser, running the parser
+against various inputs, running rules in isolation against various inputs,
+visualizing syntax diagrams of the grammar rules, visualizing the <strong>concrete
+syntax tree</strong> produced by applying the generated parser against inputs.</p>
+</div>
+<div class="section" id="antlr-tree-description-language">
+<h3>ANTLR Tree Description Language<a class="headerlink" href="#antlr-tree-description-language" title="Permalink to this headline">¶</a></h3>
+<p>As mentioned above parser generators typically support <strong>action routines</strong> to be
+executed &#8220;on-application&#8221; of a given rule, ANTLR is no exception.  Additionally,
+it supports a separate mechanism for constructing <strong>trees</strong> using the <tt class="docutils literal"><span class="pre">-&gt;</span></tt>
+operator and <strong>ANTLR treed description language</strong>.  Using ANTLR’s tree
+description language, a tree is written like this:</p>
+<div class="highlight-python"><pre>^( CLASS T ^(VARDEF int i) ^(VARDEF int j) ^(METHOD ...) ...)</pre>
+</div>
+<p>This notation may also be used to recognize <em>subtrees</em>, introducing a higher
+level of abstraction, more suitable for mananging complexities of translating a
+PSOA-RuleML to another language such as TPTP-FOF.</p>
 <table class="docutils footnote" frame="void" id="f1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id5">[1]</a></td><td><a class="reference external" href="http://www.voronkov.com/vampire.cgi">http://www.voronkov.com/vampire.cgi</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[2]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Backus%E2%80%93Naur_Form">http://en.wikipedia.org/wiki/Backus%E2%80%93Naur_Form</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id8">[3]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form">http://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id9">[4]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Parsing_expression_grammar">http://en.wikipedia.org/wiki/Parsing_expression_grammar</a></td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="boleyrif" rules="none">
@@ -142,6 +218,19 @@ extended to a complete PSOA test suite in the future.</p>
 </td></tr>
 </tbody>
 </table>
+<table class="docutils citation" frame="void" id="wpcc" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[WpCC]</td><td><em>(<a class="fn-backref" href="#id10">1</a>, <a class="fn-backref" href="#id11">2</a>, <a class="fn-backref" href="#id13">3</a>)</em> Compiler-Compiler, Wikipedia: The Free Encylopedia, <a class="reference external" href="http://en.wikipedia.org/wiki/Parser_generator">http://en.wikipedia.org/wiki/Parser_generator</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="antlrguide" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id12">[AntlrGuide]</a></td><td>Terrence Parr, The Definitive ANTLR Reference: Building Domain
+Specific Languages, 2007, Pragmatic Programmer, USA.</td></tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -158,15 +247,15 @@ extended to a complete PSOA test suite in the future.</p>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
 <li><a class="reference internal" href="#objectives">Objectives</a></li>
 <li><a class="reference internal" href="#methodology">Methodology</a><ul>
-<li><a class="reference internal" href="#ebnf-and-grammar-specification">EBNF and Grammar Specification</a></li>
-<li><a class="reference internal" href="#parser-and-lexer-generation">Parser and Lexer Generation</a></li>
+<li><a class="reference internal" href="#grammar-specification">Grammar Specification</a></li>
+<li><a class="reference internal" href="#compiler-compilers">Compiler-compilers</a></li>
 <li><a class="reference internal" href="#abstract-syntax-trees">Abstract Syntax Trees</a></li>
-<li><a class="reference internal" href="#antlr-tree-language">ANTLR Tree Language</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#tools">Tools</a><ul>
 <li><a class="reference internal" href="#ruleml-api">RuleML API</a></li>
 <li><a class="reference internal" href="#antlr-and-antlrworks">ANTLR and AntlrWorks</a></li>
+<li><a class="reference internal" href="#antlr-tree-description-language">ANTLR Tree Description Language</a></li>
 </ul>
 </li>
 </ul>
