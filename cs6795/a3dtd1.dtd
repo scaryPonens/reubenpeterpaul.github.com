@@ -1,0 +1,6 @@
+<!ELEMENT forward    ((rule | fact)*)>
+<!ELEMENT rule          (if, then)>
+<!ELEMENT fact          (#PCDATA)>
+<!ELEMENT if             (#PCDATA)>
+<!ELEMENT then         (#PCDATA)>
+

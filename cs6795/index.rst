@@ -8,4 +8,5 @@ CS6795 Labs and Assignments
   lab1
   lab2
   assign1  
-
+  assign2
+  assign3

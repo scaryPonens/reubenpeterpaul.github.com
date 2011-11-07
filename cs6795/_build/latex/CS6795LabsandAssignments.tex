@@ -12,7 +12,7 @@
 
 
 \title{CS6795 Labs and Assignments Documentation}
-\date{October 03, 2011}
+\date{October 31, 2011}
 \release{1.0}
 \author{Reuben Peter-Paul}
 \newcommand{\sphinxlogo}{}
@@ -440,6 +440,43 @@ I also used my own custom \href{http://www.sagehill.net/docbookxsl/WriteCatalog.
 \end{notice}
 
 
+\chapter{Lab 2 - Generate RDF Graph}
+\label{lab2:lab-2-generate-rdf-graph}\label{lab2::doc}
+\begin{notice}{note}{Todo}
+
+Go to the \href{http://www.w3.org/RDF/Validator/}{W3C RDF Validation Service}
+Copy and edit an RDF serialization of your choice over the example in the text field or just use the example itself, at “Display Result Options:” select “Triples and Graph”, and Hit the `Parse RDF:' button.
+\end{notice}
+
+\begin{notice}{note}{Note:}
+I used the following RDF/XML document:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\textless{}?xml version="1.0"?\textgreater{}}
+\PYG{n+nt}{\textless{}rdf:RDF} \PYG{n+na}{xmlns:rdf=}\PYG{l+s}{"http://www.w3.org/1999/02/22-rdf-syntax-ns\PYGZsh{}"}
+  \PYG{n+na}{xmlns:a=}\PYG{l+s}{"http://www.w3.org/2001/svgRdf/axsvg-schema.rdf\PYGZsh{}"}\PYG{n+nt}{\textgreater{}}
+  \PYG{n+nt}{\textless{}rdf:Description} \PYG{n+na}{rdf:about=}\PYG{l+s}{"\PYGZsh{}MyList"}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}a:consistsOf} \PYG{n+na}{rdf:parseType=}\PYG{l+s}{"Collection"}\PYG{n+nt}{\textgreater{}}
+      \PYG{n+nt}{\textless{}rdf:Description} \PYG{n+na}{rdf:about=}\PYG{l+s}{"\PYGZsh{}a"}\PYG{n+nt}{/\textgreater{}}
+      \PYG{n+nt}{\textless{}rdf:Description} \PYG{n+na}{rdf:about=}\PYG{l+s}{"\PYGZsh{}b"}\PYG{n+nt}{/\textgreater{}}
+      \PYG{n+nt}{\textless{}rdf:Description} \PYG{n+na}{rdf:about=}\PYG{l+s}{"\PYGZsh{}c"}\PYG{n+nt}{/\textgreater{}}
+      \PYG{n+nt}{\textless{}rdf:Description} \PYG{n+na}{rdf:about=}\PYG{l+s}{"\PYGZsh{}d"}\PYG{n+nt}{/\textgreater{}}
+    \PYG{n+nt}{\textless{}/a:consistsOf\textgreater{}}
+  \PYG{n+nt}{\textless{}/rdf:Description\textgreater{}}
+\PYG{n+nt}{\textless{}/rdf:RDF\textgreater{}}
+\end{Verbatim}
+\end{notice}
+
+The following graph was generated:
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{0.400000}{\includegraphics{graph.png}}
+\caption{The result of parsing the above RDF/XML document and generating a graph
+depicting the a \code{Lisp} style \code{list}.}\end{figure}
+
+
 \chapter{Assignment 1}
 \label{assign1:assignment-1}\label{assign1::doc}
 \begin{notice}{note}{Note:}
@@ -623,7 +660,7 @@ separating the parts of an individuals name.
 
 
 \section{Part B-1 - Well formed XML element from \emph{Part A-1}}
-\label{assign1:part-b-1-well-formed-xml-element-from-a1}
+\label{assign1:part-b-1-well-formed-xml-element-from-a1}\label{assign1:b1}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{c+cp}{\textless{}?xml version="1.0" ?\textgreater{}}
 \PYG{n+nt}{\textless{}taxi-ride}\PYG{n+nt}{\textgreater{}}
@@ -657,7 +694,7 @@ separating the parts of an individuals name.
 
 
 \section{Part B-2 - Well formed XML element from \emph{Part A-2}}
-\label{assign1:part-b-2-well-formed-xml-element-from-a2}
+\label{assign1:part-b-2-well-formed-xml-element-from-a2}\label{assign1:b2}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{c+cp}{\textless{}?xml version="1.0" ?\textgreater{}}
 \PYG{n+nt}{\textless{}taxi-ride}\PYG{n+nt}{\textgreater{}}
@@ -705,7 +742,7 @@ separating the parts of an individuals name.
   \PYG{n+nt}{\textless{}passengers} \PYG{n+nt}{/\textgreater{}}
   \PYG{n+nt}{\textless{}transportinformation}\PYG{n+nt}{\textgreater{}}
     \PYG{n+nt}{\textless{}date}\PYG{n+nt}{\textgreater{}}9/27\PYG{n+nt}{\textless{}/date\textgreater{}}
-    \PYG{n+nt}{\textless{}detination}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}destination}\PYG{n+nt}{\textgreater{}}
       \PYG{n+nt}{\textless{}street}\PYG{n+nt}{\textgreater{}}
         \PYG{n+nt}{\textless{}streetnumber}\PYG{n+nt}{\textgreater{}}12\PYG{n+nt}{\textless{}/streetnumber\textgreater{}}
         \PYG{n+nt}{\textless{}streetname}\PYG{n+nt}{\textgreater{}}Main St\PYG{n+nt}{\textless{}/streetname\textgreater{}}
@@ -743,6 +780,946 @@ separating the parts of an individuals name.
         \PYG{n+nf}{provincename}\PYG{p}{(}\PYG{l+s+sAtom}{'NB'}\PYG{p}{)}\PYG{p}{)}\PYG{p}{)}\PYG{p}{,}
     \PYG{n+nf}{fare}\PYG{p}{(}\PYG{l+m}{12}\PYG{p}{.}\PYG{l+m}{50}\PYG{p}{)}\PYG{p}{)}\PYG{p}{)}\PYG{p}{.}
 \end{Verbatim}
+
+
+\section{Part D-1 - DTD schema for \emph{Part A-1}}
+\label{assign1:part-d-1-dtd-schema-for-a1}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\textless{}!ELEMENT taxi-ride             (driver,passengers,transport-information)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT driver                (number,name)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT name                  (first,mid,last)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT number                (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT first                 (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT mid                   (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT last                  (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT passengers            (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT transport-information (date,destination,fare)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT date                  (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT destination           (street,municipality)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT street                (number,appellation)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT municipality          (appellation,province)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT appellation           (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT province              (\PYGZsh{}PCDATA)\textgreater{}}
+\end{Verbatim}
+
+It is possible to write a DTD that precisely describe {\hyperref[assign1:a1]{\emph{Part A-1}}} and {\hyperref[assign1:b1]{\emph{Part B-1 - Well formed XML element from a1}}} since when DTD's are designed/applied
+semantics are not considered only the structure of the \code{DOM}-tree is being restricted.
+
+
+\section{Part D-2 - DTD schema for \emph{Part A-2}}
+\label{assign1:part-d-2-dtd-schema-for-a2}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\textless{}!ELEMENT taxi-ride             (driver,passengers,transport-information)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT driver                (number,name)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT name                  ((first,mid,last)\textbar{}\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT number                (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT first                 (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT mid                   (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT last                  (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT passengers            (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT transport-information (date,destination,fare)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT date                  (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT destination           (street,municipality)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT street                (number,name)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT municipality          (name,province)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT province              (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT fare                  (\PYGZsh{}PCDATA)\textgreater{}}
+\end{Verbatim}
+
+It is not possible to write a DTD that describes {\hyperref[assign1:a1]{\emph{Part A-1}}} or {\hyperref[assign1:b1]{\emph{Part B-1 - Well formed XML element from a1}}} since \code{((first,mid,last)\textbar{}\#PCDATA)} introduces ambiguity into
+the structure and is not permitted as a valid DTD syntax.
+
+
+\section{Part D-3 - DTD schema for \emph{a3}}
+\label{assign1:part-d-3-dtd-schema-for-a3}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\textless{}!ELEMENT taxiride              (driver,passengers,transportinformation)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT driver                (carnumber,fullname)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT carnumber             (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT fullname              (firstname,middlename,lastname)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT firstname             (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT middlename            (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT lastname              (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT passengers            (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT transportinformation  (date,destination,fare)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT date                  (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT destination           (street,municipality)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT street                (streetnumber,streetname)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT streetnumber          (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT streetname            (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT municipality          (municipalityname,provincename)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT municipalityname      (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT provincename          (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT fare                  (\PYGZsh{}PCDATA)\textgreater{}}
+\end{Verbatim}
+
+The {\hyperref[assign1:b3]{\emph{Part B-3 - XML instance of relabeling}}}-element is \emph{Structurally} valid w.r.t. to the above DTD.
+
+
+\chapter{Assignment 2}
+\label{assign2:assignment-2}\label{assign2::doc}
+
+\section{Part 1 - Draw DLG of RDF/XML Document}
+\label{assign2:part-1-draw-dlg-of-rdf-xml-document}
+\begin{notice}{note}{Todo}
+
+This is RDF metadata about four fictitious people:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\textless{}?xml version="1.0"?\textgreater{}}
+\PYG{n+nt}{\textless{}rdf:RDF} \PYG{n+na}{xmlns:rdf=}\PYG{l+s}{"http://www.w3.org/1999/02/22-rdf-syntax-ns\PYGZsh{}"}
+  \PYG{n+na}{xmlns:samfam=}\PYG{l+s}{"http://samplefamily.org/elements/"}\PYG{n+nt}{\textgreater{}}
+  \PYG{n+nt}{\textless{}rdf:Description} \PYG{n+na}{rdf:about=}\PYG{l+s}{"http://www.ourhomes/john"}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}samfam:name}\PYG{n+nt}{\textgreater{}}John Smith\PYG{n+nt}{\textless{}/samfam:name\textgreater{}}
+    \PYG{n+nt}{\textless{}samfam:sibling} \PYG{n+na}{rdf:resource=}\PYG{l+s}{"http://www.ourhomes/mary"}\PYG{n+nt}{/\textgreater{}}
+  \PYG{n+nt}{\textless{}/rdf:Description\textgreater{}}
+  \PYG{n+nt}{\textless{}rdf:Description} \PYG{n+na}{rdf:about=}\PYG{l+s}{"http://www.ourhomes/mary"}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}samfam:name}\PYG{n+nt}{\textgreater{}}Mary Smith\PYG{n+nt}{\textless{}/samfam:name\textgreater{}}
+    \PYG{n+nt}{\textless{}samfam:sibling} \PYG{n+na}{rdf:resource=}\PYG{l+s}{"http://www.ourhomes/john"}\PYG{n+nt}{/\textgreater{}}
+  \PYG{n+nt}{\textless{}/rdf:Description\textgreater{}}
+  \PYG{n+nt}{\textless{}rdf:Description} \PYG{n+na}{rdf:about=}\PYG{l+s}{"http://www.ourhomes/babs"}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}samfam:name}\PYG{n+nt}{\textgreater{}}Barbara Smith\PYG{n+nt}{\textless{}/samfam:name\textgreater{}}
+    \PYG{n+nt}{\textless{}samfam:child} \PYG{n+na}{rdf:resource=}\PYG{l+s}{"http://www.ourhomes/john"}\PYG{n+nt}{/\textgreater{}}
+    \PYG{n+nt}{\textless{}samfam:child} \PYG{n+na}{rdf:resource=}\PYG{l+s}{"http://www.ourhomes/mary"}\PYG{n+nt}{/\textgreater{}}
+  \PYG{n+nt}{\textless{}/rdf:Description\textgreater{}}
+  \PYG{n+nt}{\textless{}rdf:Description} \PYG{n+na}{rdf:about=}\PYG{l+s}{"http://www.ourhomes/herb"}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}samfam:name}\PYG{n+nt}{\textgreater{}}Herbert Smith\PYG{n+nt}{\textless{}/samfam:name\textgreater{}}
+    \PYG{n+nt}{\textless{}samfam:child} \PYG{n+na}{rdf:resource=}\PYG{l+s}{"http://www.ourhomes/john"}\PYG{n+nt}{/\textgreater{}}
+    \PYG{n+nt}{\textless{}samfam:child} \PYG{n+na}{rdf:resource=}\PYG{l+s}{"http://www.ourhomes/mary"}\PYG{n+nt}{/\textgreater{}}
+  \PYG{n+nt}{\textless{}/rdf:Description\textgreater{}}
+\PYG{n+nt}{\textless{}/rdf:RDF\textgreater{}}
+\end{Verbatim}
+
+Draw the directed labeled graph (DLG) that constitutes the RDF diagram of this XML element (use space below).
+Hint: URLs, going into ovals or becoming arc labels, and texts, going into rectangles, may be arbitrarily shortened, along as they remain unique (e.g.: `.../john' or just `john'; `John S' or just `JS'); namespaces can be omitted.
+\end{notice}
+
+\includegraphics{graphviz-8e0c61029aff928c1e78e03b06cf7f755d84a4b6.pdf}
+
+\begin{notice}{note}{Note:}
+Above graph created manually using the following graphviz DOT language:
+
+\begin{Verbatim}[commandchars=@\[\]]
+digraph g {
+
+  // Resources
+  node @PYGZlb[]label="john"@PYGZrb[] john;
+  node @PYGZlb[]label="mary"@PYGZrb[] mary;
+  node @PYGZlb[]label="babs"@PYGZrb[] babs;
+  node @PYGZlb[]label="herb"@PYGZrb[] herb;
+
+
+  // Literals
+  node @PYGZlb[]shape=rectangle, label="John Smith"@PYGZrb[] john@_name;
+  node @PYGZlb[]shape=rectangle, label="Mary Smith"@PYGZrb[] mary@_name;
+  node @PYGZlb[]shape=rectangle, label="Barbara Smith"@PYGZrb[] babs@_name;
+  node @PYGZlb[]shape=rectangle, label="Herbert Smith"@PYGZrb[] herb@_name;
+
+  // Name relationships
+  john -@textgreater[] john@_name @PYGZlb[]label="name"@PYGZrb[];
+  mary -@textgreater[] mary@_name @PYGZlb[]label="name"@PYGZrb[];
+  babs -@textgreater[] babs@_name @PYGZlb[]label="name"@PYGZrb[];
+  herb -@textgreater[] herb@_name @PYGZlb[]label="name"@PYGZrb[];
+
+  // sibling relationships
+  john -@textgreater[] mary @PYGZlb[]label="sibling"@PYGZrb[];
+  mary -@textgreater[] john @PYGZlb[]label="sibling"@PYGZrb[];
+
+  // Child relationships
+  babs -@textgreater[] mary @PYGZlb[]label="child"@PYGZrb[];
+  babs -@textgreater[] john @PYGZlb[]label="child"@PYGZrb[];
+  herb -@textgreater[] mary @PYGZlb[]label="child"@PYGZrb[];
+  herb -@textgreater[] john @PYGZlb[]label="child"@PYGZrb[];
+
+}
+\end{Verbatim}
+\end{notice}
+
+
+\section{Part 2}
+\label{assign2:part-2}
+\begin{notice}{note}{Todo}
+
+Consider the following Datalog program in Prolog syntax defining a unary
+predicate or relation human:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{human}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{philosopher}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{human}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{featherless}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{biped}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{philosopher}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{dualist}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{dualist}\PYG{p}{(}\PYG{l+s+sAtom}{john}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{biped}\PYG{p}{(}\PYG{l+s+sAtom}{mary}\PYG{p}{)}\PYG{p}{.}
+\end{Verbatim}
+\end{notice}
+
+\begin{notice}{note}{Todo}
+\begin{enumerate}
+\item {} 
+Give, and very briefly explain, the result of the query human(john):
+
+\end{enumerate}
+\end{notice}
+
+\emph{yes} \textbf{because} \emph{{}`{}`john{}`{}` is a {}`{}`dualist{}`{}` and dualists are {}`{}`philosophers{}`{}` and philosophers are {}`{}`human{}`{}`, therefore {}`{}`john{}`{}` is a {}`{}`human{}`{}`}
+
+\begin{notice}{note}{Todo}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item {} 
+Give, and very briefly explain, the result of the query human(mary):
+
+\end{enumerate}
+\end{notice}
+
+\emph{no} \textbf{because} \emph{{}`{}`mary{}`{}` is a {}`{}`biped{}`{}`, but only human if a {}`{}`biped{}`{}` and {}`{}`featherless{}`{}` however it is not known if she is a {}`{}`featherless{}`{}`.  Therefore, it is not known that she is human.}
+
+\begin{notice}{note}{Todo}
+
+c) Give the result(s) of the query:
+.. code-block:
+
+\begin{Verbatim}[commandchars=@\[\]]
+?- human(Y).
+\end{Verbatim}
+\end{notice}
+
+Y = john
+no
+
+
+\section{Part 3}
+\label{assign2:part-3}
+\begin{notice}{note}{Todo}
+
+Using Prolog or any other logic notation, give a program that expresses that
+(1) \code{ride(X,Y)} can be proved via \code{train(X,Y)} or \code{bus(X,Y)} and (2) \code{ride(X,Z)} can be
+proved via (a) \code{train(X,Y)} or \code{bus(X,Y)} and (b), recursively, \code{ride(Y,Z)}.
+Add facts representing \code{train} or \code{bus} relations in a real or fictitious region,
+mentioning a place, one of its \code{train}- or \code{bus}-reachable places, and one of its
+further reachable places. Show a query that asks for all of the known \code{rides},
+and a derivation using at least one occurrence of the rule (2).
+
+Hints: Consider to introduce an auxiliary relation for direct rides. You can
+test your program and queries in the SWI Prolog engine (variables are
+upper-cased) or in the OO jDREW POSL engine (variables are “?”-prefixed).
+\end{notice}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{ride}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{train}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{ride}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{bus}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{ride}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Z}\PYG{p}{)} \PYG{p}{:-}
+  \PYG{n+nf}{train}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{)}\PYG{p}{,}
+  \PYG{n+nf}{ride}\PYG{p}{(}\PYG{n+nv}{Y}\PYG{p}{,}\PYG{n+nv}{Z}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{ride}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Z}\PYG{p}{)} \PYG{p}{:-}
+  \PYG{n+nf}{bus}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{,}\PYG{n+nv}{Y}\PYG{p}{)}\PYG{p}{,}
+  \PYG{n+nf}{ride}\PYG{p}{(}\PYG{n+nv}{Y}\PYG{p}{,}\PYG{n+nv}{Z}\PYG{p}{)}\PYG{p}{.}
+
+\PYG{n+nf}{bus}\PYG{p}{(}\PYG{l+s+sAtom}{home}\PYG{p}{,}\PYG{l+s+sAtom}{kings\PYGZus{}place}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{bus}\PYG{p}{(}\PYG{l+s+sAtom}{kings\PYGZus{}place}\PYG{p}{,}\PYG{l+s+sAtom}{work}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{bus}\PYG{p}{(}\PYG{l+s+sAtom}{kings\PYGZus{}place}\PYG{p}{,}\PYG{l+s+sAtom}{train\PYGZus{}station}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{train}\PYG{p}{(}\PYG{l+s+sAtom}{train\PYGZus{}station}\PYG{p}{,}\PYG{l+s+sAtom}{bathurst}\PYG{p}{)}\PYG{p}{.}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+?- ride\PYG{o}{(}X,Y\PYG{o}{)}.
+\PYG{n+nv}{X} \PYG{o}{=} train\PYGZus{}station,
+\PYG{n+nv}{Y} \PYG{o}{=} bathurst ;
+\PYG{n+nv}{X} \PYG{o}{=} home,
+\PYG{n+nv}{Y} \PYG{o}{=} kings\PYGZus{}place ;
+\PYG{n+nv}{X} \PYG{o}{=} kings\PYGZus{}place,
+\PYG{n+nv}{Y} \PYG{o}{=} work ;
+\PYG{n+nv}{X} \PYG{o}{=} kings\PYGZus{}place,
+\PYG{n+nv}{Y} \PYG{o}{=} train\PYGZus{}station ;
+\PYG{n+nv}{X} \PYG{o}{=} home,
+\PYG{n+nv}{Y} \PYG{o}{=} work ;
+\PYG{n+nv}{X} \PYG{o}{=} home,
+\PYG{n+nv}{Y} \PYG{o}{=} train\PYGZus{}station ;
+\PYG{n+nv}{X} \PYG{o}{=} home,
+\PYG{n+nv}{Y} \PYG{o}{=} bathurst ;
+\PYG{n+nv}{X} \PYG{o}{=} kings\PYGZus{}place,
+\PYG{n+nv}{Y} \PYG{o}{=} bathurst ;
+false.
+
+?- ride\PYG{o}{(}home,bathurst\PYG{o}{)}.
+\PYG{n+nb}{true} ;
+false.
+
+?- ride\PYG{o}{(}home,work\PYG{o}{)}.
+\PYG{n+nb}{true} ;
+false.
+\end{Verbatim}
+
+
+\section{Part 4}
+\label{assign2:part-4}
+\begin{notice}{note}{Todo}
+
+Consider this definition of the predicate \code{goldmemgold} (i.e., `member
+surrounded by gold'):
+
+Prolog syntax:
+
+\begin{Verbatim}[commandchars=@\[\]]
+goldmemgold(X,@PYGZlb[]gold,X,gold@textbar[]R@PYGZrb[]).
+goldmemgold(X,@PYGZlb[]Y@textbar[]R@PYGZrb[]) :- goldmemgold(X,R).
+\end{Verbatim}
+
+POSL syntax:
+
+\begin{Verbatim}[commandchars=@\[\]]
+goldmemgold(?X,@PYGZlb[]gold,?X,gold@textbar[]?R@PYGZrb[]).
+goldmemgold(?X,@PYGZlb[]?Y@textbar[]?R@PYGZrb[]) :- goldmemgold(?X,?R).
+\end{Verbatim}
+
+You can read the two clauses as follows:
+* \emph{X is a {}`{}`goldmemgold{}`{}` of a list whose first three elements are gold followed X
+followed by gold.}
+* \emph{X is a {}`{}`goldmemgold{}`{}` of a list whose tail (all but the first element) is R if X
+is a goldmemgold of R.}
+
+Hint: You can test your answers to the following in the SWI Prolog engine
+(variables are upper-cased) or in the OO jDREW POSL engine (variables are
+“?”-prefixed).
+
+Show the results of checking for a specific goldmemgold thus:
+\end{notice}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+?- goldmemgold\PYG{o}{(}john,\PYG{o}{[}john,gold,mary,gold,peter,gold\PYG{o}{]}\PYG{o}{)}.
+false.
+
+?- goldmemgold\PYG{o}{(}mary,\PYG{o}{[}john,gold,mary,gold,peter,gold\PYG{o}{]}\PYG{o}{)}.
+\PYG{n+nb}{true} ;
+false.
+\end{Verbatim}
+
+\begin{notice}{note}{Todo}
+
+Show the results of enumerating goldmemgolds of a list thus
+(where “;” asks for another solution):
+
+Prolog syntax:
+
+\begin{Verbatim}[commandchars=@\[\]]
+?- goldmemgold(X,@PYGZlb[]john,gold,mary,gold,peter,gold@PYGZrb[]).
+\end{Verbatim}
+
+POSL syntax:
+
+\begin{Verbatim}[commandchars=@\[\]]
+?- goldmemgold(?X,@PYGZlb[]john,gold,mary,gold,peter,gold@PYGZrb[]).
+\end{Verbatim}
+\end{notice}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+?- goldmemgold\PYG{o}{(}X,\PYG{o}{[}john,gold,mary,gold,peter,gold\PYG{o}{]}\PYG{o}{)}.
+\PYG{n+nv}{X} \PYG{o}{=} mary ;
+\PYG{n+nv}{X} \PYG{o}{=} peter ;
+false.
+\end{Verbatim}
+
+\begin{notice}{note}{Todo}
+
+Briefly explain here the number of solutions found, e.g. by studying the
+expanded proof tree
+under “Solution:” in the GUI of OO jDREW.
+\end{notice}
+
+The number of solutions found by studying the expanded proof tree under
+``solution:'' in the GUI of OO jDREW can be explained by the nature of how
+\code{prolog} iteratest through the list:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{[}\PYG{n}{john}\PYG{p}{,}\PYG{n}{gold}\PYG{p}{,}\PYG{n}{mary}\PYG{p}{,}\PYG{n}{gold}\PYG{p}{,}\PYG{n}{peter}\PYG{p}{,}\PYG{n}{gold}\PYG{p}{]}
+\end{Verbatim}
+
+The proof tree for \code{mary} contains \textbf{one} recursive step effectively popping
+\code{john} off the front of the list.
+
+The proof tree for \code{peter} contains \textbf{three} recursive steps effectively
+popping \code{john}, \code{gold}, and \code{mary} off of the front of the list
+successively until \code{goldmemgold(peter,{[}gold,peter,gold\textbar{}?R{]})} succeeds.
+
+\begin{notice}{note}{Todo}
+
+Briefly explain if it has any effect on the number of solutions that john, mary,
+and peter ‘share’ some gold?
+\end{notice}
+
+Yes \textbf{because} if \code{john}, \code{mary} and \code{peter} did not `share' some
+\code{gold} the proof for \code{mary} would require \textbf{one} additional recursive step to
+reduce the list \code{{[}john,gold,gold,mary,gold,...{]}} down to
+\code{{[}gold,mary,gold,...{]}} and an additional \textbf{two} recursive steps to `reduce'
+\code{{[}john,gold,gold,mary,gold,gold,peter,gold{]}} down to \code{{[}gold,peter,gold{]}}.
+
+
+\chapter{Assignment 3}
+\label{assign3:assignment-3}\label{assign3::doc}
+
+\section{Part 1}
+\label{assign3:part-1}
+\begin{notice}{note}{Todo}
+\begin{enumerate}
+\item {} 
+This is a DTD for simple (almost natural-language) `forward' rules and facts:
+
+\end{enumerate}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\textless{}!ELEMENT forward    ((rule \textbar{} fact)*)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT rule          (if, then)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT fact          (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT if             (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT then         (\PYGZsh{}PCDATA)\textgreater{}}
+\end{Verbatim}
+
+a) Are the following XML elements valid with respect to this DTD
+(write ``yes'' or ``no'' behind them)?
+\end{notice}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nt}{\textless{}forward}\PYG{n+nt}{\textgreater{}} \PYG{n+nt}{\textless{}/forward\textgreater{}}
+\PYG{c}{\textless{}!--}\PYG{c}{ YES }\PYG{c}{--\textgreater{}}
+
+\PYG{n+nt}{\textless{}forward}\PYG{n+nt}{\textgreater{}} the weather \PYG{n+nt}{\textless{}/forward\textgreater{}}
+\PYG{c}{\textless{}!--}\PYG{c}{ NO }\PYG{c}{--\textgreater{}}
+
+\PYG{n+nt}{\textless{}forward}\PYG{n+nt}{\textgreater{}}
+  \PYG{n+nt}{\textless{}fact}\PYG{n+nt}{\textgreater{}} it snows \PYG{n+nt}{\textless{}/fact\textgreater{}}
+\PYG{n+nt}{\textless{}/forward\textgreater{}}
+\PYG{c}{\textless{}!--}\PYG{c}{ YES }\PYG{c}{--\textgreater{}}
+
+\PYG{n+nt}{\textless{}forward}\PYG{n+nt}{\textgreater{}}
+  \PYG{n+nt}{\textless{}rule}\PYG{n+nt}{\textgreater{}} if it rains then the road gets wet \PYG{n+nt}{\textless{}/rule\textgreater{}}
+\PYG{n+nt}{\textless{}/forward\textgreater{}}
+\PYG{c}{\textless{}!--}\PYG{c}{ NO }\PYG{c}{--\textgreater{}}
+
+\PYG{n+nt}{\textless{}forward}\PYG{n+nt}{\textgreater{}}
+  \PYG{n+nt}{\textless{}rule}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}if}\PYG{n+nt}{\textgreater{}} it rains \PYG{n+nt}{\textless{}/if\textgreater{}}
+    \PYG{n+nt}{\textless{}then}\PYG{n+nt}{\textgreater{}} the road gets wet \PYG{n+nt}{\textless{}/then\textgreater{}}
+  \PYG{n+nt}{\textless{}/rule\textgreater{}}
+\PYG{n+nt}{\textless{}/forward\textgreater{}}
+\PYG{c}{\textless{}!--}\PYG{c}{ YES }\PYG{c}{--\textgreater{}}
+
+\PYG{n+nt}{\textless{}forward}\PYG{n+nt}{\textgreater{}}
+  \PYG{n+nt}{\textless{}fact}\PYG{n+nt}{\textgreater{}} it rains \PYG{n+nt}{\textless{}/fact\textgreater{}}
+  \PYG{n+nt}{\textless{}rule}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}if}\PYG{n+nt}{\textgreater{}} it rains \PYG{n+nt}{\textless{}/if\textgreater{}}
+    \PYG{n+nt}{\textless{}then}\PYG{n+nt}{\textgreater{}} the road gets wet \PYG{n+nt}{\textless{}/then\textgreater{}}
+  \PYG{n+nt}{\textless{}/rule\textgreater{}}
+\PYG{n+nt}{\textless{}/forward\textgreater{}}
+\PYG{c}{\textless{}!--}\PYG{c}{ YES }\PYG{c}{--\textgreater{}}
+\end{Verbatim}
+
+\begin{notice}{note}{Todo}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item {} 
+Consider these XML elements for `forward' (p =\textgreater{} c) and `backward' (c \textless{}= p) rules:
+
+\end{enumerate}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nt}{\textless{}forward}\PYG{n+nt}{\textgreater{}}
+  \PYG{n+nt}{\textless{}rule}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}if}\PYG{n+nt}{\textgreater{}} p \PYG{n+nt}{\textless{}/if\textgreater{}}
+    \PYG{n+nt}{\textless{}then}\PYG{n+nt}{\textgreater{}} c \PYG{n+nt}{\textless{}/then\textgreater{}}
+  \PYG{n+nt}{\textless{}/rule\textgreater{}}
+\PYG{n+nt}{\textless{}/forward\textgreater{}}
+
+\PYG{n+nt}{\textless{}backward}\PYG{n+nt}{\textgreater{}}
+  \PYG{n+nt}{\textless{}rule}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}conc}\PYG{n+nt}{\textgreater{}} c \PYG{n+nt}{\textless{}/conc\textgreater{}}
+    \PYG{n+nt}{\textless{}prem}\PYG{n+nt}{\textgreater{}} p \PYG{n+nt}{\textless{}/prem\textgreater{}}
+  \PYG{n+nt}{\textless{}/rule\textgreater{}}
+\PYG{n+nt}{\textless{}/backward\textgreater{}}
+\end{Verbatim}
+
+Inductively complete this XML DTD (write into the ''...'' lines) for
+`backward' rules and facts:
+\end{notice}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\textless{}!ELEMENT backward    ((rule\textbar{}fact)*)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT rule             (conc, prem)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT fact           (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT conc           (\PYGZsh{}PCDATA)\textgreater{}}
+\PYG{c+cp}{\textless{}!ELEMENT prem           (\PYGZsh{}PCDATA)\textgreater{}}
+\end{Verbatim}
+
+
+\section{Part 2}
+\label{assign3:part-2}
+\begin{notice}{note}{Todo}
+
+Complete the following XSLT template – by just filling in the ''...'' versions
+– for the (XML-to-XML) transformation of `forward' rules and facts into
+`backward' rules and facts:
+\end{notice}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nt}{\textless{}xsl:template} \PYG{n+na}{match=}\PYG{l+s}{"forward"}\PYG{n+nt}{\textgreater{}}
+  \PYG{n+nt}{\textless{}backward}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}xsl:apply-templates}\PYG{n+nt}{/\textgreater{}}
+  \PYG{n+nt}{\textless{}/backward\textgreater{}}
+\PYG{n+nt}{\textless{}/xsl:template\textgreater{}}
+
+\PYG{n+nt}{\textless{}xsl:template} \PYG{n+na}{match=}\PYG{l+s}{"rule"}\PYG{n+nt}{\textgreater{}}
+  \PYG{n+nt}{\textless{}rule}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}conc}\PYG{n+nt}{\textgreater{}}\PYG{n+nt}{\textless{}xsl:value-of} \PYG{n+na}{select=}\PYG{l+s}{"then"}\PYG{n+nt}{/\textgreater{}}\PYG{n+nt}{\textless{}/conc\textgreater{}}
+    \PYG{n+nt}{\textless{}prem}\PYG{n+nt}{\textgreater{}}\PYG{n+nt}{\textless{}xsl:value-of} \PYG{n+na}{select=}\PYG{l+s}{"if"}\PYG{n+nt}{/\textgreater{}}\PYG{n+nt}{\textless{}/prem\textgreater{}}
+  \PYG{n+nt}{\textless{}/rule\textgreater{}}
+\PYG{n+nt}{\textless{}/xsl:template\textgreater{}}
+
+\PYG{n+nt}{\textless{}xsl:template} \PYG{n+na}{match=}\PYG{l+s}{"fact"}\PYG{n+nt}{\textgreater{}}
+  \PYG{n+nt}{\textless{}fact}\PYG{n+nt}{\textgreater{}}
+    \PYG{n+nt}{\textless{}xsl:value-of} \PYG{n+na}{select=}\PYG{l+s}{"."}\PYG{n+nt}{/\textgreater{}}
+  \PYG{n+nt}{\textless{}/fact\textgreater{}}
+\PYG{n+nt}{\textless{}/xsl:template\textgreater{}}
+\end{Verbatim}
+
+
+\subsection{Transformation inversion?}
+\label{assign3:transformation-inversion}
+\begin{notice}{note}{Todo}
+
+Could this transformation be `inverted' mapping `backward' rules and facts
+into `forward' rules and facts without information loss (write in ``yes''
+or ``no'' here)?
+\end{notice}
+
+Yes.
+
+
+\section{Part 3}
+\label{assign3:part-3}
+Again consider the following Datalog program in Prolog syntax:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{human}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{philosopher}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{human}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{featherless}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{biped}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{philosopher}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{dualist}\PYG{p}{(}\PYG{n+nv}{X}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{dualist}\PYG{p}{(}\PYG{l+s+sAtom}{john}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{biped}\PYG{p}{(}\PYG{l+s+sAtom}{mary}\PYG{p}{)}\PYG{p}{.}
+\end{Verbatim}
+
+\begin{notice}{note}{Todo}
+\begin{enumerate}
+\item {} 
+Give its grounding (consistently replacing variables by constants in each rule):
+
+\end{enumerate}
+\end{notice}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{human}\PYG{p}{(}\PYG{l+s+sAtom}{john}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{philosopher}\PYG{p}{(}\PYG{l+s+sAtom}{john}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{human}\PYG{p}{(}\PYG{l+s+sAtom}{mary}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{philosopher}\PYG{p}{(}\PYG{l+s+sAtom}{mary}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{human}\PYG{p}{(}\PYG{l+s+sAtom}{john}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{featherless}\PYG{p}{(}\PYG{l+s+sAtom}{john}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{biped}\PYG{p}{(}\PYG{l+s+sAtom}{john}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{human}\PYG{p}{(}\PYG{l+s+sAtom}{mary}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{featherless}\PYG{p}{(}\PYG{l+s+sAtom}{mary}\PYG{p}{)}\PYG{p}{,} \PYG{n+nf}{biped}\PYG{p}{(}\PYG{l+s+sAtom}{mary}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{philosopher}\PYG{p}{(}\PYG{l+s+sAtom}{john}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{dualist}\PYG{p}{(}\PYG{l+s+sAtom}{john}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{philosopher}\PYG{p}{(}\PYG{l+s+sAtom}{mary}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{dualist}\PYG{p}{(}\PYG{l+s+sAtom}{mary}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{dualist}\PYG{p}{(}\PYG{l+s+sAtom}{john}\PYG{p}{)}\PYG{p}{.}
+\PYG{n+nf}{biped}\PYG{p}{(}\PYG{l+s+sAtom}{mary}\PYG{p}{)}\PYG{p}{.}
+\end{Verbatim}
+
+\begin{notice}{note}{Todo}
+
+\begin{notice}{note}{Note:}
+Shortcut of the grounded program:
+\begin{quote}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{h1} \PYG{o}{:-} \PYG{l+s+sAtom}{p1}\PYG{p}{.}
+\PYG{n+nf}{h2} \PYG{o}{:-} \PYG{l+s+sAtom}{p2}\PYG{p}{.}
+\PYG{n+nf}{h1} \PYG{o}{:-} \PYG{l+s+sAtom}{f1}\PYG{p}{,} \PYG{l+s+sAtom}{b1}\PYG{p}{.}
+\PYG{n+nf}{h2} \PYG{o}{:-} \PYG{l+s+sAtom}{f2}\PYG{p}{,} \PYG{l+s+sAtom}{b2}\PYG{p}{.}
+\PYG{n+nf}{p1} \PYG{o}{:-} \PYG{l+s+sAtom}{d1}\PYG{p}{.}
+\PYG{n+nf}{p2} \PYG{o}{:-} \PYG{l+s+sAtom}{d2}\PYG{p}{.}
+\PYG{l+s+sAtom}{d1}\PYG{p}{.}
+\PYG{l+s+sAtom}{b2}\PYG{p}{.}
+\end{Verbatim}
+
+M = \{d1,b2,p1,h1\}
+\end{quote}
+\end{notice}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item {} 
+Construct its Least Herbrand Model by fixpoint iteration (starting with the set of facts, applying the rules bottom-up to add new facts, etc., until the set no longer changes):
+
+\end{enumerate}
+\end{notice}
+
+Fixpoint iteration:
+\begin{itemize}
+\item {} 
+Step 1:
+
+M0 = \{d1, b2\}
+
+\item {} 
+Step 2:
+
+M1 = \{d1, b2\} + \{p1\}
+
+\item {} 
+Step 3:
+
+M2 = \{d1, b2, p1\} + \{h1\}
+
+\end{itemize}
+
+Least Herbrand Model is: M = \{dualist(john), biped(mary), philosopher(john), human(john)\}
+
+
+\section{Part 4}
+\label{assign3:part-4}
+\begin{notice}{note}{Todo}
+
+Using a knowledge base with the following facts and rules about fictitious
+people, employ OO jDREW to query their represented social network.
+
+\begin{notice}{note}{Note:}
+see Figure below.
+\end{notice}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{knows\PYGZus{}from\PYGZus{}highschool}\PYG{p}{(}\PYG{n+nv}{Mary}\PYG{p}{,} \PYG{n+nv}{John}\PYG{p}{)}\PYG{p}{.}
+
+\PYG{n+nf}{knows\PYGZus{}from\PYGZus{}highschool}\PYG{p}{(}\PYG{n+nv}{John}\PYG{p}{,} \PYG{n+nv}{Peter}\PYG{p}{)}\PYG{p}{.}
+
+\PYG{n+nf}{knows\PYGZus{}from\PYGZus{}university}\PYG{p}{(}\PYG{n+nv}{Peter}\PYG{p}{,} \PYG{n+nv}{Cora}\PYG{p}{)}\PYG{p}{.}
+
+\PYG{n+nf}{knows\PYGZus{}from\PYGZus{}university}\PYG{p}{(}\PYG{n+nv}{Cora}\PYG{p}{,} \PYG{n+nv}{Gisele}\PYG{p}{)}\PYG{p}{.}
+
+
+\PYG{n+nf}{knows}\PYG{p}{(}\PYG{l+s+sAtom}{?}\PYG{n+nv}{X}\PYG{p}{,} \PYG{l+s+sAtom}{?}\PYG{n+nv}{Y}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{knows\PYGZus{}from\PYGZus{}highschool}\PYG{p}{(}\PYG{l+s+sAtom}{?}\PYG{n+nv}{X}\PYG{p}{,} \PYG{l+s+sAtom}{?}\PYG{n+nv}{Y}\PYG{p}{)}\PYG{p}{.}
+
+\PYG{n+nf}{knows}\PYG{p}{(}\PYG{l+s+sAtom}{?}\PYG{n+nv}{X}\PYG{p}{,} \PYG{l+s+sAtom}{?}\PYG{n+nv}{Y}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{knows\PYGZus{}from\PYGZus{}university}\PYG{p}{(}\PYG{l+s+sAtom}{?}\PYG{n+nv}{X}\PYG{p}{,} \PYG{l+s+sAtom}{?}\PYG{n+nv}{Y}\PYG{p}{)}\PYG{p}{.}
+
+
+\PYG{n+nf}{knows\PYGZus{}trans}\PYG{p}{(}\PYG{l+s+sAtom}{?}\PYG{n+nv}{X}\PYG{p}{,} \PYG{l+s+sAtom}{?}\PYG{n+nv}{Y}\PYG{p}{)} \PYG{p}{:-} \PYG{n+nf}{knows}\PYG{p}{(}\PYG{l+s+sAtom}{?}\PYG{n+nv}{X}\PYG{p}{,} \PYG{l+s+sAtom}{?}\PYG{n+nv}{Y}\PYG{p}{)}\PYG{p}{.}
+
+\PYG{n+nf}{knows\PYGZus{}trans}\PYG{p}{(}\PYG{l+s+sAtom}{?}\PYG{n+nv}{X}\PYG{p}{,} \PYG{l+s+sAtom}{?}\PYG{n+nv}{Y}\PYG{p}{)} \PYG{p}{:-}  \PYG{n+nf}{knows}\PYG{p}{(}\PYG{l+s+sAtom}{?}\PYG{n+nv}{X}\PYG{p}{,} \PYG{l+s+sAtom}{?}\PYG{n+nv}{Z}\PYG{p}{)}\PYG{p}{,}
+\PYG{n+nf}{knows\PYGZus{}trans}\PYG{p}{(}\PYG{l+s+sAtom}{?}\PYG{n+nv}{Z}\PYG{p}{,} \PYG{l+s+sAtom}{?}\PYG{n+nv}{Y}\PYG{p}{)}\PYG{p}{.}
+\end{Verbatim}
+
+Give all results of the following
+(top-down) queries employing OO jDREW TD:
+\end{notice}
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{0.800000}{\includegraphics{a3p4.png}}
+\caption{Screenshot of the knowledge base entered into OO jDREW Top-Down Engine.}\end{figure}
+
+
+\subsection{knows(Mary, John)}
+\label{assign3:knows-mary-john}\begin{figure}[htbp]
+\centering
+
+\scalebox{0.800000}{\includegraphics{a3p4q1.jpg}}
+\end{figure}
+
+
+\subsection{knows(Mary, ?Whom)}
+\label{assign3:knows-mary-whom}\begin{figure}[htbp]
+\centering
+
+\scalebox{0.800000}{\includegraphics{a3p4q2.png}}
+\end{figure}
+
+
+\subsection{knows(?Who, ?Whom)}
+\label{assign3:knows-who-whom}
+See following 4 screen shots.
+\begin{figure}[htbp]
+\centering
+
+\scalebox{0.800000}{\includegraphics{a3p4q3.png}}
+\end{figure}
+
+--
+\begin{figure}[htbp]
+\centering
+
+\scalebox{0.800000}{\includegraphics{a3p4q3_2.png}}
+\end{figure}
+
+--
+\begin{figure}[htbp]
+\centering
+
+\scalebox{0.800000}{\includegraphics{a3p4q3_3.png}}
+\end{figure}
+
+--
+\begin{figure}[htbp]
+\centering
+
+\scalebox{0.800000}{\includegraphics{a3p4q3_4.png}}
+\end{figure}
+
+
+\subsection{knows\_trans(Mary, John)}
+\label{assign3:knows-trans-mary-john}\begin{figure}[htbp]
+\centering
+
+\scalebox{0.800000}{\includegraphics{a3p4q4.png}}
+\end{figure}
+
+
+\subsection{knows\_trans(Mary, ?Whom)}
+\label{assign3:knows-trans-mary-whom}
+See following 4 screen shots.
+\begin{figure}[htbp]
+\centering
+
+\scalebox{0.800000}{\includegraphics{a3p4q5_1.png}}
+\end{figure}
+
+--
+\begin{figure}[htbp]
+\centering
+
+\scalebox{0.800000}{\includegraphics{a3p4q5_2.png}}
+\end{figure}
+
+--
+\begin{figure}[htbp]
+\centering
+
+\scalebox{0.800000}{\includegraphics{a3p4q5_3.png}}
+\end{figure}
+
+--
+\begin{figure}[htbp]
+\centering
+
+\scalebox{0.800000}{\includegraphics{a3p4q5_4.png}}
+\end{figure}
+
+
+\subsection{knows\_trans(?Who, ?Whom)}
+\label{assign3:knows-trans-who-whom}
+See following 10 Screen shots.
+\begin{figure}[htbp]
+\centering
+
+\scalebox{0.800000}{\includegraphics{a3p4q6_1.png}}
+\end{figure}
+
+--
+\begin{figure}[htbp]
+\centering
+
+\scalebox{0.800000}{\includegraphics{a3p4q6_2.png}}
+\end{figure}
+
+--
+\begin{figure}[htbp]
+\centering
+
+\scalebox{0.800000}{\includegraphics{a3p4q6_3.png}}
+\end{figure}
+
+---
+\begin{figure}[htbp]
+\centering
+
+\scalebox{0.800000}{\includegraphics{a3p4q6_4.png}}
+\end{figure}
+
+--
+\begin{figure}[htbp]
+\centering
+
+\scalebox{0.800000}{\includegraphics{a3p4q6_5.png}}
+\end{figure}
+
+--
+\begin{figure}[htbp]
+\centering
+
+\scalebox{0.800000}{\includegraphics{a3p4q6_6.png}}
+\end{figure}
+
+--
+\begin{figure}[htbp]
+\centering
+
+\scalebox{0.800000}{\includegraphics{a3p4q6_7.png}}
+\end{figure}
+
+---
+\begin{figure}[htbp]
+\centering
+
+\scalebox{0.800000}{\includegraphics{a3p4q6_8.png}}
+\end{figure}
+
+--
+\begin{figure}[htbp]
+\centering
+
+\scalebox{0.800000}{\includegraphics{a3p4q6_9.png}}
+\end{figure}
+
+--
+\begin{figure}[htbp]
+\centering
+
+\scalebox{0.800000}{\includegraphics{a3p4q6_10.png}}
+\end{figure}
+
+\begin{notice}{note}{Todo}
+
+Give all results of the (bottom-up) generation employing OO jDREW BU:
+\end{notice}
+\begin{figure}[htbp]
+\centering
+
+\includegraphics{a3p4bu.png}
+\end{figure}
+
+
+\subsection{Top-down and Bottom-up correspondence}
+\label{assign3:top-down-and-bottom-up-correspondence}
+\begin{notice}{note}{Todo}
+
+To which (top-down) query does the (bottom-up) generation correspond?
+\end{notice}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{knows\PYGZus{}trans}\PYG{p}{(}\PYG{l+s+sAtom}{?}\PYG{n+nv}{Who}\PYG{p}{,}\PYG{l+s+sAtom}{?}\PYG{n+nv}{Whom}\PYG{p}{)}\PYG{p}{.}
+\end{Verbatim}
+
+\begin{notice}{note}{Todo}
+
+Briefly explain this correspondence.
+\end{notice}
+
+Since bottom-up generation involves iteratively/recursively finding all grounded
+atoms, i.e. the least Herbrand model (\code{M}), the \code{knows\_trans(X,Y).} transitive query
+will essentially solve the \code{M} if allowed to search until all solutions are
+found.
+
+
+\section{Part 5}
+\label{assign3:part-5}
+\begin{notice}{note}{Todo}
+
+Construct a small ontology with a class Public Transport that has four indirect
+subclasses, Bus, Streetcar, Metro, and Train. Consider Bus and Streetcar value
+restriction properties “borne Street”; Streetcar, Metro, and Train value
+restriction properties “borne Rail”; a Metro exists restriction property “level
+Subsurface”; for all four classes, value restriction properties “carry Person”.
+Introduce two intermediate classes which abstract shared property restriction
+classes, give them (meaningful) names, and add their subclass relationships.
+Introduce all property restriction classes at the highest possible levels.
+Introduce Metro instances m1 and m2, Train instance t, and Person instance p.
+Represent the facts that m1 and m2 carry p, and t carries p.
+
+Write all property restriction classes that can be derived for subclasses, here:
+\end{notice}
+\begin{itemize}
+\item {} 
+borneStreet all StreetTransport
+
+\item {} 
+borneRail all RailTransport
+
+\item {} 
+levelSubsurface some Metro
+
+\item {} 
+carryPerson some Public\_transport
+
+\end{itemize}
+
+
+\subsection{Part 5 A}
+\label{assign3:part-5-a}
+Draw a diagram for the ontology.
+Hint: Plan to best use the space below.
+Hint: Alternatively, you can model everything in the Protégé ontology editor and
+get the diagram from its Jambalaya tab (attach a printout).
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{0.800000}{\includegraphics{onto.jpg}}
+\caption{Ontology diagram.}\end{figure}
+
+
+\subsection{Part 5 B}
+\label{assign3:part-5-b}
+
+\subsubsection{ABox}
+\label{assign3:abox}
+\{m1:Metro, m2:Metro, t:Train, p:Person\}
+
+
+\subsubsection{TBox}
+\label{assign3:tbox}
+(see attached sheet.)
+
+
+\subsection{Part 5 C}
+\label{assign3:part-5-c}
+There are no cases of \emph{direct} multiple inheritance in my model.  However, should I (for
+example) have abstracted \code{RailTransport} to the level of
+\code{Public\_transport} then \code{Metro} and \code{Train} would inherit from both
+\code{Public\_transport} and \code{RailTransport}.
+
+However, there are cases of \emph{inherited anonymous classes}, for example:
+
+Metro and Train both inherit from \code{borneRail only RailTransport} and
+\code{carryPerson only Public\_transport} (alos Metro inherits from
+\code{levelSubsurface some Metro}).
+
+Bus and Streetcar inherit from \code{borneStreet only StreetTransport} and
+\code{carryPerson only Public\_transport}.
+
+\code{RailTransport} inherits from \code{Public\_transport} and \code{borneRail only
+RailTransport}.
+
+\code{StreetTransport} inherits from \code{Public\_transport} and \code{borneStreet only
+StreetTransport}.
+
+\code{Public\_transport} inherits from \code{carryPerson only Public\_transport} and
+\code{Thing}.
+
+The reasoning tasks performed on the created ontology was the Pellet and Hermit
+plugins for the Protege Owl 4 framework.  \emph{(There did not appear to be anything
+new learned by starting the mentioned reasoner.  Protege is a very complicated
+tool and the interface is unintuitive, which is also reflected in the
+documentation.)}
+
+However the key reasoning tasks done by the above reasoners based on the
+tableaux algorithm (namely Pellet) include:
+\begin{itemize}
+\item {} 
+Satisfiability
+
+\item {} 
+Instance checking
+
+\item {} 
+Concept satisfiability
+
+\item {} 
+Retrieval
+
+\item {} 
+Concept Subsumption
+
+\item {} 
+and Equivalence
+
+\end{itemize}
 
 \begin{thebibliography}{Tolf11}
 \bibitem[JSON]{JSON}{\phantomsection\label{assign0:json} 

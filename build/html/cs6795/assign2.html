@@ -1,0 +1,400 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Assignment 2 &mdash; (Mis)Adventures in Hax-Fu v1.0 documentation</title>
+    <link rel="stylesheet" href="../static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="(Mis)Adventures in Hax-Fu v1.0 documentation" href="../index.html" />
+    <link rel="up" title="CS6795 Labs and Assignments" href="index.html" />
+    <link rel="next" title="Assignment 3" href="assign3.html" />
+    <link rel="prev" title="Assignment 1" href="assign1.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="assign3.html" title="Assignment 3"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="assign1.html" title="Assignment 1"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../main.html">(Mis)Adventures in Hax-Fu v1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">CS6795 Labs and Assignments</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="assignment-2">
+<h1>Assignment 2<a class="headerlink" href="#assignment-2" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="part-1-draw-dlg-of-rdf-xml-document">
+<h2>Part 1 - Draw DLG of RDF/XML Document<a class="headerlink" href="#part-1-draw-dlg-of-rdf-xml-document" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition " id="index-0">
+<p class="first admonition-title">Todo</p>
+<p>This is RDF metadata about four fictitious people:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;rdf:RDF</span> <span class="na">xmlns:rdf=</span><span class="s">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span>
+  <span class="na">xmlns:samfam=</span><span class="s">&quot;http://samplefamily.org/elements/&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;rdf:Description</span> <span class="na">rdf:about=</span><span class="s">&quot;http://www.ourhomes/john&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;samfam:name&gt;</span>John Smith<span class="nt">&lt;/samfam:name&gt;</span>
+    <span class="nt">&lt;samfam:sibling</span> <span class="na">rdf:resource=</span><span class="s">&quot;http://www.ourhomes/mary&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/rdf:Description&gt;</span>
+  <span class="nt">&lt;rdf:Description</span> <span class="na">rdf:about=</span><span class="s">&quot;http://www.ourhomes/mary&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;samfam:name&gt;</span>Mary Smith<span class="nt">&lt;/samfam:name&gt;</span>
+    <span class="nt">&lt;samfam:sibling</span> <span class="na">rdf:resource=</span><span class="s">&quot;http://www.ourhomes/john&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/rdf:Description&gt;</span>
+  <span class="nt">&lt;rdf:Description</span> <span class="na">rdf:about=</span><span class="s">&quot;http://www.ourhomes/babs&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;samfam:name&gt;</span>Barbara Smith<span class="nt">&lt;/samfam:name&gt;</span>
+    <span class="nt">&lt;samfam:child</span> <span class="na">rdf:resource=</span><span class="s">&quot;http://www.ourhomes/john&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;samfam:child</span> <span class="na">rdf:resource=</span><span class="s">&quot;http://www.ourhomes/mary&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/rdf:Description&gt;</span>
+  <span class="nt">&lt;rdf:Description</span> <span class="na">rdf:about=</span><span class="s">&quot;http://www.ourhomes/herb&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;samfam:name&gt;</span>Herbert Smith<span class="nt">&lt;/samfam:name&gt;</span>
+    <span class="nt">&lt;samfam:child</span> <span class="na">rdf:resource=</span><span class="s">&quot;http://www.ourhomes/john&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;samfam:child</span> <span class="na">rdf:resource=</span><span class="s">&quot;http://www.ourhomes/mary&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/rdf:Description&gt;</span>
+<span class="nt">&lt;/rdf:RDF&gt;</span>
+</pre></div>
+</div>
+<p class="last">Draw the directed labeled graph (DLG) that constitutes the RDF diagram of this XML element (use space below).
+Hint: URLs, going into ovals or becoming arc labels, and texts, going into rectangles, may be arbitrarily shortened, along as they remain unique (e.g.: &#8216;.../john&#8217; or just &#8216;john&#8217;; &#8216;John S&#8217; or just &#8216;JS&#8217;); namespaces can be omitted.</p>
+</div>
+<p class="graphviz">
+<img src="../images/graphviz-8e0c61029aff928c1e78e03b06cf7f755d84a4b6.png" alt="digraph g {
+
+  // Resources
+  node [label=&quot;john&quot;] john;
+  node [label=&quot;mary&quot;] mary;
+  node [label=&quot;babs&quot;] babs;
+  node [label=&quot;herb&quot;] herb;
+
+
+  // Literals
+  node [shape=rectangle, label=&quot;John Smith&quot;] john_name;
+  node [shape=rectangle, label=&quot;Mary Smith&quot;] mary_name;
+  node [shape=rectangle, label=&quot;Barbara Smith&quot;] babs_name;
+  node [shape=rectangle, label=&quot;Herbert Smith&quot;] herb_name;
+
+  // Name relationships
+  john -&gt; john_name [label=&quot;name&quot;];
+  mary -&gt; mary_name [label=&quot;name&quot;];
+  babs -&gt; babs_name [label=&quot;name&quot;];
+  herb -&gt; herb_name [label=&quot;name&quot;];
+
+  // sibling relationships
+  john -&gt; mary [label=&quot;sibling&quot;];
+  mary -&gt; john [label=&quot;sibling&quot;];
+
+  // Child relationships
+  babs -&gt; mary [label=&quot;child&quot;];
+  babs -&gt; john [label=&quot;child&quot;];
+  herb -&gt; mary [label=&quot;child&quot;];
+  herb -&gt; john [label=&quot;child&quot;];
+
+}" />
+</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Above graph created manually using the following graphviz DOT language:</p>
+<div class="last highlight-python"><pre>digraph g {
+
+  // Resources
+  node [label="john"] john;
+  node [label="mary"] mary;
+  node [label="babs"] babs;
+  node [label="herb"] herb;
+
+
+  // Literals
+  node [shape=rectangle, label="John Smith"] john_name;
+  node [shape=rectangle, label="Mary Smith"] mary_name;
+  node [shape=rectangle, label="Barbara Smith"] babs_name;
+  node [shape=rectangle, label="Herbert Smith"] herb_name;
+
+  // Name relationships
+  john -&gt; john_name [label="name"];
+  mary -&gt; mary_name [label="name"];
+  babs -&gt; babs_name [label="name"];
+  herb -&gt; herb_name [label="name"];
+
+  // sibling relationships
+  john -&gt; mary [label="sibling"];
+  mary -&gt; john [label="sibling"];
+
+  // Child relationships
+  babs -&gt; mary [label="child"];
+  babs -&gt; john [label="child"];
+  herb -&gt; mary [label="child"];
+  herb -&gt; john [label="child"];
+
+}</pre>
+</div>
+</div>
+</div>
+<div class="section" id="part-2">
+<h2>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition " id="index-1">
+<p class="first admonition-title">Todo</p>
+<p>Consider the following Datalog program in Prolog syntax defining a unary
+predicate or relation human:</p>
+<div class="last highlight-prolog"><div class="highlight"><pre><span class="nf">human</span><span class="p">(</span><span class="nv">X</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">philosopher</span><span class="p">(</span><span class="nv">X</span><span class="p">).</span>
+<span class="nf">human</span><span class="p">(</span><span class="nv">X</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">featherless</span><span class="p">(</span><span class="nv">X</span><span class="p">),</span> <span class="nf">biped</span><span class="p">(</span><span class="nv">X</span><span class="p">).</span>
+<span class="nf">philosopher</span><span class="p">(</span><span class="nv">X</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">dualist</span><span class="p">(</span><span class="nv">X</span><span class="p">).</span>
+<span class="nf">dualist</span><span class="p">(</span><span class="s-Atom">john</span><span class="p">).</span>
+<span class="nf">biped</span><span class="p">(</span><span class="s-Atom">mary</span><span class="p">).</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-todo admonition " id="index-2">
+<p class="first admonition-title">Todo</p>
+<ol class="last upperalpha simple">
+<li>Give, and very briefly explain, the result of the query human(john):</li>
+</ol>
+</div>
+<p><em>yes</em> <strong>because</strong> <em>``john`` is a ``dualist`` and dualists are ``philosophers`` and philosophers are ``human``, therefore ``john`` is a ``human``</em></p>
+<div class="admonition-todo admonition " id="index-3">
+<p class="first admonition-title">Todo</p>
+<ol class="last upperalpha simple" start="2">
+<li>Give, and very briefly explain, the result of the query human(mary):</li>
+</ol>
+</div>
+<p><em>no</em> <strong>because</strong> <em>``mary`` is a ``biped``, but only human if a ``biped`` and ``featherless`` however it is not known if she is a ``featherless``.  Therefore, it is not known that she is human.</em></p>
+<div class="admonition-todo admonition " id="index-4">
+<p class="first admonition-title">Todo</p>
+<p>c) Give the result(s) of the query:
+.. code-block:</p>
+<div class="last highlight-python"><pre>?- human(Y).</pre>
+</div>
+</div>
+<p>Y = john
+no</p>
+</div>
+<div class="section" id="part-3">
+<h2>Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition " id="index-5">
+<p class="first admonition-title">Todo</p>
+<p>Using Prolog or any other logic notation, give a program that expresses that
+(1) <tt class="docutils literal"><span class="pre">ride(X,Y)</span></tt> can be proved via <tt class="docutils literal"><span class="pre">train(X,Y)</span></tt> or <tt class="docutils literal"><span class="pre">bus(X,Y)</span></tt> and (2) <tt class="docutils literal"><span class="pre">ride(X,Z)</span></tt> can be
+proved via (a) <tt class="docutils literal"><span class="pre">train(X,Y)</span></tt> or <tt class="docutils literal"><span class="pre">bus(X,Y)</span></tt> and (b), recursively, <tt class="docutils literal"><span class="pre">ride(Y,Z)</span></tt>.
+Add facts representing <tt class="docutils literal"><span class="pre">train</span></tt> or <tt class="docutils literal"><span class="pre">bus</span></tt> relations in a real or fictitious region,
+mentioning a place, one of its <tt class="docutils literal"><span class="pre">train</span></tt>- or <tt class="docutils literal"><span class="pre">bus</span></tt>-reachable places, and one of its
+further reachable places. Show a query that asks for all of the known <tt class="docutils literal"><span class="pre">rides</span></tt>,
+and a derivation using at least one occurrence of the rule (2).</p>
+<p class="last">Hints: Consider to introduce an auxiliary relation for direct rides. You can
+test your program and queries in the SWI Prolog engine (variables are
+upper-cased) or in the OO jDREW POSL engine (variables are “?”-prefixed).</p>
+</div>
+<div class="highlight-prolog"><div class="highlight"><pre><span class="nf">ride</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span><span class="nv">Y</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">train</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span><span class="nv">Y</span><span class="p">).</span>
+<span class="nf">ride</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span><span class="nv">Y</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">bus</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span><span class="nv">Y</span><span class="p">).</span>
+<span class="nf">ride</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span><span class="nv">Z</span><span class="p">)</span> <span class="p">:-</span>
+  <span class="nf">train</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span><span class="nv">Y</span><span class="p">),</span>
+  <span class="nf">ride</span><span class="p">(</span><span class="nv">Y</span><span class="p">,</span><span class="nv">Z</span><span class="p">).</span>
+<span class="nf">ride</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span><span class="nv">Z</span><span class="p">)</span> <span class="p">:-</span>
+  <span class="nf">bus</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span><span class="nv">Y</span><span class="p">),</span>
+  <span class="nf">ride</span><span class="p">(</span><span class="nv">Y</span><span class="p">,</span><span class="nv">Z</span><span class="p">).</span>
+
+<span class="nf">bus</span><span class="p">(</span><span class="s-Atom">home</span><span class="p">,</span><span class="s-Atom">kings_place</span><span class="p">).</span>
+<span class="nf">bus</span><span class="p">(</span><span class="s-Atom">kings_place</span><span class="p">,</span><span class="s-Atom">work</span><span class="p">).</span>
+<span class="nf">bus</span><span class="p">(</span><span class="s-Atom">kings_place</span><span class="p">,</span><span class="s-Atom">train_station</span><span class="p">).</span>
+<span class="nf">train</span><span class="p">(</span><span class="s-Atom">train_station</span><span class="p">,</span><span class="s-Atom">bathurst</span><span class="p">).</span>
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>?- ride<span class="o">(</span>X,Y<span class="o">)</span>.
+<span class="nv">X</span> <span class="o">=</span> train_station,
+<span class="nv">Y</span> <span class="o">=</span> bathurst ;
+<span class="nv">X</span> <span class="o">=</span> home,
+<span class="nv">Y</span> <span class="o">=</span> kings_place ;
+<span class="nv">X</span> <span class="o">=</span> kings_place,
+<span class="nv">Y</span> <span class="o">=</span> work ;
+<span class="nv">X</span> <span class="o">=</span> kings_place,
+<span class="nv">Y</span> <span class="o">=</span> train_station ;
+<span class="nv">X</span> <span class="o">=</span> home,
+<span class="nv">Y</span> <span class="o">=</span> work ;
+<span class="nv">X</span> <span class="o">=</span> home,
+<span class="nv">Y</span> <span class="o">=</span> train_station ;
+<span class="nv">X</span> <span class="o">=</span> home,
+<span class="nv">Y</span> <span class="o">=</span> bathurst ;
+<span class="nv">X</span> <span class="o">=</span> kings_place,
+<span class="nv">Y</span> <span class="o">=</span> bathurst ;
+false.
+
+?- ride<span class="o">(</span>home,bathurst<span class="o">)</span>.
+<span class="nb">true</span> ;
+false.
+
+?- ride<span class="o">(</span>home,work<span class="o">)</span>.
+<span class="nb">true</span> ;
+false.
+</pre></div>
+</div>
+</div>
+<div class="section" id="part-4">
+<h2>Part 4<a class="headerlink" href="#part-4" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition " id="index-6">
+<p class="first admonition-title">Todo</p>
+<p>Consider this definition of the predicate <tt class="docutils literal"><span class="pre">goldmemgold</span></tt> (i.e., &#8216;member
+surrounded by gold&#8217;):</p>
+<p>Prolog syntax:</p>
+<div class="highlight-python"><pre>goldmemgold(X,[gold,X,gold|R]).
+goldmemgold(X,[Y|R]) :- goldmemgold(X,R).</pre>
+</div>
+<p>POSL syntax:</p>
+<div class="highlight-python"><pre>goldmemgold(?X,[gold,?X,gold|?R]).
+goldmemgold(?X,[?Y|?R]) :- goldmemgold(?X,?R).</pre>
+</div>
+<p>You can read the two clauses as follows:
+* <em>X is a ``goldmemgold`` of a list whose first three elements are gold followed X
+followed by gold.</em>
+* <em>X is a ``goldmemgold`` of a list whose tail (all but the first element) is R if X
+is a goldmemgold of R.</em></p>
+<p>Hint: You can test your answers to the following in the SWI Prolog engine
+(variables are upper-cased) or in the OO jDREW POSL engine (variables are
+“?”-prefixed).</p>
+<p class="last">Show the results of checking for a specific goldmemgold thus:</p>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>?- goldmemgold<span class="o">(</span>john,<span class="o">[</span>john,gold,mary,gold,peter,gold<span class="o">])</span>.
+false.
+
+?- goldmemgold<span class="o">(</span>mary,<span class="o">[</span>john,gold,mary,gold,peter,gold<span class="o">])</span>.
+<span class="nb">true</span> ;
+false.
+</pre></div>
+</div>
+<div class="admonition-todo admonition " id="index-7">
+<p class="first admonition-title">Todo</p>
+<p>Show the results of enumerating goldmemgolds of a list thus
+(where “;” asks for another solution):</p>
+<p>Prolog syntax:</p>
+<div class="highlight-python"><pre>?- goldmemgold(X,[john,gold,mary,gold,peter,gold]).</pre>
+</div>
+<p>POSL syntax:</p>
+<div class="last highlight-python"><pre>?- goldmemgold(?X,[john,gold,mary,gold,peter,gold]).</pre>
+</div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>?- goldmemgold<span class="o">(</span>X,<span class="o">[</span>john,gold,mary,gold,peter,gold<span class="o">])</span>.
+<span class="nv">X</span> <span class="o">=</span> mary ;
+<span class="nv">X</span> <span class="o">=</span> peter ;
+false.
+</pre></div>
+</div>
+<div class="admonition-todo admonition " id="index-8">
+<p class="first admonition-title">Todo</p>
+<p class="last">Briefly explain here the number of solutions found, e.g. by studying the
+expanded proof tree
+under “Solution:” in the GUI of OO jDREW.</p>
+</div>
+<p>The number of solutions found by studying the expanded proof tree under
+&#8220;solution:&#8221; in the GUI of OO jDREW can be explained by the nature of how
+<tt class="docutils literal"><span class="pre">prolog</span></tt> iteratest through the list:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">john</span><span class="p">,</span><span class="n">gold</span><span class="p">,</span><span class="n">mary</span><span class="p">,</span><span class="n">gold</span><span class="p">,</span><span class="n">peter</span><span class="p">,</span><span class="n">gold</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The proof tree for <tt class="docutils literal"><span class="pre">mary</span></tt> contains <strong>one</strong> recursive step effectively popping
+<tt class="docutils literal"><span class="pre">john</span></tt> off the front of the list.</p>
+<p>The proof tree for <tt class="docutils literal"><span class="pre">peter</span></tt> contains <strong>three</strong> recursive steps effectively
+popping <tt class="docutils literal"><span class="pre">john</span></tt>, <tt class="docutils literal"><span class="pre">gold</span></tt>, and <tt class="docutils literal"><span class="pre">mary</span></tt> off of the front of the list
+successively until <tt class="docutils literal"><span class="pre">goldmemgold(peter,[gold,peter,gold|?R])</span></tt> succeeds.</p>
+<div class="admonition-todo admonition " id="index-9">
+<p class="first admonition-title">Todo</p>
+<p class="last">Briefly explain if it has any effect on the number of solutions that john, mary,
+and peter ‘share’ some gold?</p>
+</div>
+<p>Yes <strong>because</strong> if <tt class="docutils literal"><span class="pre">john</span></tt>, <tt class="docutils literal"><span class="pre">mary</span></tt> and <tt class="docutils literal"><span class="pre">peter</span></tt> did not &#8216;share&#8217; some
+<tt class="docutils literal"><span class="pre">gold</span></tt> the proof for <tt class="docutils literal"><span class="pre">mary</span></tt> would require <strong>one</strong> additional recursive step to
+reduce the list <tt class="docutils literal"><span class="pre">[john,gold,gold,mary,gold,...]</span></tt> down to
+<tt class="docutils literal"><span class="pre">[gold,mary,gold,...]</span></tt> and an additional <strong>two</strong> recursive steps to &#8216;reduce&#8217;
+<tt class="docutils literal"><span class="pre">[john,gold,gold,mary,gold,gold,peter,gold]</span></tt> down to <tt class="docutils literal"><span class="pre">[gold,peter,gold]</span></tt>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../main.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Assignment 2</a><ul>
+<li><a class="reference internal" href="#part-1-draw-dlg-of-rdf-xml-document">Part 1 - Draw DLG of RDF/XML Document</a></li>
+<li><a class="reference internal" href="#part-2">Part 2</a></li>
+<li><a class="reference internal" href="#part-3">Part 3</a></li>
+<li><a class="reference internal" href="#part-4">Part 4</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="assign1.html"
+                        title="previous chapter">Assignment 1</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="assign3.html"
+                        title="next chapter">Assignment 3</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/cs6795/assign2.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="assign3.html" title="Assignment 3"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="assign1.html" title="Assignment 1"
+             >previous</a> |</li>
+        <li><a href="../main.html">(Mis)Adventures in Hax-Fu v1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >CS6795 Labs and Assignments</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Reuben Peter-Paul.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

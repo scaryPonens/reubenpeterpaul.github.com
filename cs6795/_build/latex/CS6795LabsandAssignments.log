@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.9.23)  3 OCT 2011 14:25
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.10.5)  31 OCT 2011 14:27
 entering extended mode
  %&-line parsing enabled.
 **CS6795LabsandAssignments.tex
@@ -855,23 +855,21 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <17.28> not available
 ] (./CS6795LabsandAssignments.toc
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 2.
-)
-\tf@toc=\write7
-\openout7 = `CS6795LabsandAssignments.toc'.
-
-
-Adding blank page after the table of contents.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 112.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 49.
 pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.112 \tableofcontents
-                       [1
+l.49 ...ne {chapter}{Bibliography}{57}{chapter*.6}
+                                                   [1
 
-]pdfTeX warning (ext4): destination with the same identifier (name{page.ii}) ha
-s been already used, duplicate ignored
+])
+\tf@toc=\write7
+\openout7 = `CS6795LabsandAssignments.toc'.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.ii}) has
+ been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.112 \tableofcontents
@@ -884,7 +882,7 @@ LaTeX Font Info:    Try loading font information for TS1+ptm on input line 129.
 (/usr/share/texmf-texlive/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-<assign0a.png, id=124, 484.81125pt x 547.2947pt>
+<assign0a.png, id=199, 484.81125pt x 547.2947pt>
 File: assign0a.png Graphic file (type png)
  <use assign0a.png>
 File: assign0a.png Graphic file (type png)
@@ -899,7 +897,7 @@ pdfTeX warning: pdflatex (file ./graphviz-ca9411c629b22c9cf6cf6dc318a5b73a7efe3
 65a.pdf): PDF inclusion: found PDF version <1.5>, but at most version <1.4> all
 owed
 
-<graphviz-ca9411c629b22c9cf6cf6dc318a5b73a7efe365a.pdf, id=125, 273.02pt x 477.
+<graphviz-ca9411c629b22c9cf6cf6dc318a5b73a7efe365a.pdf, id=200, 273.02pt x 477.
 785pt>
 File: graphviz-ca9411c629b22c9cf6cf6dc318a5b73a7efe365a.pdf Graphic file (type 
 pdf)
@@ -924,29 +922,224 @@ LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <9> not available
 
 ]
 Chapter 3.
-[11] [12]
+<graph.png, id=269, 3658.66875pt x 252.945pt>
+File: graph.png Graphic file (type png)
+ <use graph.png>
+File: graph.png Graphic file (type png)
+ <use graph.png>
+[11 <./graph.png>] [12
+
+]
+Chapter 4.
+[13] [14]
 LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/it' tried instead on input line 625.
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 662.
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 625.
- [13] [14] [15] [16]
-Underfull \hbox (badness 10000) in paragraph at lines 749--751
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 662.
+ [15] [16] [17] [18]
+LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <10> not available
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 859.
+LaTeX Font Info:    Font shape `T1/phv/b/it' in size <10> not available
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 859.
+ [19] [20
+
+]
+Chapter 5.
+
+
+pdfTeX warning: pdflatex (file ./graphviz-8e0c61029aff928c1e78e03b06cf7f755d84a
+4b6.pdf): PDF inclusion: found PDF version <1.5>, but at most version <1.4> all
+owed
+
+<graphviz-8e0c61029aff928c1e78e03b06cf7f755d84a4b6.pdf, id=324, 562.1pt x 393.4
+7pt>
+File: graphviz-8e0c61029aff928c1e78e03b06cf7f755d84a4b6.pdf Graphic file (type 
+pdf)
+ <use graphviz-8e0c61029aff928c1e78e03b06cf7f755d84a4b6.pdf>
+File: graphviz-8e0c61029aff928c1e78e03b06cf7f755d84a4b6.pdf Graphic file (type 
+pdf)
+
+<use graphviz-8e0c61029aff928c1e78e03b06cf7f755d84a4b6.pdf> [21]
+Underfull \vbox (badness 2111) detected at line 935
+ []
+
+[22 <./graphviz-8e0c61029aff928c1e78e03b06cf7f755d84a4b6.pdf>] [23] [24]
+[25] [26]
+Chapter 6.
+[27
+
+] [28]
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 1283.
+ [29] <a3p4.png, id=378, 794.97pt x 703.62875pt>
+File: a3p4.png Graphic file (type png)
+ <use a3p4.png>
+File: a3p4.png Graphic file (type png)
+
+<use a3p4.png> <a3p4q1.jpg, id=379, 797.98125pt x 704.6325pt>
+File: a3p4q1.jpg Graphic file (type jpg)
+ <use a3p4q1.jpg>
+File: a3p4q1.jpg Graphic file (type jpg)
+
+<use a3p4q1.jpg> <a3p4q2.png, id=380, 803.0pt x 698.61pt>
+File: a3p4q2.png Graphic file (type png)
+ <use a3p4q2.png>
+File: a3p4q2.png Graphic file (type png)
+
+<use a3p4q2.png> <a3p4q3.png, id=381, 797.98125pt x 706.64pt>
+File: a3p4q3.png Graphic file (type png)
+ <use a3p4q3.png>
+File: a3p4q3.png Graphic file (type png)
+
+<use a3p4q3.png> [30] [31 <./a3p4.png (PNG copy)>] [32 <./a3p4q1.jpg>] [33 <./a
+3p4q2.png (PNG copy)>] <a3p4q3_2.png, id=401, 800.9925pt x 698.61pt>
+File: a3p4q3_2.png Graphic file (type png)
+
+<use a3p4q3_2.png>
+File: a3p4q3_2.png Graphic file (type png)
+ <use a3p4q3_2.png>
+<a3p4q3_3.png, id=402, 810.02625pt x 706.64pt>
+File: a3p4q3_3.png Graphic file (type png)
+ <use a3p4q3_3.png>
+File: a3p4q3_3.png Graphic file (type png)
+
+<use a3p4q3_3.png> <a3p4q3_4.png, id=403, 799.98875pt x 706.64pt>
+File: a3p4q3_4.png Graphic file (type png)
+
+<use a3p4q3_4.png>
+File: a3p4q3_4.png Graphic file (type png)
+ <use a3p4q3_4.png>
+<a3p4q4.png, id=404, 805.0075pt x 698.61pt>
+File: a3p4q4.png Graphic file (type png)
+ <use a3p4q4.png>
+File: a3p4q4.png Graphic file (type png)
+ <use a3p4q4.png>
+<a3p4q5_1.png, id=405, 808.01875pt x 703.62875pt>
+File: a3p4q5_1.png Graphic file (type png)
+ <use a3p4q5_1.png>
+File: a3p4q5_1.png Graphic file (type png)
+
+<use a3p4q5_1.png> <a3p4q5_2.png, id=406, 801.99625pt x 698.61pt>
+File: a3p4q5_2.png Graphic file (type png)
+
+<use a3p4q5_2.png>
+File: a3p4q5_2.png Graphic file (type png)
+ <use a3p4q5_2.png>
+<a3p4q5_3.png, id=407, 808.01875pt x 703.62875pt>
+File: a3p4q5_3.png Graphic file (type png)
+ <use a3p4q5_3.png>
+File: a3p4q5_3.png Graphic file (type png)
+
+<use a3p4q5_3.png> <a3p4q5_4.png, id=408, 801.99625pt x 701.62125pt>
+File: a3p4q5_4.png Graphic file (type png)
+
+<use a3p4q5_4.png>
+File: a3p4q5_4.png Graphic file (type png)
+ <use a3p4q5_4.png>
+<a3p4q6_1.png, id=409, 799.98875pt x 688.5725pt>
+File: a3p4q6_1.png Graphic file (type png)
+ <use a3p4q6_1.png>
+File: a3p4q6_1.png Graphic file (type png)
+
+<use a3p4q6_1.png> [34 <./a3p4q3.png (PNG copy)>] [35 <./a3p4q3_2.png (PNG copy
+)>] [36 <./a3p4q3_3.png (PNG copy)>] [37 <./a3p4q3_4.png (PNG copy)>] [38 <./a3
+p4q4.png (PNG copy)>] [39 <./a3p4q5_1.png (PNG copy)>] [40 <./a3p4q5_2.png (PNG
+ copy)>] [41 <./a3p4q5_3.png (PNG copy)>] [42 <./a3p4q5_4.png (PNG copy)>]
+<a3p4q6_2.png, id=452, 794.97pt x 701.62125pt>
+File: a3p4q6_2.png Graphic file (type png)
+ <use a3p4q6_2.png>
+File: a3p4q6_2.png Graphic file (type png)
+
+<use a3p4q6_2.png> <a3p4q6_3.png, id=453, 791.95876pt x 699.61375pt>
+File: a3p4q6_3.png Graphic file (type png)
+
+<use a3p4q6_3.png>
+File: a3p4q6_3.png Graphic file (type png)
+ <use a3p4q6_3.png>
+<a3p4q6_4.png, id=454, 810.02625pt x 701.62125pt>
+File: a3p4q6_4.png Graphic file (type png)
+ <use a3p4q6_4.png>
+File: a3p4q6_4.png Graphic file (type png)
+
+<use a3p4q6_4.png> <a3p4q6_5.png, id=455, 796.9775pt x 703.62875pt>
+File: a3p4q6_5.png Graphic file (type png)
+
+<use a3p4q6_5.png>
+File: a3p4q6_5.png Graphic file (type png)
+ <use a3p4q6_5.png>
+<a3p4q6_6.png, id=456, 794.97pt x 703.62875pt>
+File: a3p4q6_6.png Graphic file (type png)
+ <use a3p4q6_6.png>
+File: a3p4q6_6.png Graphic file (type png)
+
+<use a3p4q6_6.png> <a3p4q6_7.png, id=457, 810.02625pt x 707.64375pt>
+File: a3p4q6_7.png Graphic file (type png)
+
+<use a3p4q6_7.png>
+File: a3p4q6_7.png Graphic file (type png)
+ <use a3p4q6_7.png>
+<a3p4q6_8.png, id=458, 796.9775pt x 706.64pt>
+File: a3p4q6_8.png Graphic file (type png)
+ <use a3p4q6_8.png>
+File: a3p4q6_8.png Graphic file (type png)
+
+<use a3p4q6_8.png> <a3p4q6_9.png, id=459, 789.95125pt x 696.6025pt>
+File: a3p4q6_9.png Graphic file (type png)
+
+<use a3p4q6_9.png>
+File: a3p4q6_9.png Graphic file (type png)
+ <use a3p4q6_9.png>
+<a3p4q6_10.png, id=460, 799.98875pt x 698.61pt>
+File: a3p4q6_10.png Graphic file (type png)
+ <use a3p4q6_10.png>
+File: a3p4q6_10.png Graphic file (type png)
+
+<use a3p4q6_10.png> <a3p4bu.png, id=461, 791.95876pt x 750.805pt>
+File: a3p4bu.png Graphic file (type png)
+
+<use a3p4bu.png>
+File: a3p4bu.png Graphic file (type png)
+ <use a3p4bu.png> [43 <./a3p4q6_1.png (PNG copy)>] [44 <./a3p4q6_2.png (PNG cop
+y)>] [45 <./a3p4q6_3.png (PNG copy)>] [46 <./a3p4q6_4.png (PNG copy)>] [47 <./a
+3p4q6_5.png (PNG copy)>] [48 <./a3p4q6_6.png (PNG copy)>]
+[49 <./a3p4q6_7.png (PNG copy)>] [50 <./a3p4q6_8.png (PNG copy)>] [51 <./a3p4q6
+_9.png (PNG copy)>] [52 <./a3p4q6_10.png (PNG copy)>] [53 <./a3p4bu.png (PNG co
+py)>] <onto.jpg, id=510, 1302.8675pt x 848.16875pt>
+File: onto.jpg Graphic file (type jpg)
+ <use onto.jpg>
+File: onto.jpg Graphic file (type jpg)
+
+<use onto.jpg> [54]
+Underfull \hbox (badness 6300) in paragraph at lines 1679--1682
+[]\T1/ptm/m/n/10 Metro and Train both in-herit from \T1/pcr/m/n/10 borneRail on
+ly RailTransport \T1/ptm/m/n/10 and \T1/pcr/m/n/10 carryPerson only
+ []
+
+
+Underfull \hbox (badness 5008) in paragraph at lines 1683--1685
+[]\T1/ptm/m/n/10 Bus and Street-car in-herit from \T1/pcr/m/n/10 borneStreet on
+ly StreetTransport \T1/ptm/m/n/10 and \T1/pcr/m/n/10 carryPerson only
+ []
+
+[55 <./onto.jpg>] [56
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 1726--1728
 [][][]\T1/ptm/m/n/10 JSON the Fat Free Al-ter-na-tive to XML[][], In-tro-duc-in
 g JSON, 21 Septem-ber 2011,
  []
 
-(./CS6795LabsandAssignments.ind) [17
-
+(./CS6795LabsandAssignments.ind) [57
 
 ] (./CS6795LabsandAssignments.aux) ) 
 Here is how much of TeX's memory you used:
- 7995 strings out of 493848
- 108177 string characters out of 1152823
- 195035 words of memory out of 3000000
- 11023 multiletter control sequences out of 15000+50000
- 54804 words of font info for 64 fonts, out of 3000000 for 9000
+ 8269 strings out of 493848
+ 112275 string characters out of 1152823
+ 199682 words of memory out of 3000000
+ 11191 multiletter control sequences out of 15000+50000
+ 62126 words of font info for 69 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 45i,12n,45p,1389b,383s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 45i,12n,48p,1389b,492s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/b
 ase/8r.enc}</usr/share/texmf-texlive/fonts/type1/urw/courier/ucrb8a.pfb></usr/s
 hare/texmf-texlive/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-texlive
@@ -955,9 +1148,9 @@ helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvbo8a.
 pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texm
 f-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type
 1/urw/times/utmri8a.pfb>
-Output written on CS6795LabsandAssignments.pdf (21 pages, 197331 bytes).
+Output written on CS6795LabsandAssignments.pdf (61 pages, 1305518 bytes).
 PDF statistics:
- 279 PDF objects out of 1000 (max. 8388607)
- 52 named destinations out of 1000 (max. 500000)
- 171 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 603 PDF objects out of 1000 (max. 8388607)
+ 129 named destinations out of 1000 (max. 500000)
+ 421 words of extra memory for PDF output out of 10000 (max. 10000000)
 

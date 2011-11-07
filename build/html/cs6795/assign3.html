@@ -1,0 +1,559 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Assignment 3 &mdash; (Mis)Adventures in Hax-Fu v1.0 documentation</title>
+    <link rel="stylesheet" href="../static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="(Mis)Adventures in Hax-Fu v1.0 documentation" href="../index.html" />
+    <link rel="up" title="CS6795 Labs and Assignments" href="index.html" />
+    <link rel="prev" title="Assignment 2" href="assign2.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="assign2.html" title="Assignment 2"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../main.html">(Mis)Adventures in Hax-Fu v1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">CS6795 Labs and Assignments</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="assignment-3">
+<h1>Assignment 3<a class="headerlink" href="#assignment-3" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="part-1">
+<h2>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition " id="index-0">
+<p class="first admonition-title">Todo</p>
+<ol class="arabic simple">
+<li>This is a DTD for simple (almost natural-language) &#8216;forward&#8217; rules and facts:</li>
+</ol>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;!ELEMENT forward    ((rule | fact)*)&gt;</span>
+<span class="cp">&lt;!ELEMENT rule          (if, then)&gt;</span>
+<span class="cp">&lt;!ELEMENT fact          (#PCDATA)&gt;</span>
+<span class="cp">&lt;!ELEMENT if             (#PCDATA)&gt;</span>
+<span class="cp">&lt;!ELEMENT then         (#PCDATA)&gt;</span>
+</pre></div>
+</div>
+<p class="last">a) Are the following XML elements valid with respect to this DTD
+(write &#8220;yes&#8221; or &#8220;no&#8221; behind them)?</p>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;forward&gt;</span> <span class="nt">&lt;/forward&gt;</span>
+<span class="c">&lt;!-- YES --&gt;</span>
+
+<span class="nt">&lt;forward&gt;</span> the weather <span class="nt">&lt;/forward&gt;</span>
+<span class="c">&lt;!-- NO --&gt;</span>
+
+<span class="nt">&lt;forward&gt;</span>
+  <span class="nt">&lt;fact&gt;</span> it snows <span class="nt">&lt;/fact&gt;</span>
+<span class="nt">&lt;/forward&gt;</span>
+<span class="c">&lt;!-- YES --&gt;</span>
+
+<span class="nt">&lt;forward&gt;</span>
+  <span class="nt">&lt;rule&gt;</span> if it rains then the road gets wet <span class="nt">&lt;/rule&gt;</span>
+<span class="nt">&lt;/forward&gt;</span>
+<span class="c">&lt;!-- NO --&gt;</span>
+
+<span class="nt">&lt;forward&gt;</span>
+  <span class="nt">&lt;rule&gt;</span>
+    <span class="nt">&lt;if&gt;</span> it rains <span class="nt">&lt;/if&gt;</span>
+    <span class="nt">&lt;then&gt;</span> the road gets wet <span class="nt">&lt;/then&gt;</span>
+  <span class="nt">&lt;/rule&gt;</span>
+<span class="nt">&lt;/forward&gt;</span>
+<span class="c">&lt;!-- YES --&gt;</span>
+
+<span class="nt">&lt;forward&gt;</span>
+  <span class="nt">&lt;fact&gt;</span> it rains <span class="nt">&lt;/fact&gt;</span>
+  <span class="nt">&lt;rule&gt;</span>
+    <span class="nt">&lt;if&gt;</span> it rains <span class="nt">&lt;/if&gt;</span>
+    <span class="nt">&lt;then&gt;</span> the road gets wet <span class="nt">&lt;/then&gt;</span>
+  <span class="nt">&lt;/rule&gt;</span>
+<span class="nt">&lt;/forward&gt;</span>
+<span class="c">&lt;!-- YES --&gt;</span>
+</pre></div>
+</div>
+<div class="admonition-todo admonition " id="index-1">
+<p class="first admonition-title">Todo</p>
+<ol class="loweralpha simple" start="2">
+<li>Consider these XML elements for &#8216;forward&#8217; (p =&gt; c) and &#8216;backward&#8217; (c &lt;= p) rules:</li>
+</ol>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;forward&gt;</span>
+  <span class="nt">&lt;rule&gt;</span>
+    <span class="nt">&lt;if&gt;</span> p <span class="nt">&lt;/if&gt;</span>
+    <span class="nt">&lt;then&gt;</span> c <span class="nt">&lt;/then&gt;</span>
+  <span class="nt">&lt;/rule&gt;</span>
+<span class="nt">&lt;/forward&gt;</span>
+
+<span class="nt">&lt;backward&gt;</span>
+  <span class="nt">&lt;rule&gt;</span>
+    <span class="nt">&lt;conc&gt;</span> c <span class="nt">&lt;/conc&gt;</span>
+    <span class="nt">&lt;prem&gt;</span> p <span class="nt">&lt;/prem&gt;</span>
+  <span class="nt">&lt;/rule&gt;</span>
+<span class="nt">&lt;/backward&gt;</span>
+</pre></div>
+</div>
+<p class="last">Inductively complete this XML DTD (write into the &#8221;...&#8221; lines) for
+&#8216;backward&#8217; rules and facts:</p>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;!ELEMENT backward    ((rule|fact)*)&gt;</span>
+<span class="cp">&lt;!ELEMENT rule             (conc, prem)&gt;</span>
+<span class="cp">&lt;!ELEMENT fact           (#PCDATA)&gt;</span>
+<span class="cp">&lt;!ELEMENT conc           (#PCDATA)&gt;</span>
+<span class="cp">&lt;!ELEMENT prem           (#PCDATA)&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="part-2">
+<h2>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition " id="index-2">
+<p class="first admonition-title">Todo</p>
+<p class="last">Complete the following XSLT template – by just filling in the &#8221;...&#8221; versions
+– for the (XML-to-XML) transformation of &#8216;forward&#8217; rules and facts into
+&#8216;backward&#8217; rules and facts:</p>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;xsl:template</span> <span class="na">match=</span><span class="s">&quot;forward&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;backward&gt;</span>
+    <span class="nt">&lt;xsl:apply-templates/&gt;</span>
+  <span class="nt">&lt;/backward&gt;</span>
+<span class="nt">&lt;/xsl:template&gt;</span>
+
+<span class="nt">&lt;xsl:template</span> <span class="na">match=</span><span class="s">&quot;rule&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;rule&gt;</span>
+    <span class="nt">&lt;conc&gt;&lt;xsl:value-of</span> <span class="na">select=</span><span class="s">&quot;then&quot;</span><span class="nt">/&gt;&lt;/conc&gt;</span>
+    <span class="nt">&lt;prem&gt;&lt;xsl:value-of</span> <span class="na">select=</span><span class="s">&quot;if&quot;</span><span class="nt">/&gt;&lt;/prem&gt;</span>
+  <span class="nt">&lt;/rule&gt;</span>
+<span class="nt">&lt;/xsl:template&gt;</span>
+
+<span class="nt">&lt;xsl:template</span> <span class="na">match=</span><span class="s">&quot;fact&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fact&gt;</span>
+    <span class="nt">&lt;xsl:value-of</span> <span class="na">select=</span><span class="s">&quot;.&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/fact&gt;</span>
+<span class="nt">&lt;/xsl:template&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="transformation-inversion">
+<h3>Transformation inversion?<a class="headerlink" href="#transformation-inversion" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-todo admonition " id="index-3">
+<p class="first admonition-title">Todo</p>
+<p class="last">Could this transformation be &#8216;inverted&#8217; mapping &#8216;backward&#8217; rules and facts
+into &#8216;forward&#8217; rules and facts without information loss (write in &#8220;yes&#8221;
+or &#8220;no&#8221; here)?</p>
+</div>
+<p>Yes.</p>
+</div>
+</div>
+<div class="section" id="part-3">
+<h2>Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">¶</a></h2>
+<p>Again consider the following Datalog program in Prolog syntax:</p>
+<div class="highlight-prolog"><div class="highlight"><pre><span class="nf">human</span><span class="p">(</span><span class="nv">X</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">philosopher</span><span class="p">(</span><span class="nv">X</span><span class="p">).</span>
+<span class="nf">human</span><span class="p">(</span><span class="nv">X</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">featherless</span><span class="p">(</span><span class="nv">X</span><span class="p">),</span> <span class="nf">biped</span><span class="p">(</span><span class="nv">X</span><span class="p">).</span>
+<span class="nf">philosopher</span><span class="p">(</span><span class="nv">X</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">dualist</span><span class="p">(</span><span class="nv">X</span><span class="p">).</span>
+<span class="nf">dualist</span><span class="p">(</span><span class="s-Atom">john</span><span class="p">).</span>
+<span class="nf">biped</span><span class="p">(</span><span class="s-Atom">mary</span><span class="p">).</span>
+</pre></div>
+</div>
+<div class="admonition-todo admonition " id="index-4">
+<p class="first admonition-title">Todo</p>
+<ol class="last loweralpha simple">
+<li>Give its grounding (consistently replacing variables by constants in each rule):</li>
+</ol>
+</div>
+<div class="highlight-prolog"><div class="highlight"><pre><span class="nf">human</span><span class="p">(</span><span class="s-Atom">john</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">philosopher</span><span class="p">(</span><span class="s-Atom">john</span><span class="p">).</span>
+<span class="nf">human</span><span class="p">(</span><span class="s-Atom">mary</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">philosopher</span><span class="p">(</span><span class="s-Atom">mary</span><span class="p">).</span>
+<span class="nf">human</span><span class="p">(</span><span class="s-Atom">john</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">featherless</span><span class="p">(</span><span class="s-Atom">john</span><span class="p">),</span> <span class="nf">biped</span><span class="p">(</span><span class="s-Atom">john</span><span class="p">).</span>
+<span class="nf">human</span><span class="p">(</span><span class="s-Atom">mary</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">featherless</span><span class="p">(</span><span class="s-Atom">mary</span><span class="p">),</span> <span class="nf">biped</span><span class="p">(</span><span class="s-Atom">mary</span><span class="p">).</span>
+<span class="nf">philosopher</span><span class="p">(</span><span class="s-Atom">john</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">dualist</span><span class="p">(</span><span class="s-Atom">john</span><span class="p">).</span>
+<span class="nf">philosopher</span><span class="p">(</span><span class="s-Atom">mary</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">dualist</span><span class="p">(</span><span class="s-Atom">mary</span><span class="p">).</span>
+<span class="nf">dualist</span><span class="p">(</span><span class="s-Atom">john</span><span class="p">).</span>
+<span class="nf">biped</span><span class="p">(</span><span class="s-Atom">mary</span><span class="p">).</span>
+</pre></div>
+</div>
+<div class="admonition-todo admonition " id="index-5">
+<p class="first admonition-title">Todo</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Shortcut of the grounded program:</p>
+<blockquote class="last">
+<div><div class="highlight-prolog"><div class="highlight"><pre><span class="nf">h1</span> <span class="o">:-</span> <span class="s-Atom">p1</span><span class="p">.</span>
+<span class="nf">h2</span> <span class="o">:-</span> <span class="s-Atom">p2</span><span class="p">.</span>
+<span class="nf">h1</span> <span class="o">:-</span> <span class="s-Atom">f1</span><span class="p">,</span> <span class="s-Atom">b1</span><span class="p">.</span>
+<span class="nf">h2</span> <span class="o">:-</span> <span class="s-Atom">f2</span><span class="p">,</span> <span class="s-Atom">b2</span><span class="p">.</span>
+<span class="nf">p1</span> <span class="o">:-</span> <span class="s-Atom">d1</span><span class="p">.</span>
+<span class="nf">p2</span> <span class="o">:-</span> <span class="s-Atom">d2</span><span class="p">.</span>
+<span class="s-Atom">d1</span><span class="p">.</span>
+<span class="s-Atom">b2</span><span class="p">.</span>
+</pre></div>
+</div>
+<p>M = {d1,b2,p1,h1}</p>
+</div></blockquote>
+</div>
+<ol class="last loweralpha simple" start="2">
+<li>Construct its Least Herbrand Model by fixpoint iteration (starting with the set of facts, applying the rules bottom-up to add new facts, etc., until the set no longer changes):</li>
+</ol>
+</div>
+<p>Fixpoint iteration:</p>
+<ul>
+<li><p class="first">Step 1:</p>
+<p>M0 = {d1, b2}</p>
+</li>
+<li><p class="first">Step 2:</p>
+<p>M1 = {d1, b2} + {p1}</p>
+</li>
+<li><p class="first">Step 3:</p>
+<p>M2 = {d1, b2, p1} + {h1}</p>
+</li>
+</ul>
+<p>Least Herbrand Model is: M = {dualist(john), biped(mary), philosopher(john), human(john)}</p>
+</div>
+<div class="section" id="part-4">
+<h2>Part 4<a class="headerlink" href="#part-4" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition " id="index-6">
+<p class="first admonition-title">Todo</p>
+<p>Using a knowledge base with the following facts and rules about fictitious
+people, employ OO jDREW to query their represented social network.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">see Figure below.</p>
+</div>
+<div class="highlight-prolog"><div class="highlight"><pre><span class="nf">knows_from_highschool</span><span class="p">(</span><span class="nv">Mary</span><span class="p">,</span> <span class="nv">John</span><span class="p">).</span>
+
+<span class="nf">knows_from_highschool</span><span class="p">(</span><span class="nv">John</span><span class="p">,</span> <span class="nv">Peter</span><span class="p">).</span>
+
+<span class="nf">knows_from_university</span><span class="p">(</span><span class="nv">Peter</span><span class="p">,</span> <span class="nv">Cora</span><span class="p">).</span>
+
+<span class="nf">knows_from_university</span><span class="p">(</span><span class="nv">Cora</span><span class="p">,</span> <span class="nv">Gisele</span><span class="p">).</span>
+
+
+<span class="nf">knows</span><span class="p">(</span><span class="s-Atom">?</span><span class="nv">X</span><span class="p">,</span> <span class="s-Atom">?</span><span class="nv">Y</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">knows_from_highschool</span><span class="p">(</span><span class="s-Atom">?</span><span class="nv">X</span><span class="p">,</span> <span class="s-Atom">?</span><span class="nv">Y</span><span class="p">).</span>
+
+<span class="nf">knows</span><span class="p">(</span><span class="s-Atom">?</span><span class="nv">X</span><span class="p">,</span> <span class="s-Atom">?</span><span class="nv">Y</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">knows_from_university</span><span class="p">(</span><span class="s-Atom">?</span><span class="nv">X</span><span class="p">,</span> <span class="s-Atom">?</span><span class="nv">Y</span><span class="p">).</span>
+
+
+<span class="nf">knows_trans</span><span class="p">(</span><span class="s-Atom">?</span><span class="nv">X</span><span class="p">,</span> <span class="s-Atom">?</span><span class="nv">Y</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">knows</span><span class="p">(</span><span class="s-Atom">?</span><span class="nv">X</span><span class="p">,</span> <span class="s-Atom">?</span><span class="nv">Y</span><span class="p">).</span>
+
+<span class="nf">knows_trans</span><span class="p">(</span><span class="s-Atom">?</span><span class="nv">X</span><span class="p">,</span> <span class="s-Atom">?</span><span class="nv">Y</span><span class="p">)</span> <span class="p">:-</span>  <span class="nf">knows</span><span class="p">(</span><span class="s-Atom">?</span><span class="nv">X</span><span class="p">,</span> <span class="s-Atom">?</span><span class="nv">Z</span><span class="p">),</span>
+<span class="nf">knows_trans</span><span class="p">(</span><span class="s-Atom">?</span><span class="nv">Z</span><span class="p">,</span> <span class="s-Atom">?</span><span class="nv">Y</span><span class="p">).</span>
+</pre></div>
+</div>
+<p class="last">Give all results of the following
+(top-down) queries employing OO jDREW TD:</p>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/a3p4.png"><img alt="../images/a3p4.png" src="../images/a3p4.png" style="width: 633.6px; height: 560.8px;" /></a>
+<p class="caption">Screenshot of the knowledge base entered into OO jDREW Top-Down Engine.</p>
+</div>
+<div class="section" id="knows-mary-john">
+<h3>knows(Mary, John)<a class="headerlink" href="#knows-mary-john" title="Permalink to this headline">¶</a></h3>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/a3p4q1.jpg"><img alt="../images/a3p4q1.jpg" src="../images/a3p4q1.jpg" style="width: 636.0px; height: 561.6px;" /></a>
+</div>
+</div>
+<div class="section" id="knows-mary-whom">
+<h3>knows(Mary, ?Whom)<a class="headerlink" href="#knows-mary-whom" title="Permalink to this headline">¶</a></h3>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/a3p4q2.png"><img alt="../images/a3p4q2.png" src="../images/a3p4q2.png" style="width: 640.0px; height: 556.8px;" /></a>
+</div>
+</div>
+<div class="section" id="knows-who-whom">
+<h3>knows(?Who, ?Whom)<a class="headerlink" href="#knows-who-whom" title="Permalink to this headline">¶</a></h3>
+<p>See following 4 screen shots.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/a3p4q3.png"><img alt="../images/a3p4q3.png" src="../images/a3p4q3.png" style="width: 636.0px; height: 563.2px;" /></a>
+</div>
+<p>&#8211;</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/a3p4q3_2.png"><img alt="../images/a3p4q3_2.png" src="../images/a3p4q3_2.png" style="width: 638.4px; height: 556.8px;" /></a>
+</div>
+<p>&#8211;</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/a3p4q3_3.png"><img alt="../images/a3p4q3_3.png" src="../images/a3p4q3_3.png" style="width: 645.6px; height: 563.2px;" /></a>
+</div>
+<p>&#8211;</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/a3p4q3_4.png"><img alt="../images/a3p4q3_4.png" src="../images/a3p4q3_4.png" style="width: 637.6px; height: 563.2px;" /></a>
+</div>
+</div>
+<div class="section" id="knows-trans-mary-john">
+<h3>knows_trans(Mary, John)<a class="headerlink" href="#knows-trans-mary-john" title="Permalink to this headline">¶</a></h3>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/a3p4q4.png"><img alt="../images/a3p4q4.png" src="../images/a3p4q4.png" style="width: 641.6px; height: 556.8px;" /></a>
+</div>
+</div>
+<div class="section" id="knows-trans-mary-whom">
+<h3>knows_trans(Mary, ?Whom)<a class="headerlink" href="#knows-trans-mary-whom" title="Permalink to this headline">¶</a></h3>
+<p>See following 4 screen shots.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/a3p4q5_1.png"><img alt="../images/a3p4q5_1.png" src="../images/a3p4q5_1.png" style="width: 644.0px; height: 560.8px;" /></a>
+</div>
+<p>&#8211;</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/a3p4q5_2.png"><img alt="../images/a3p4q5_2.png" src="../images/a3p4q5_2.png" style="width: 639.2px; height: 556.8px;" /></a>
+</div>
+<p>&#8211;</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/a3p4q5_3.png"><img alt="../images/a3p4q5_3.png" src="../images/a3p4q5_3.png" style="width: 644.0px; height: 560.8px;" /></a>
+</div>
+<p>&#8211;</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/a3p4q5_4.png"><img alt="../images/a3p4q5_4.png" src="../images/a3p4q5_4.png" style="width: 639.2px; height: 559.2px;" /></a>
+</div>
+</div>
+<div class="section" id="knows-trans-who-whom">
+<h3>knows_trans(?Who, ?Whom)<a class="headerlink" href="#knows-trans-who-whom" title="Permalink to this headline">¶</a></h3>
+<p>See following 10 Screen shots.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/a3p4q6_1.png"><img alt="../images/a3p4q6_1.png" src="../images/a3p4q6_1.png" style="width: 637.6px; height: 548.8px;" /></a>
+</div>
+<p>&#8211;</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/a3p4q6_2.png"><img alt="../images/a3p4q6_2.png" src="../images/a3p4q6_2.png" style="width: 633.6px; height: 559.2px;" /></a>
+</div>
+<p>&#8211;</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/a3p4q6_3.png"><img alt="../images/a3p4q6_3.png" src="../images/a3p4q6_3.png" style="width: 631.2px; height: 557.6px;" /></a>
+</div>
+<p>&#8212;</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/a3p4q6_4.png"><img alt="../images/a3p4q6_4.png" src="../images/a3p4q6_4.png" style="width: 645.6px; height: 559.2px;" /></a>
+</div>
+<p>&#8211;</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/a3p4q6_5.png"><img alt="../images/a3p4q6_5.png" src="../images/a3p4q6_5.png" style="width: 635.2px; height: 560.8px;" /></a>
+</div>
+<p>&#8211;</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/a3p4q6_6.png"><img alt="../images/a3p4q6_6.png" src="../images/a3p4q6_6.png" style="width: 633.6px; height: 560.8px;" /></a>
+</div>
+<p>&#8211;</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/a3p4q6_7.png"><img alt="../images/a3p4q6_7.png" src="../images/a3p4q6_7.png" style="width: 645.6px; height: 564.0px;" /></a>
+</div>
+<p>&#8212;</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/a3p4q6_8.png"><img alt="../images/a3p4q6_8.png" src="../images/a3p4q6_8.png" style="width: 635.2px; height: 563.2px;" /></a>
+</div>
+<p>&#8211;</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/a3p4q6_9.png"><img alt="../images/a3p4q6_9.png" src="../images/a3p4q6_9.png" style="width: 629.6px; height: 555.2px;" /></a>
+</div>
+<p>&#8211;</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/a3p4q6_10.png"><img alt="../images/a3p4q6_10.png" src="../images/a3p4q6_10.png" style="width: 637.6px; height: 556.8px;" /></a>
+</div>
+<div class="admonition-todo admonition " id="index-7">
+<p class="first admonition-title">Todo</p>
+<p class="last">Give all results of the (bottom-up) generation employing OO jDREW BU:</p>
+</div>
+<div class="figure">
+<img alt="../images/a3p4bu.png" src="../images/a3p4bu.png" />
+</div>
+</div>
+<div class="section" id="top-down-and-bottom-up-correspondence">
+<h3>Top-down and Bottom-up correspondence<a class="headerlink" href="#top-down-and-bottom-up-correspondence" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-todo admonition " id="index-8">
+<p class="first admonition-title">Todo</p>
+<p class="last">To which (top-down) query does the (bottom-up) generation correspond?</p>
+</div>
+<div class="highlight-prolog"><div class="highlight"><pre><span class="nf">knows_trans</span><span class="p">(</span><span class="s-Atom">?</span><span class="nv">Who</span><span class="p">,</span><span class="s-Atom">?</span><span class="nv">Whom</span><span class="p">).</span>
+</pre></div>
+</div>
+<div class="admonition-todo admonition " id="index-9">
+<p class="first admonition-title">Todo</p>
+<p class="last">Briefly explain this correspondence.</p>
+</div>
+<p>Since bottom-up generation involves iteratively/recursively finding all grounded
+atoms, i.e. the least Herbrand model (<tt class="docutils literal"><span class="pre">M</span></tt>), the <tt class="docutils literal"><span class="pre">knows_trans(X,Y).</span></tt> transitive query
+will essentially solve the <tt class="docutils literal"><span class="pre">M</span></tt> if allowed to search until all solutions are
+found.</p>
+</div>
+</div>
+<div class="section" id="part-5">
+<h2>Part 5<a class="headerlink" href="#part-5" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition " id="index-10">
+<p class="first admonition-title">Todo</p>
+<p>Construct a small ontology with a class Public Transport that has four indirect
+subclasses, Bus, Streetcar, Metro, and Train. Consider Bus and Streetcar value
+restriction properties “borne Street”; Streetcar, Metro, and Train value
+restriction properties “borne Rail”; a Metro exists restriction property “level
+Subsurface”; for all four classes, value restriction properties “carry Person”.
+Introduce two intermediate classes which abstract shared property restriction
+classes, give them (meaningful) names, and add their subclass relationships.
+Introduce all property restriction classes at the highest possible levels.
+Introduce Metro instances m1 and m2, Train instance t, and Person instance p.
+Represent the facts that m1 and m2 carry p, and t carries p.</p>
+<p class="last">Write all property restriction classes that can be derived for subclasses, here:</p>
+</div>
+<ul class="simple">
+<li>borneStreet all StreetTransport</li>
+<li>borneRail all RailTransport</li>
+<li>levelSubsurface some Metro</li>
+<li>carryPerson some Public_transport</li>
+</ul>
+<div class="section" id="part-5-a">
+<h3>Part 5 A<a class="headerlink" href="#part-5-a" title="Permalink to this headline">¶</a></h3>
+<p>Draw a diagram for the ontology.
+Hint: Plan to best use the space below.
+Hint: Alternatively, you can model everything in the Protégé ontology editor and
+get the diagram from its Jambalaya tab (attach a printout).</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../images/onto.jpg"><img alt="../images/onto.jpg" src="../images/onto.jpg" style="width: 1038.4px; height: 676.0px;" /></a>
+<p class="caption">Ontology diagram.</p>
+</div>
+</div>
+<div class="section" id="part-5-b">
+<h3>Part 5 B<a class="headerlink" href="#part-5-b" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="abox">
+<h4>ABox<a class="headerlink" href="#abox" title="Permalink to this headline">¶</a></h4>
+<p>{m1:Metro, m2:Metro, t:Train, p:Person}</p>
+</div>
+<div class="section" id="tbox">
+<h4>TBox<a class="headerlink" href="#tbox" title="Permalink to this headline">¶</a></h4>
+<p>(see attached sheet.)</p>
+</div>
+</div>
+<div class="section" id="part-5-c">
+<h3>Part 5 C<a class="headerlink" href="#part-5-c" title="Permalink to this headline">¶</a></h3>
+<p>There are no cases of <em>direct</em> multiple inheritance in my model.  However, should I (for
+example) have abstracted <tt class="docutils literal"><span class="pre">RailTransport</span></tt> to the level of
+<tt class="docutils literal"><span class="pre">Public_transport</span></tt> then <tt class="docutils literal"><span class="pre">Metro</span></tt> and <tt class="docutils literal"><span class="pre">Train</span></tt> would inherit from both
+<tt class="docutils literal"><span class="pre">Public_transport</span></tt> and <tt class="docutils literal"><span class="pre">RailTransport</span></tt>.</p>
+<p>However, there are cases of <em>inherited anonymous classes</em>, for example:</p>
+<p>Metro and Train both inherit from <tt class="docutils literal"><span class="pre">borneRail</span> <span class="pre">only</span> <span class="pre">RailTransport</span></tt> and
+<tt class="docutils literal"><span class="pre">carryPerson</span> <span class="pre">only</span> <span class="pre">Public_transport</span></tt> (alos Metro inherits from
+<tt class="docutils literal"><span class="pre">levelSubsurface</span> <span class="pre">some</span> <span class="pre">Metro</span></tt>).</p>
+<p>Bus and Streetcar inherit from <tt class="docutils literal"><span class="pre">borneStreet</span> <span class="pre">only</span> <span class="pre">StreetTransport</span></tt> and
+<tt class="docutils literal"><span class="pre">carryPerson</span> <span class="pre">only</span> <span class="pre">Public_transport</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">RailTransport</span></tt> inherits from <tt class="docutils literal"><span class="pre">Public_transport</span></tt> and <tt class="docutils literal"><span class="pre">borneRail</span> <span class="pre">only</span>
+<span class="pre">RailTransport</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">StreetTransport</span></tt> inherits from <tt class="docutils literal"><span class="pre">Public_transport</span></tt> and <tt class="docutils literal"><span class="pre">borneStreet</span> <span class="pre">only</span>
+<span class="pre">StreetTransport</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">Public_transport</span></tt> inherits from <tt class="docutils literal"><span class="pre">carryPerson</span> <span class="pre">only</span> <span class="pre">Public_transport</span></tt> and
+<tt class="docutils literal"><span class="pre">Thing</span></tt>.</p>
+<p>The reasoning tasks performed on the created ontology was the Pellet and Hermit
+plugins for the Protege Owl 4 framework.  <em>(There did not appear to be anything
+new learned by starting the mentioned reasoner.  Protege is a very complicated
+tool and the interface is unintuitive, which is also reflected in the
+documentation.)</em></p>
+<p>However the key reasoning tasks done by the above reasoners based on the
+tableaux algorithm (namely Pellet) include:</p>
+<ul class="simple">
+<li>Satisfiability</li>
+<li>Instance checking</li>
+<li>Concept satisfiability</li>
+<li>Retrieval</li>
+<li>Concept Subsumption</li>
+<li>and Equivalence</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../main.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Assignment 3</a><ul>
+<li><a class="reference internal" href="#part-1">Part 1</a></li>
+<li><a class="reference internal" href="#part-2">Part 2</a><ul>
+<li><a class="reference internal" href="#transformation-inversion">Transformation inversion?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#part-3">Part 3</a></li>
+<li><a class="reference internal" href="#part-4">Part 4</a><ul>
+<li><a class="reference internal" href="#knows-mary-john">knows(Mary, John)</a></li>
+<li><a class="reference internal" href="#knows-mary-whom">knows(Mary, ?Whom)</a></li>
+<li><a class="reference internal" href="#knows-who-whom">knows(?Who, ?Whom)</a></li>
+<li><a class="reference internal" href="#knows-trans-mary-john">knows_trans(Mary, John)</a></li>
+<li><a class="reference internal" href="#knows-trans-mary-whom">knows_trans(Mary, ?Whom)</a></li>
+<li><a class="reference internal" href="#knows-trans-who-whom">knows_trans(?Who, ?Whom)</a></li>
+<li><a class="reference internal" href="#top-down-and-bottom-up-correspondence">Top-down and Bottom-up correspondence</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#part-5">Part 5</a><ul>
+<li><a class="reference internal" href="#part-5-a">Part 5 A</a></li>
+<li><a class="reference internal" href="#part-5-b">Part 5 B</a><ul>
+<li><a class="reference internal" href="#abox">ABox</a></li>
+<li><a class="reference internal" href="#tbox">TBox</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#part-5-c">Part 5 C</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="assign2.html"
+                        title="previous chapter">Assignment 2</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/cs6795/assign3.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="assign2.html" title="Assignment 2"
+             >previous</a> |</li>
+        <li><a href="../main.html">(Mis)Adventures in Hax-Fu v1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >CS6795 Labs and Assignments</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Reuben Peter-Paul.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<forward> </forward>
+
+<forward> the weather </forward>
+
+<forward> <fact> it snows </fact> </forward>
+
+<forward> <rule> if it rains then the road gets wet </rule> </forward>
+
+<forward>
+	<rule>
+		<if> it rains </if> <then> the road gets wet </then>
+	</rule>
+</forward>
+
+<forward>
+	<fact> it rains </fact>
+	<rule>
+		<if> it rains </if>
+		<then> the road gets wet
+		</then>
+	</rule>
+</forward>
