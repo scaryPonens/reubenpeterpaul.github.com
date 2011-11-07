@@ -10,3 +10,4 @@ CS6795 Labs and Assignments
   assign1  
   assign2
   assign3
+  proposal
